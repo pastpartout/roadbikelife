@@ -1,0 +1,21 @@
+
+
+.sectionShadowInset {
+  box-shadow: 0 32px 45px -30px rgba(0, 0, 0, 0.85) inset;
+}
+
+.module {
+  margin-bottom: $spacer5;
+}
+
+iframe, .avPlayerWrapper {
+  width: 100%;
+}
+
+.tab-content {
+
+
+  > .show {
+    display: block !important;
+  }
+}

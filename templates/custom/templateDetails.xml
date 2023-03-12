@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE install PUBLIC "-//Joomla! 2.5//DTD template 1.0//EN" "http://www.joomla.org/xml/dtd/2.5/template-install.dtd">
+<extension version="3.1" type="template" client="site">
+	<name>custom</name>
+	<version>1.0</version>
+	<creationDate>11/14/2014</creationDate>
+	<author>Stephan Riedel</author>
+	<authorEmail>stephan.riedel@pastpartout.com</authorEmail>
+	<copyright>Copyright (C) 2015 Stephan Riedel. All rights reserved.</copyright>
+	<description>Joomla Custom Template</description>
+	<files>
+		<filename>component.php</filename>
+		<filename>error.php</filename>
+		<filename>favicon.ico</filename>
+		<filename>index.php</filename>
+		<filename>templateDetails.xml</filename>
+		<filename>template_preview.png</filename>
+		<filename>template_thumbnail.png</filename>
+		<folder>css</folder>
+		<folder>html</folder>
+		<folder>images</folder>
+		<folder>img</folder>
+		<folder>js</folder>
+		<folder>language</folder>
+		<folder>less</folder>
+	</files>
+	<positions>
+		<position>frontpage</position>
+		<position>mainmenu</position>
+		<position>like-btn</position>
+		<position>footer</position>
+		<position>content-bottom</position>
+		<position>content-top</position>
+		<position>blog_sidebar</position>
+		<position>article_sidebar</position>
+		<position>article_bottom</position>
+		<position>article_content_bottom</position>
+		<position>hero-area</position>
+		<position>footer-top</position>
+		<position>footer-bottom</position>
+	</positions>
+	<languages folder="language">
+		<language tag="de-DE">de-DE/de-DE.TPL_custom.ini</language>
+		<language tag="de-DE">de-DE/de-DE.TPL_custom.sys.ini</language>
+	</languages>
+	<config>
+		<fields name="params">
+			<fieldset name="advanced">
+
+				<field name="logoFile" class="" type="media" default=""
+					label="Frontend Logo"
+				/>
+
+
+				<field name="og_image" class="" type="media" default=""
+					label="Facebook Titelbild"
+					 />
+				<field name="google_tracking_code"  type="text" default=""
+					   label="Google Tracking Code"
+					   filter="string" />
+
+			</fieldset>
+		</fields>
+	</config>
+</extension>

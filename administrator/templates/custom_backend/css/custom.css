@@ -1,0 +1,33 @@
+.header .logo {
+    background-color: #e51a51;
+}
+
+.com_login main > .container {
+    max-width: 25rem;
+}
+
+body.view-login .wrapper  {
+    background-color:#e51a51 !important;
+    background-color:#1d262d !important;
+}
+body.view-login .form-validate  {
+    /*background-color:#e51a51 !important;*/
+    /*background-color: rgba(255,255,255,1);*/
+    /*background-color: #1d262d;*/
+    padding: 1rem;
+    /*box-shadow: 0 0 20px rgba(0,0,0,.2);*/
+    margin-bottom: 1rem;
+    border-radius: 3px;
+    /*color: #333;*/
+}
+body.view-login a {
+    color: #FFF;
+}
+
+body.view-login  label.invalid {
+    background-color: #FFF;
+}
+
+#filter_search-desc {
+    top:100%
+}

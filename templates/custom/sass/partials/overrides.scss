@@ -1,0 +1,51 @@
+
+
+// Grid system
+//
+// Generate semantic grid columns with these mixins.
+
+// Centered container element
+
+
+
+
+.dropdown-menu > li > a {
+  &:hover,
+  &:focus {
+    background-color: #FFF;
+  }
+
+  &:hover {
+    background-color: $layout-secondary;
+  }
+}
+
+
+.label {
+  font-weight: normal;
+  font-size: 83%;
+}
+
+ul.list-unstyled {
+  margin-bottom: 0 !important;
+}
+
+
+
+.popover {
+  .popover-title {
+    @extend .heading-serif;
+    margin: 0;
+    font-size: $font-size-base;
+    color: $text-color;
+  }
+}
+
+
+.form-control:focus::placeholder {
+  color: #FFF !important;
+}
+
+//.form-control:focus {
+//  outline: 0;
+//}

@@ -1,0 +1,15 @@
+@import "variables/variables_fontawesome";
+@import "fontawesome/fontawesome";
+@import "bootstrap";
+@import "../../../vendor/twbs/bootstrap/scss/functions.scss";
+@import "variables/custom_variables";
+@import "partials/mixins";
+
+// above the fold
+@import "partials/footer";
+@import "partials/layout";
+@import "partials/bottombar-mobile";
+@import "partials/header";
+@import "partials/hero-area-frontpage";
+@import "partials/hero-area";
+";

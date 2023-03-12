@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<config>
+    <fields
+
+    >
+        <fieldset name="body_info" label="Fahrereigenschaften">
+            <field
+                    name="roadbikelife_rider_weight"
+                    type="number"
+                    step="0.1"
+                    default="65"
+                    class="span10"
+                    label="Gewicht in kg"
+            />
+        </fieldset>
+
+        <fieldset
+                name="apis"
+                label="Schnittstellen">
+            <field type="note" name="strava" label="Strava"/>
+            <field
+                    name="strava_clientId"
+                    type="text"
+                    class="span10"
+                    label="Client ID"
+            />
+            <field
+                    name="strava_clientSecret"
+                    type="text"
+                    class="span10"
+                    label="Client Secret"
+            />
+            <field
+                    name="strava_profileId"
+                    type="text"
+                    class="span10"
+                    label="Strava Quelle (Profil-ID)"
+            />
+            <field
+                    name="strava_update_date_limit"
+                    type="number"
+                    default="7"
+                    class="span10"
+                    label="Strava Update Datumslimit in Tagen"
+            />
+
+            <field
+                    name="darkskyweather_apiKey"
+                    type="text"
+                    class="span10"
+                    label="Darksky Wheather API Key"
+            />
+            <field
+                    name="openwheather_apiKey"
+                    type="text"
+                    class="span10"
+                    label="OpenWheater API Key"
+            />
+            <field
+                    name="upload_allowed"
+                    type="radio"
+                    label="RideWheather Upload erlaubt"
+                    class="btn-group btn-group-yesno"
+                    default="1"
+                    filter="integer"
+            >
+                <option value="1">JYES</option>
+                <option value="0">JNO</option>
+            </field>
+            <field type="spacer" hr="true"/>
+            <field type="note" name="google" label="google"/>
+            <field
+                    name="google_maps_apiKey"
+                    type="text"
+                    class="span10"
+                    label="Google Maps API Key"
+            />
+            <field
+                    name="google_maps_staticapi_url"
+                    type="text"
+                    class="span10"
+                    label="Google Maps static maps URL"
+            />
+            <field type="spacer" hr="true"/>
+
+
+            <field type="spacer" hr="true"/>
+            <field type="note" label="Dropbox" class="panel-title"/>
+            <field type="spacer" hr="true"/>
+            <field type="note" label="Einstellungen" class="panel-title"/>
+            <field
+                    name="urlToken"
+                    type="text"
+                    class="span10"
+                    label="URL Zugriffs Token"
+            />
+            <field type="spacer" hr="true"/>
+            <field type="note" label="TinyPNG" class="panel-title"/>
+
+        </fieldset>
+        <fieldset name="images" label="Bildoptimierung"  addfieldpath="/administrator/components/com_roadbikelife/models/fields"
+        >
+            <field
+                    name="imagecacheversion"
+                    type="imagecacheversion"
+                    class="span10"
+                    label="Cache-Version"
+            />
+            <field
+                    name="activate_image_processing"
+                    type="radio"
+                    label="Bildoptimierung aktivieren"
+                    class="btn-group btn-group-yesno"
+                    default="1"
+                    filter="integer"
+            >
+                <option value="1">JYES</option>
+                <option value="0">JNO</option>
+            </field>
+        </fieldset>
+    </fields>
+
+</config>

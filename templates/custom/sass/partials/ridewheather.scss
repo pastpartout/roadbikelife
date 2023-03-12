@@ -1,0 +1,1237 @@
+$headerHeight: 6rem;
+
+body.view-ridewheather {
+
+  .tooltip {
+    font-size: $font-size-xsm;
+  }
+
+  .mobileBottomBar {
+    display: none;
+  }
+}
+
+.rideWheather {
+
+  background-color: $layout-darkblue;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100vh;
+  max-height: 100vh;
+  color: $white;
+  position: relative;
+
+  .bgImage {
+    position: absolute;
+    opacity: 0.45;
+    filter: blur(2px);
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+
+
+  }
+
+  i {
+    transform: translateZ(0);
+  }
+
+  @include media-breakpoint-down(sm) {
+    height: auto;
+    max-height: none;
+  }
+
+  header {
+    width: 100%;
+    color: $white;
+    padding: $spacer2;
+    box-shadow: $box-shadow;
+    background-color: $layout-darkblue-darker-1;
+    background-color: $primary;
+    position: relative;
+    z-index: 3;
+
+    .gmap-fullscreen & {
+      z-index: 1;
+    }
+
+    .logo {
+      min-width: 12rem;
+
+      @include media-breakpoint-up(md) {
+        min-width: 14rem;
+      }
+
+    }
+
+    .colRight {
+      @include media-breakpoint-up(md) {
+        text-align: right;
+        padding-right: $spacer3;
+        justify-content: flex-end;
+      }
+
+      @include media-breakpoint-down(sm) {
+        > .row {
+          width: 100%;
+        }
+      }
+
+      display: flex;
+      align-items: center;
+
+      .colTitle {
+        display: flex;
+        align-items: center;
+        padding-right: $spacer3;
+      }
+
+    }
+  }
+
+  .colWrapper {
+    flex-grow: 1;
+    max-height: inherit;
+    position: relative;
+    z-index: 2;
+  }
+
+  .googleMap {
+    //height: ;
+
+  }
+
+  .flotGraph {
+    height: 10%;
+  }
+
+  .mapCol {
+    display: flex;
+    flex-direction: column;
+    max-height: 100%;
+
+    .mapWrapper {
+      flex-grow: 1;
+
+
+      .googleMap {
+        min-height: 100%;
+        height: auto;
+        g
+
+
+        .gm-style-mtc,
+        .gm-fullscreen-control,
+        .gmnoprint {
+          opacity: 1;
+        }
+
+        @include media-breakpoint-down(md) {
+          min-height: 350px;
+        }
+
+
+      }
+
+      .btn[data-toggle-mapicons] {
+        position: absolute;
+        display: none;
+      }
+
+    }
+
+    .graphWrapper {
+      display: flex;
+      flex-direction: column;
+      //padding-top: ;
+
+      .detailNumbers {
+        font-size: 0.8em;
+
+        [data-wheather-key] {
+          margin-bottom: $spacer2;
+          transform: translateZ(0);
+
+          @include media-breakpoint-down(sm) {
+            margin-bottom: 0;
+          }
+
+          &.active {
+            color: lighten($primary, 10%);
+          }
+        }
+      }
+
+      .flotGraph {
+        height: 6rem;
+      }
+
+      .tab-pane {
+        position: relative;
+      }
+
+      .marker {
+        position: absolute;
+        bottom: 0;
+        width: 2px;
+        height: 100%;
+        z-index: 2;
+        pointer-events: none;
+        background: rgba($white, 0.65);
+        display: flex;
+        align-items: center;
+        justify-items: center;
+
+      }
+    }
+  }
+
+  .valueLabel {
+    font-size: $font-size-xsm;
+    color: rgba($white, .5);
+    display: block;
+  }
+
+  .mobileAvg {
+    background-color: $layout-darkblue-lighter-1;
+    color: $white;
+
+    .wheatherAvgMainIcon {
+      font-size: 3rem;
+
+
+    }
+  }
+
+  .wheatherAvgMainIcon {
+    margin: auto;
+    animation: upDown 1s ease-in-out infinite alternate;
+    transition: $transition-base;
+
+    &.fa-sleet
+    &.fa-cloud-rain,
+    &.fa-cloud-sleet {
+      color: rgb(168, 190, 219);
+    }
+
+
+    &.fa-wind,
+    &.fa-tornado {
+      color: $primary;
+      animation: leftRight 1s ease-in-out infinite alternate;
+
+    }
+
+    &.fa-sun {
+      color: rgb(255, 236, 108);
+      @extend .fa-spin;
+      animation-duration: 30s;
+    }
+  }
+
+  @keyframes upDown {
+    0% {
+      transform: translateY(0) translateZ(0);
+    }
+
+    100% {
+      transform: translateY(-7%) translateZ(0);
+    }
+  }
+
+
+  @keyframes leftRight {
+    0% {
+      transform: translateX(0) translateZ(0);
+    }
+
+    100% {
+      transform: translateX(-7%) translateZ(0);
+    }
+  }
+
+
+  .wheatherAvgMainWrapper {
+    padding: $spacer2 $spacer3;
+
+    //div[class*="col-"] {
+    //    display: flex;
+    //    align-items: center;
+    //    height: 100%;
+    //}
+
+
+    .wheatherAvgMain {
+      padding: $spacer2;
+      border-radius: $border-radius-sm;
+      background-color: rgba($black, .07);
+      background-color: $layout-darkblue;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      height: 100%;
+
+
+      .large {
+        font-size: $h2-font-size;
+        font-weight: $font-weight-bold;
+      }
+
+
+    }
+
+    .wheatherAvgMain {
+
+    }
+
+  }
+
+  .clothingRecs {
+    padding: $spacer2 $spacer3;
+  }
+
+  .range-slider {
+    display: flex;
+    align-items: center;
+    margin-bottom: $spacer2;
+    //padding-bottom: $spacer2;
+    //border-bottom: 1px solid $layout-darkblue-darker-1;
+
+    .track {
+      height: $spacer2;
+      border-radius: $spacer3;
+      background-color: $layout-darkblue-darker-1;
+      margin: 0 $spacer4;
+      position: relative;
+      display: flex;
+      align-items: center;
+      flex-grow: 1;
+
+      .marker {
+        position: absolute;
+        border-radius: 50%;
+        width: 1rem;
+        height: 1rem;
+        background-color: $primary;
+        box-shadow: $box-shadow, $box-shadow-sm;
+      }
+    }
+  }
+
+  .colInfo {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+
+    .scroller {
+      flex-grow: 1;
+      display: flex;
+      background-color: $layout-darkblue-lighter-1;
+      color: $white;
+      flex-direction: column;
+      overflow: auto;
+      max-height: 100%;
+      position: absolute;
+      width: 100%;
+      @include rblSscrollbar;
+
+      @include media-breakpoint-down(sm) {
+        position: relative;
+      }
+    }
+
+    .colHeading {
+      padding: $spacer3;
+      border-bottom: 1px solid $layout-darkblue;
+
+      .sectionHeaderCol {
+        display: flex;
+        align-items: center;
+
+        .sectionHeader {
+          font-weight: $font-weight-bold;
+        }
+      }
+
+      .sectionButtonCol {
+        display: flex;
+
+        .btn {
+          @include media-breakpoint-up(md) {
+            margin-left: auto;
+          }
+        }
+      }
+    }
+
+    .wheaterAvg {
+      width: 100%;
+    }
+
+
+    .temperatureRainGraphWrapper {
+      background-color: $layout-darkblue;
+      padding: $spacer3;
+      padding-left: $spacer1;
+
+      .temperatureRainGraph {
+        height: 10rem;
+      }
+    }
+
+
+    .flot-svg text {
+      fill: rgba(255, 255, 255, 0.3) !important
+    }
+
+    .wheatherAvgList {
+      display: flex;
+      flex-wrap: wrap;
+      padding: $spacer2 0;
+
+      .item {
+        @include make-col(3);
+        padding-bottom: 0;
+      }
+    }
+
+    .itemInner {
+      //    display: flex;
+      //    flex-direction: row;
+      //    text-align: left;
+      //
+      //    .fa-fw {
+      //        margin-right: $spacer2;
+      //    }
+
+
+    }
+
+    .rideInfos {
+      padding: $spacer2 $spacer3;
+      font-size: $font-size-sm;
+      border-top: 1px solid $layout-darkblue;
+
+      > .row > div {
+        margin-bottom: $spacer2;
+      }
+    }
+
+    .wheatherStartFinish {
+      border-top: 1px solid $layout-darkblue;
+      flex-grow: 1;
+      height: auto;
+      display: flex;
+      flex-direction: column;
+
+      > .row > div {
+        padding: $spacer2 $spacer3;
+        flex-grow: 1;
+      }
+
+      h3 {
+        text-align: center;
+
+      }
+
+      .postInfos-strava {
+
+
+        .item {
+          width: 100%;
+          max-width: 100%;
+          border-top: 1px solid $layout-darkblue-darker-1;
+          padding: 0;
+
+          .itemInner {
+            display: flex;
+            flex-direction: row;
+            align-items: normal;
+            justify-content: normal;
+            padding-top: $spacer3;
+            padding-bottom: $spacer3;
+
+            i {
+              margin: auto $spacer3 auto 0;
+            }
+
+            > div {
+              width: 100%;
+              text-align: left;
+            }
+          }
+        }
+      }
+
+
+      .colFinish {
+        border-left: 1px solid $layout-darkblue;
+      }
+
+    }
+  }
+
+  &.rideWheatherList {
+    max-height: none;
+    min-height: 100vh;
+    height: auto;
+
+    .colWrapper {
+      padding: $spacer4 0;
+    }
+
+    .limitWrapper {
+      background-color: $layout-darkblue-lighter-1;
+      padding: $spacer3;
+      margin-bottom: $spacer4;
+
+      .progress {
+        margin-bottom: $spacer3;
+        min-height: 1.5rem;
+      }
+    }
+
+    // List Page
+    .rideWheatherListItem {
+      //display: flex;
+      color: $white;
+      padding: $spacer3;
+      border-bottom: 1px solid $layout-darkblue-darker-1;
+      transition: $transition-base;
+
+      @include hover {
+        background-color: rgba($white, 0.05);
+      }
+
+      .colImage {
+        display: flex;
+        align-items: flex-start;
+
+        .item-image {
+          width: 120px;
+        }
+
+        @include media-breakpoint-down(sm) {
+          justify-content: center;
+        }
+      }
+
+      .rideInfos {
+        > .row > div {
+          margin-bottom: $spacer2;
+        }
+      }
+
+      h3 {
+        @include media-breakpoint-down(sm) {
+          text-align: center;
+        }
+      }
+
+      .date {
+        font-size: $font-size-sm;
+        margin-bottom: $spacer2;
+        color: rgba($white, 0.5);
+
+        @include media-breakpoint-down(sm) {
+          text-align: center;
+          padding-top: $spacer3;
+        }
+      }
+
+      .wheatherAvgMainWrapper {
+        background-color: 1px solid $layout-darkblue-lighter-1;
+        border-top: 1px solid $layout-darkblue-darker-1;
+        border-bottom: 1px solid $layout-darkblue-darker-1;
+        margin-bottom: $spacer3;
+
+        .wheatherAvgMain {
+          background: transparent;
+
+          .large {
+            font-size: $h3-font-size;
+            font-weight: $font-weight-bold;
+          }
+        }
+      }
+
+      .actionsCol {
+        display: flex;
+        align-items: flex-end;
+        justify-content: flex-end;
+
+        .actionsColBtns {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+        }
+
+        @include media-breakpoint-down(sm) {
+          padding: 0;
+
+          .actionsColBtns {
+            flex-direction: row;
+          }
+        }
+
+        .btn {
+          width: 100%;
+          margin-top: $spacer3;
+          margin-bottom: $spacer3;
+
+          @include media-breakpoint-down(sm) {
+            margin-right: $spacer2;
+            margin-left: $spacer2;
+          }
+
+          @media (max-width: $grid-breakpoint-xxs) {
+            width: 100%;
+
+          }
+        }
+      }
+    }
+  }
+
+  &.rideWheatherRegister {
+    .bgImage {
+      @include media-breakpoint-down(sm) {
+        display: none;
+      }
+    }
+  }
+
+  &.rideWheatherCreate {
+    max-height: none;
+    height: auto;
+    min-height: 100vh;
+
+    .bgImage {
+      @include media-breakpoint-down(sm) {
+        display: none;
+      }
+    }
+
+    .colWrapper {
+      padding: $spacer4 0;
+      position: relative;
+      z-index: 2;
+
+      @include media-breakpoint-down(sm) {
+        padding: $spacer2 0;
+
+      }
+    }
+
+
+    .accordion {
+      color: $body-color;
+    }
+
+
+    //.bootstrap-datetimepicker-widget {
+    //    display: block;
+    //}
+
+    .card-header {
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+
+      .komoot {
+        max-width: 1.25rem;
+      }
+
+      .fa-strava {
+        color: $stravaOrange;
+      }
+    }
+
+    .stravaRoutes {
+      text-align: left;
+      margin-bottom: $spacer4;
+
+      .list-group-item {
+
+        @include hover {
+          background-color: $light;
+        }
+
+        > .row {
+          display: flex;
+          align-items: center;
+
+        }
+
+        .colImg {
+          margin-left: auto;
+
+          .item-image {
+            max-width: 120px;
+          }
+
+          @include media-breakpoint-down(sm) {
+            padding: 0;
+          }
+        }
+
+        &,
+        .date {
+          color: $body-color;
+        }
+
+        .custom-control-label::after,
+        .custom-control-label::before {
+          width: 2rem;
+          height: 2rem;
+
+        }
+
+      }
+    }
+
+  }
+
+
+  &.rideWheatherLogin {
+    min-height: 100vh;
+
+
+    .container {
+      //max-width: 800px;
+    }
+
+    .content {
+      max-width: 500px;
+      margin: 0 auto;
+    }
+  }
+
+  .introWrapper {
+
+    margin: $spacer4 0;
+    text-align: center;
+
+    @include media-breakpoint-down(sm) {
+      margin: 0;
+      padding-top: 0;
+      padding-bottom: 0;
+    }
+
+  }
+
+
+}
+
+.poweredByRideWheather {
+  display: flex;
+  padding-right: $spacer2;
+  align-items: center;
+  padding-top: $spacer1;
+  justify-content: flex-end;
+  color: $white;
+  font-size: $font-size-sm;
+
+  .badge {
+    background-color: $white;
+    color: $primary;
+    font-weight: bold;
+    margin-left: $spacer2;
+  }
+
+  @include hover {
+    color: $white;
+    text-decoration: none;
+
+    .badge {
+      background-color: $primary;
+      color: $white;
+    }
+  }
+}
+
+
+.mapWrapper {
+  overflow: hidden;
+  position: relative;
+
+  &.fullscreen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    //height: 100vh;
+    z-index: $zindex-modal + 100;
+
+    .btn-fullscreen i {
+      &:before {
+        content: fa-content($fa-var-times) !important;
+      }
+    }
+
+    .wheatherWidget .wind {
+      //display: none;
+    }
+
+    .googleMap {
+      //height: 100vh;
+    }
+  }
+
+
+  .btn-group-marker-btns {
+    border-radius: 3px;
+    overflow: hidden;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, .3);
+
+    .btn {
+      display: flex;
+      align-items: center;
+    }
+
+    .btn-marker {
+      @include button-variant($white, $border-color, $light);
+      padding: .1rem .3rem;
+
+      img {
+        width: 28px;
+        filter: grayscale(100);
+        transition: all .2s ease;
+
+        @include media-breakpoint-down(sm) {
+          width: 22px;
+        }
+
+        @media (max-width: $grid-breakpoint-xxs) {
+          width: 18px;
+        }
+      }
+
+      @include hover-focus-active {
+        img {
+          filter: grayscale(0);
+        }
+      }
+    }
+
+    .btn-marker-zoom-out {
+      color: #666;
+      border-right-width: 2px !important;
+
+      i {
+        width: 26px;
+        font-size: 18px;
+
+        @include media-breakpoint-down(sm) {
+          font-size: 16px;
+          width: 20px;
+        }
+
+      }
+
+
+    }
+  }
+
+
+  .gm-style-mtc,
+  .gm-fullscreen-control,
+  .gmnoprint {
+    transition: $transition-base;
+    @include media-breakpoint-up(lg) {
+      opacity: 0;
+
+    }
+  }
+
+  @include hover {
+    .gm-style-mtc,
+    .gm-fullscreen-control,
+    .gmnoprint {
+      @include media-breakpoint-up(lg) {
+        opacity: 1;
+      }
+    }
+  }
+
+
+  .wheatherWidget {
+
+    .wind {
+      display: flex;
+      flex-direction: column;
+      //padding: 0.1rem;
+      background-color: $white;
+      border-radius: $border-radius-sm;
+      align-items: stretch;
+      position: absolute;
+      margin-top: -390px;
+      left: 10px;
+      height: 340px;
+      width: 2.5rem;
+      box-shadow: $box-shadow $box-shadow-sm;
+
+      @include media-breakpoint-down(sm) {
+        margin-top: -40vh;
+        height: 32vh;
+      }
+
+      .windBearing {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        margin-right: $spacer2;
+        padding: $spacer2 0;
+        font-size: 24px;
+        transition: transform .2s ease;
+
+        i {
+          transition: $transition-base;
+        }
+      }
+
+      .temp {
+        font-size: 12px;
+        text-align: center;
+        line-height: 1;
+        color: $body-color;
+      }
+
+      #wheatherIcon {
+        margin-top: 0;
+        color: $layout-darkblue-lighter-4;
+        font-size: 1.4em;
+      }
+
+      .windInfo {
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+        align-items: center;
+
+        .progress {
+          position: relative;
+          flex-grow: 1;
+          background-color: lighten($layout-darkblue, 70%);
+        }
+
+        .progress,
+        .progress-bar {
+          width: 100%;
+          border-radius: 0;
+        }
+
+        .progress-bar {
+          position: absolute;
+          width: 100%;
+          bottom: 0;
+          transition: height .1s ease;
+          overflow: visible;
+
+          i {
+            padding: $spacer2 0;
+          }
+        }
+
+        .text {
+          text-align: center;
+          text-shadow: 1px 1px 5px rgba($black, .35);
+          line-height: $headings-line-height;
+          position: absolute;
+          bottom: 0;
+          width: 100%;
+          padding: $spacer2 $spacer1;
+          font-weight: $font-weight-normal;
+          font-size: 0.8rem;
+
+          i {
+            font-size: 1.3em;
+          }
+
+        }
+
+
+      }
+    }
+  }
+
+
+  .googleMap {
+    height: 450px;
+    border-bottom: 1px solid $card-border-color;
+    //transform: scale(1.002);
+
+    .gdpr-notice {
+      text-align: center;
+      font-size: $font-size-xsm;
+      color: $white;
+      background-color: rgba($layout-darkblue,1);
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 2;
+
+      .bg-image,
+      .content {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+      }
+
+      .bg-image {
+        object-fit: cover;
+        z-index: 1;
+        filter:grayscale(100%);
+        width: 100%;
+        height: 100%;
+        opacity: .32;
+      }
+
+
+      .content {
+        z-index: 2;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: $spacer3;
+        background-color: rgba($layout-darkblue-darker-2,.7);
+
+
+      }
+
+      .btn {
+        @include hover {
+          color: $body-color;
+        }
+      }
+    }
+
+    @include media-breakpoint-down(sm) {
+      height: 50vh;
+    }
+
+
+    .stravaMapValueWrapper {
+      padding: 7px;
+      padding-left: 14px;
+      padding-right: 20px;
+      display: block;
+    }
+
+    .gm-style-iw-d {
+      font-weight: bold;
+      color: $primary;
+      overflow: auto !important;
+
+    }
+
+    .gm-style-iw-c {
+      border-radius: $border-radius-sm;
+      padding: 0;
+
+    }
+
+    .acitvityMapPhoto {
+      border: 3px solid $white;
+      border-radius: $border-radius-sm;
+      max-width: 100px;
+      max-height: 100px;
+      background-color: $white;
+
+      @include media-breakpoint-down(sm) {
+        max-width: 150px;
+      }
+    }
+
+    .segment-tooltip {
+      width: 160px;
+      color: $body-color;
+      text-align: center;
+
+      .icon {
+        font-size: $font-size-base;
+      }
+
+      .title {
+        font-weight: $font-weight-bold;
+        padding-top: $spacer2;
+        padding-bottom: $spacer2;
+        margin-bottom: $spacer2;
+        border-bottom:1px solid $border-color;
+      }
+
+      .values {
+        font-weight: $font-weight-base;
+        margin-bottom: $spacer2;
+        text-align: left;
+        white-space: nowrap;
+
+        td {
+          padding-bottom: $spacer1;
+          vertical-align: top;
+        }
+
+        td +td {
+          padding-left: $spacer1;
+        }
+
+        .fas {
+          color: $gray-700;
+        }
+      }
+
+
+    }
+  }
+
+
+}
+
+
+.graphWrapper {
+  position: relative;
+  //padding-bottom: 1em;
+  user-select: none;
+  cursor: ew-resize;
+  padding-top: $spacer3;
+
+  .marker {
+    position: absolute;
+    bottom: 0;
+    width: 1px;
+    height: 100%;
+    z-index: 2;
+    pointer-events: none;
+    background: rgba($white, 0.65);
+    display: flex;
+    align-items: center;
+    justify-items: center;
+
+    //&:before {
+    //  font-family: $fontFamilyIcons;
+    //  content: fa-content($fa-var-arrows-h);
+    //  text-align: center;
+    //  width: 1.2em;
+    //  display: flex;
+    //  align-items: center;
+    //  justify-items: center;
+    //  height: 1.2em;
+    //  line-height: 1;
+    //  background-color: rgba($red,.5);
+    //  color: $white;
+    //  font-size: .7em;
+    //  border-radius: 50%;
+    //  margin-left: -.6em;
+    //  font-weight: lighter;
+    //}
+  }
+
+
+  .stravaGraph {
+    height: 150px;
+    position: relative;
+    user-select: none;
+
+
+    canvas {
+      z-index: 1;
+      //width: 100% !important;
+    }
+  }
+}
+
+
+.graphAnimationControls {
+  font-size: $font-size-xsm;
+
+  .btn {
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+    border-top-right-radius: 0;
+    font-size: .9em;
+    color: $gray-600 !important;
+
+    &.active {
+      color: $primary !important;
+    }
+
+  }
+}
+
+.stravaMapValueWrapper {
+  display: block;
+}
+
+
+.navGraphs {
+  background-color: $layout-darkblue-darker-1;
+  display: flex;
+  //border-top:1px solid darken($red,10%);
+  position: relative;
+  z-index: 3;
+
+  .detailNumbers [data-wheather-key].active {
+    color: lighten($primary, 10%);
+  }
+
+
+  .nav-item {
+    color: $white;
+    padding: $spacer2;
+    font-size: $font-size-sm;
+    text-align: center;
+    transform: translateZ(0);
+
+    @include hover-focus-active {
+      text-decoration: none;
+    }
+
+    &.active {
+      color: lighten($primary, 10%);
+    }
+  }
+}
+
+
+.calendarWrapper {
+  margin-bottom: $spacer3;
+  font-size: $font-size-sm;
+
+  .datepicker-days,
+  .timepicker-picker {
+    border-radius: $border-radius-sm;
+    border: 1px solid $input-border-color;
+    padding: $spacer2;
+    height: 100%;
+    display: flex;
+    align-items: center;
+
+  }
+
+  .timepicker,
+  .datepicker {
+    margin-bottom: $spacer3;
+  }
+}
+
+#changeDateModal {
+  .calendarWrapper {
+
+    .timepicker,
+    .datepicker {
+      width: 100%;
+      min-width: 100%;
+      flex-basis: 100%;
+    }
+  }
+}
+

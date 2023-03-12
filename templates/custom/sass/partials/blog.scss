@@ -1,0 +1,49 @@
+body.itemid-101.view-categgory .breadcrumbWrapper {
+  display: none;
+}
+
+.blog {
+  padding: $spacer5 0;
+
+  @include media-breakpoint-up(md) {
+    padding-top: $spacer5 * 2;
+  }
+
+  h2 {
+    a {
+      color: $body-color;
+
+      @include hover-focus-active {
+        color: $body-color-link-hover;
+      }
+    }
+  }
+
+  .post {
+    margin-bottom: $spacer5 *2 !important;
+    position: relative;
+    @include smallDividerBottom;
+  }
+
+  .btnReadMore {
+    @include media-breakpoint-down(sm) {
+      display: block;
+    }
+  }
+
+
+  .frontpageBlogSidebar {
+    @media (min-height: 1300px) {
+      .modules {
+        position: sticky;
+        top: $spacer4;
+      }
+    }
+
+  }
+}
+
+
+
+
+

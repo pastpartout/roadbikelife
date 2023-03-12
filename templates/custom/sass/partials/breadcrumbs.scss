@@ -1,0 +1,17 @@
+.breadcrumbWrapper {
+  //border-bottom: 1px solid $gray-200;
+  font-size: $font-size-sm;
+  padding: $spacer2 0;
+  background-color: $gray-100;
+  //@include gradient-x($primary)
+
+
+  ol.breadcrumb {
+    margin-bottom: 0 !important;
+    padding: 0 !important;
+  }
+
+  .breadcrumb-item:before {
+    font-family: "Font Awesome 5 Pro";
+  }
+}

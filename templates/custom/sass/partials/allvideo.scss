@@ -1,0 +1,129 @@
+// video player
+
+.avPlayerWrapper {
+  transition: $transition-base;
+  position: relative;
+  z-index: 2;
+  border: 1px solid $dark;
+  border-radius: $border-radius;
+  box-shadow: $box-shadow;
+  background: $black;
+  max-width: 650px;
+  margin: 0 auto $spacer5;
+  overflow: hidden;
+
+  &:before {
+    content: "";
+    padding-top: 56%;
+    display: block;
+  }
+
+
+  .avPlayerContainer,
+  .avPlayerContainer .avPlayerBlock {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 0 !important;
+    @include size(100%,100%);
+  }
+
+  .avPlayerContainer .avPlayerBlock {
+    cursor: pointer;
+  }
+
+
+    .show-data-privacy-info {
+    position: absolute;
+    width: 100%;
+    top: 0;
+    left:50%;
+    margin-left: 2em;
+    bottom: 0;
+    margin: auto;
+    height: 4em;
+    width: 4em;
+    margin-left: -2em;
+    border-radius: 50%;
+    background-color: rgba($black,.5);
+    text-align: center;
+    color: white;
+    text-shadow: 0 0 0.5em black;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .play-svg {
+      opacity: 1;
+      width: 1.25em;
+    }
+
+  }
+
+  .data-privacy-info--text {
+    background-color: rgba($black, .9);
+    color: $white;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: $font-size-xsm;
+
+    > div {
+      overflow: auto;
+      //@include nextlevel-3color-gradient(.2);
+      @include rblSscrollbar;
+      padding: $spacer2;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+
+      hr {
+        background-color: rgba($white,.3);
+        height: 1px;
+        border: 0;
+      }
+
+      .btn-light {
+        //background-color: rgba($white.2);
+      }
+    }
+
+    @include media-breakpoint-down(md) {
+      font-size: 11px;
+      padding: $spacer1;
+    }
+
+    &.in {
+      z-index: 2;
+    }
+
+    .btn-play {
+      margin-top: $spacer2;
+    }
+  }
+
+
+  .data-privacy-info--text,
+  iframe,
+  video,
+  .bg-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100% !important;
+    height: 100% !important;
+    outline: 0 !important;
+  }
+
+  .bg-img {
+    object-fit: cover;
+  }
+
+  iframe,
+  video {
+    z-index: 2;
+  }
+}

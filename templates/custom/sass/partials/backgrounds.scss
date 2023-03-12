@@ -1,0 +1,11 @@
+
+
+// Backgrounds
+
+.dark-bg-transparent {
+  background-color: rgba($layout-darkblue, .8);
+}
+
+.primaryGradient {
+  @include primaryGradient();
+}

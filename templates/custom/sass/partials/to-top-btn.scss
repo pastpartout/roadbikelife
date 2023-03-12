@@ -1,0 +1,36 @@
+
+$to-top-size: 35px;
+
+.back-to-top {
+  padding: 0;
+  text-align: center;
+  z-index: $zindex-modal - 2;
+  position: fixed;
+  width: $to-top-size;
+  height: $to-top-size;
+  border-radius: $to-top-size;
+  bottom: $mobileBarNavHeightLg + 1rem;
+  right: 20px;
+  line-height: $to-top-size * 0.9;
+  font-size: $to-top-size * 0.6;
+  opacity: 1;
+  //transition: all 250ms ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  box-shadow: $box-shadow;
+  border-width: 0;
+  background-color: $white;
+  transition: $transition-base;
+
+  @include media-breakpoint-down(sm) {
+    right: 17px;
+    bottom: $mobileBarNavHeightSm + 1rem;
+
+  }
+
+  .opened & {
+    z-index: 1;
+    opacity: 0;
+  }
+}

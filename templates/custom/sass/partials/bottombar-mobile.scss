@@ -1,0 +1,154 @@
+
+.mobileBottomBar {
+  position: fixed;
+  left: 0;
+  bottom: unquote('env(safe-area-inset-bottom)');
+  width: 100vw;
+  background-color: $white;
+  display: flex;
+  flex-direction: column;
+  z-index: 999999;
+  color: $body-color;
+
+  @include media-breakpoint-up(lg) {
+    box-shadow: 0 1rem 1.35rem 1rem rgba(0, 0, 0, .7);
+  }
+
+  &:after {
+    display: block;
+    position: absolute;
+    bottom: -100px;
+    height: 100px;
+    width: 100vw;
+    left: 0;
+    content: "";
+    background-color: darken($layout-darkblue, 5);
+    pointer-events: none;
+  }
+
+  .nav {
+    background-color: $layout-darkblue;
+    position: absolute;
+    width: 100%;
+    left: 0;
+    height: $mobileBarNavHeightSm;
+    top: $mobileBarNavHeightSm * -1;
+    padding: 0;
+    display: flex;
+
+    @include media-breakpoint-up(lg) {
+      height: $mobileBarNavHeightLg;
+      top: $mobileBarNavHeightLg * -1;
+      box-shadow: 0 -.75rem 1.35rem -1rem rgba(0, 0, 0, .7);
+    }
+
+
+    .mobileBottomBarToggle {
+      opacity: 0.1;
+      transition: $transition-base;
+      pointer-events: none;
+    }
+
+    .nav-item, .btnLike {
+      color: $primary;
+      padding: 0 $spacer3;
+      display: block;
+      text-align: center;
+      align-items: center;
+      position: relative;
+      height: 100%;
+      font-size: $font-size-lg;
+      cursor: pointer;
+      border-right: 1px solid darken($layout-darkblue, 5%);
+      display: flex;
+      justify-content: center;
+
+      @include media-breakpoint-down(sm) {
+        padding: 0 $spacer1;
+        flex-grow: 1;
+
+      }
+
+      text-decoration: none;
+
+      @include media-breakpoint-up(xl) {
+        &:hover {
+          background-color: rgba($black, 0.2);
+        }
+      }
+
+      &.mobileBottomBarToggle {
+        margin-left: auto;
+        border-right: 0;
+        color: $white;
+
+        //border-left: ;
+      }
+
+      &.btnccomment {
+        //border-right-width: 2px;
+      }
+
+
+    }
+
+    .btnLike {
+      box-shadow: none;
+      color: $primary;
+
+      span {
+        display: none;
+      }
+
+      i {
+        margin: 0;
+        color: $primary;
+      }
+    }
+
+
+  }
+
+  .tab-content {
+    flex-grow: 1;
+    overflow: auto;
+    transition: $transition-base;
+    height: 0vh;
+  }
+
+  .tab-pane {
+    padding: $spacer3;
+    height: 100%;
+  }
+
+  &.expand {
+
+    .nav-item {
+
+      &.active {
+        background-color: $primary;
+        color: $white;
+      }
+
+    }
+
+    .tab-content {
+      height: 40vh;
+
+      @include media-breakpoint-up(md) {
+        height: 20vh;
+      }
+
+    }
+
+    .mobileBottomBarToggle {
+      opacity: 1;
+      pointer-events: all;
+      color: $primary !important;
+
+      @include hover-focus-active {
+        color: $primary;
+      }
+    }
+  }
+}

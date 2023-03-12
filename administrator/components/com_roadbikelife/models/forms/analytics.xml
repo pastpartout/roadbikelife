@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form
+        addrulepath="/components/com_roadbikelife/models/rules"
+        addfieldpath="/components/com_roadbikelife/models/fields"
+>
+    <fields name="general" label="Allgemein">
+        <fieldset name="general_main" label="Allgemein">
+            <field
+                    name="fromDate"
+                    type="calendar"
+                    label="Zeitraum von"
+            />
+            <field
+                    name="toDate"
+                    type="calendar"
+                    label="Zeitraum bis"
+            />
+
+        </fieldset>
+        <fieldset name="general_sidebar" label="Allgemein">
+
+
+        </fieldset>
+    </fields>
+
+
+</form>

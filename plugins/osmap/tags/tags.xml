@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<extension type="plugin" group="osmap" method="upgrade">
+    <name>Joomla Tags</name>
+    <author>Joomlashack</author>
+    <authorEmail>help@joomlashack.com</authorEmail>
+    <authorUrl>https://www.joomlashack.com/</authorUrl>
+    <copyright>Copyright 2016-2020 Joomlashack.com. All rights reserved</copyright>
+    <license>GNU GPL; see LICENSE file</license>
+    <description>PLG_OSMAP_JOOMLA_PLUGIN_DESCRIPTION</description>
+    <version>5.0.2</version>
+    <creationDate>November 09 2021</creationDate>
+    <variant>FREE</variant>
+
+    <files>
+        <folder>field</folder>
+        <folder>language</folder>
+
+        <filename plugin="tags">tags.php</filename>
+    </files>
+
+    <config>
+        <fields name="params">
+            <fieldset name="basic">
+
+            </fieldset>
+
+
+        </fields>
+    </config>
+</extension>

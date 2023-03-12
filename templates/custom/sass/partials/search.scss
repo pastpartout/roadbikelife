@@ -1,0 +1,32 @@
+.item-search {
+  padding: $spacer5 0;
+  margin-bottom: $spacer5;
+
+
+  .post {
+    margin-bottom: $spacer5 *2;
+    display: block;
+    @include smallDividerBottom;
+  }
+
+}
+
+#search-searchword {
+  @include media-breakpoint-down(sm) {
+    border-radius: $input-border-radius-lg 0 0 $input-border-radius-lg;
+  }
+}
+
+select.inputbox {
+  @extend .custom-select;
+}
+
+// module
+
+.search {
+  padding: $spacer3;
+
+  .mobileBottomBar & {
+    padding: 0;
+  }
+}

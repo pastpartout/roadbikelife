@@ -1,0 +1,80 @@
+.tagList {
+    padding-top: $spacer5;
+
+    .tagspopular .tags {
+        justify-content: center;
+    }
+}
+
+.postColListBordered {
+    .postLinkItem {
+        .inner {
+            flex-grow: 1;
+        }
+    }
+}
+
+.tags {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0;
+    margin-bottom: 0;
+}
+
+.tag {
+    @extend .badge;
+    margin-right: $spacer3;
+    margin-bottom: $spacer2;
+    font-weight: $font-weight-base;
+    color: $red;
+    font-size: $font-size-small;
+    padding: $spacer1;
+
+    strong {
+        font-weight: inherit;
+    }
+
+    @include media-breakpoint-down(xs) {
+    }
+
+    &.tag-primarySpecial {
+        @include primaryGradient;
+        border-color: darken($purple, 7%);
+        transition: $transition-base;
+        background-size: 100%;
+        color: $white;
+    }
+
+
+    .tag-count {
+        background-color: rgba($gray-900,.4);
+    }
+
+}
+
+a.tag {
+    @include hover-focus-active {
+        background-size: 150%;
+        color: rgba($white,.85);
+        border-color: darken($purple, 10%);
+    }
+}
+
+
+.tagsSimilar {
+    padding-top: $spacer5;
+    padding-left: $spacer4;
+    padding-right: $spacer4;
+    background-color: $layout-darkblue-darker-1;
+    color:$white;
+
+    @include media-breakpoint-down(sm){
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .post {
+        margin-bottom: $spacer5;
+    }
+}

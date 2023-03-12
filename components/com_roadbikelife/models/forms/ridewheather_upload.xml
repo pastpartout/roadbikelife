@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form
+		addrulepath="/components/com_memberarea/models/rules"
+		addfieldpath="/components/com_memberarea/models/fields"
+>
+	<fieldset name="maininfo">
+		<!-- Default Fields. -->
+		<!-- Id Field. Type: Text (joomla) -->
+		<field
+				name="gpxfile" class="custom-file-input" required="true"
+				type="file"  label="Angestrebter Startzeitpunkt"
+
+		/>
+		<field
+				name="date_start" showtime="true" format="%d.%m.%Y %H:%M" required="true" min_date="test"
+				type="calendar"  label="Startzeitpunkt" default="NOW"  class="form-control "
+
+		/>
+		<field
+				name="speed"
+				type="number"  label="Durchschnittsgeschwindigkeit" required="true"
+				 size="10" default="26" step="0.5" min="5" class="form-control kmhAddon"
+		/>
+
+
+
+
+
+	</fieldset>
+
+
+</form>
+
+
+
+
+
+
+
+
+
+
+
+

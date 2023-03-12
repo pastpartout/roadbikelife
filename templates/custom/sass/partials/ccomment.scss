@@ -1,0 +1,71 @@
+.ccomment {
+  padding: $spacer3;
+  border-radius: $border-radius;
+  margin-top: $spacer3;
+  margin-bottom: $spacer3;
+  background-color: $gray-100;
+
+
+  h4 {
+    font-size: $h5-font-size;
+  }
+
+  button[type="submit"] {
+    background-color: $primary !important;
+    @extend .btn-primaryGradient;
+
+    @include hover-focus-active {
+      background-position: center center;
+
+    }
+  }
+
+  .ccomment-data {
+    @include media-breakpoint-down(md) {
+      a {
+        word-break: break-all;
+      }
+    }
+
+    @include media-breakpoint-down(sm) {
+      font-size: $font-size-base * 0.97
+    }
+  }
+
+  .ccomment-captcha  {
+    flex-wrap: wrap;
+
+    .input-group {
+      width: 100%;
+
+      @include media-breakpoint-up(lg) {
+        width: auto;
+      }
+    }
+
+    .input img {
+      height: 33px;
+      margin-bottom: $spacer2;
+      border:1px solid $border-color;
+      border-radius: $input-border-radius-sm;
+      margin-right: $spacer2;
+      min-width: 154px;
+
+    }
+
+    .reload-captcha {
+      font-size: $font-size-xsm;
+      text-align: right;
+      border-radius: $border-radius-sm;
+      @include button-variant(darken($light,4),darken($light,5));
+
+      //&:hover {
+      //  color: $body-color;
+      //  text-decoration: none;
+      //
+      //}
+    }
+  }
+
+
+}

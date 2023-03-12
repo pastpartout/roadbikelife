@@ -1,0 +1,231 @@
+//Images
+
+.post-image {
+  position: relative;
+  overflow: hidden;
+
+  .image-wrapper {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    overflow: hidden;
+
+    a {
+      display: flex;
+      width: 100%;
+    }
+
+    picture {
+      width: 100%;
+    }
+
+    img {
+      object-fit: cover;
+      width: 100%;
+      height: 100%;
+
+    }
+
+    &.rounded-circle {
+      img {
+        border-radius: 50%;
+      }
+    }
+  }
+
+  &.img-thumbnail {
+    background-color: $white;
+
+    .image-wrapper {
+      overflow: hidden;
+      background-color: $layout-darkblue;
+      @include loadingGradient;
+      border: $thumbnail-padding solid $white;
+    }
+  }
+
+  &.post-image-16-9 {
+    @include aspect-ratio(16,9);
+  }
+
+  &.post-image-21-9 {
+    @include aspect-ratio(21,9);
+
+  }
+
+  &.post-image-16-10 {
+    @include aspect-ratio(16,10);
+  }
+
+  &.post-image-4-3 {
+    @include aspect-ratio(4,3);
+  }
+
+  &.post-image-1-1 {
+    @include aspect-ratio(1,1);
+
+  }
+
+  &.border-sm {
+    .image-wrapper {
+      border-width: $imgBorderWidth-sm;
+    }
+  }
+
+  &:not(.no-hover-zoom) {
+    img {
+      transition: transform 500ms ease-in-out;
+    }
+
+    &:hover {
+      html.desktop & {
+        .image-wrapper {
+          img {
+            transform: scale(1.1);
+          }
+        }
+
+        .image-wrapper.rounded-circle {
+          img {
+            transform: scale(1.2);
+          }
+        }
+      }
+    }
+  }
+
+}
+
+
+.moreImagesIconWrapper {
+  text-align: center;
+  color: rgba($black, .5);
+  cursor: pointer;
+  margin-top: -$spacer4;
+
+  .moreImagesIcon {
+    border-radius: $border-radius-sm;
+    background-color: $gray-200;
+    display: inline-flex;
+    padding: $spacer1;
+    margin-bottom: $spacer2;
+    font-size: 6px;
+    transition: $transition-base;
+
+    i {
+      margin: 0 2px;
+    }
+
+
+  }
+
+  p {
+    color: rgba($black, .5);
+  }
+
+  @include hover-focus-active {
+    .moreImagesIcon {
+      background-color: $gray-600;
+      color: $white
+    }
+
+  }
+}
+
+.content-images {
+  width: 100%;
+  max-height: 100%;
+  @include rblSscrollbar();
+
+
+  @include media-breakpoint-down(sm) {
+    background: $layout-darkblue;
+    padding: 0 $spacer3;
+    padding-bottom: $spacer3;
+    overflow: visible !important;
+  }
+}
+
+.galleryImages {
+  display: flex;
+  flex-wrap: wrap;
+
+  @include media-breakpoint-down(sm) {
+    margin: 0 -$spacer2;
+  }
+
+  li {
+    display: flex;
+    justify-content: center;
+
+  }
+
+  .item-image {
+    width: 100%;
+    margin: $spacer2;
+    display: flex;
+  }
+
+
+}
+
+
+.item-image-content {
+  margin-top: $spacer5;
+  margin-bottom: $spacer5;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+  z-index: 2;
+
+  @include media-breakpoint-up(xl) {
+    max-width: 80%;
+  }
+
+  &.sm-left {
+    margin-top: 0;
+    float: left;
+    max-width: 50%;
+    margin-right: $spacer4;
+    margin-top: $spacer3;
+    margin-bottom: $spacer3;
+    clear: left;
+
+  }
+
+  &.sm-right {
+    margin-top: 0;
+    float: right;
+    max-width: 50%;
+    margin-left: $spacer4;
+    margin-top: $spacer3;
+    margin-bottom: $spacer3;
+    clear: right;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: inherit;
+
+    @include hover-focus-active {
+      text-decoration: none;
+
+    }
+
+    display: block;
+    width: 100%;
+  }
+
+
+  .subtitle {
+    display: block;
+    font-size: small;
+    color: inherit;
+    padding: $spacer1;
+    font-style: italic;
+  }
+}
+

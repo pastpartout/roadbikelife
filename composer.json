@@ -1,0 +1,25 @@
+{
+  "name": "materodev/matero2-websitesdasd",
+  "description": "Repository for the www.roadbikelife.de website",
+  "homepage": "https://www.roadbikelife.de/",
+  "type": "project",
+  "license": "private",
+  "minimum-stability": "stable",
+  "require": {
+    "sibyx/phpgpx": "1.0-RC5",
+    "rosell-dk/webp-convert": "*",
+    "claviska/simpleimage": "~3.3.4",
+    "mobiledetect/mobiledetectlib": "^2.8",
+    "tinify/tinify": "~1.5.2",
+    "stefangabos/zebra_image": "^2.6",
+    "phpquery/phpquery": "^0.0.4"
+  },
+  "config": {
+  },
+  "repositories": [
+    {
+      "type": "composer",
+      "url": "https://asset-packagist.org"
+    }
+  ]
+}

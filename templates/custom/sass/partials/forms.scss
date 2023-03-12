@@ -1,0 +1,72 @@
+.edit-form,
+.form-validate {
+
+  label {
+    color: $body-color;
+
+
+  }
+
+  .error {
+    color: $danger;
+    margin-bottom: $spacer2;
+  }
+
+  input:not([type="radio"]):not([type="checkbox"]) {
+    @extend .form-control;
+
+    &.form-control-sm {
+      @extend .form-control-sm;
+    }
+  }
+
+
+
+  fieldset.radio {
+    width: 100%;
+    display: block;
+
+    label {
+      //@extend .btn;
+      //@extend .btn-default;
+    }
+
+  }
+}
+
+body.com_users {
+  #component {
+    padding: $spacer3 0;
+
+    .control-group {
+      margin-bottom: $spacer3;
+    }
+  }
+}
+
+
+.form-control.error {
+  border-color: lighten($danger, 30%);
+}
+
+
+.form-control.valid {
+  border-color: lighten($success, 30%);
+}
+
+.messageWrapper {
+  position: relative;
+  z-index: 9999;
+
+  #system-message {
+    padding: $spacer4;
+
+    .alert-heading {
+      display: none;
+    }
+
+    .alert.alert-notice {
+      @extend .alert-danger;
+    }
+  }
+}

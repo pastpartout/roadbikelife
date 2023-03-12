@@ -1,0 +1,96 @@
+//Buttons
+
+.btn-primary {
+    color: $white;
+
+    @include hover-focus-active {
+        color: $white;
+    }
+}
+
+.btn-primaryGradient {
+    @include primaryGradient;
+    border-color: darken($purple, 2%);
+    transition: $transition-base;
+    background-size: 100%;
+    border-width: 0;
+
+    @include hover-focus-active {
+        background-size: 150%;
+        border-color: darken($purple, 5%);
+    }
+}
+
+
+.btn {
+    cursor: pointer;
+}
+
+
+.btn-group-yes-no {
+
+    label:nth-child(1) {
+        @extend .btn-primary;
+        background-color: lighten($primary, 30%);
+
+        &.active {
+            //background-color: $primary;
+        }
+    }
+
+
+    label:nth-child(2) {
+        @extend .btn-outline-light;
+
+        &.active {
+            background-color: darken($light, 20%) !important;
+        }
+    }
+
+
+}
+
+.btnLike {
+    transform: translate3d(0, 0, 0);
+    box-shadow: $box-shadow;
+    @extend .badge;
+    border-radius: $border-radius-sm;
+
+    span {
+        @include text-gradient;
+    }
+
+    &.liked {
+        pointer-events: none;
+
+        i {
+            font-weight: $font-weight-bolder;
+            color: $primary;
+        }
+    }
+}
+
+.btnStrava {
+    display: inline-block;
+    @extend .btn;
+    @extend .btn-sm;
+    line-height: 2;
+    display: inline-flex;
+    align-items: center;
+    border-width: 0;
+    color: inherit;
+    //white-space: nowrap;
+
+    i {
+        font-size: 1.6em;
+        color: $stravaOrange;
+    }
+
+    @include hover {
+        background-color: $stravaOrange;
+
+        &,i {
+            color: $white;
+        }
+    }
+}

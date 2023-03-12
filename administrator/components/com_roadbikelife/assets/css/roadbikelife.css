@@ -1,0 +1,65 @@
+#com_roadbikelife .rbllogo {
+    width: auto;
+    height: auto;
+    max-width: 300px;
+    margin: 20px auto;
+    display: block;
+}
+
+.mb-3 {
+    margin-bottom: 1em;
+}
+
+textarea.input-xxlarge {
+    font-size: 18px;
+    line-height: 22px;
+    height: auto;
+}
+
+#com_roadbikelife .imgOutline {
+    cursor: move;
+    transition: none;
+    background-color: #FFF;
+    max-width: 220px;
+}
+
+
+
+#com_roadbikelife .imgOutline .imgThumb  {
+    position: relative;
+    display: flex;
+}
+
+#com_roadbikelife .imgOutline .imgThumb img {
+    width: 100%;
+    object-fit: cover;
+}
+
+#com_roadbikelife .imgOutline .form-control {
+    margin-bottom: 0;
+}
+
+
+@media (max-width:480px) {
+    #com_roadbikelife .imgOutline {
+        max-width: 100%;
+    }
+
+
+    #com_roadbikelife .imgOutline .imgThumb  {
+        height: 200px;
+    }
+}
+
+
+#com_roadbikelife .graph {
+    height: 500px;
+    border:1px solid #eee;
+    margin-bottom: 20px;
+    border-radius: 3px;
+}
+
+.spacer hr {
+    min-width: 0;
+    width: 100%;
+}

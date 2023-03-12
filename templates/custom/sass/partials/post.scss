@@ -1,0 +1,106 @@
+.post.postLink {
+  .postLinkItem {
+
+    transition: $transition-base;
+    transition-duration: 1s;
+    color: inherit;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+
+    .inner {
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+
+      .postLinkText {
+        flex-grow: 1;
+      }
+    }
+
+    &.boxed-dark {
+      box-shadow: $box-shadow;
+      background-color: $layout-darkblue-lighter-1;
+      color: $white;
+
+      .btnReadMore {
+        background-color: $layout-darkblue-lighter-2;
+        color: $white;
+        text-align: left;
+      }
+
+      @include hover-focus-active {
+        .btnReadMore {
+          background-color: $primary;
+          color: $white;
+        }
+      }
+    }
+
+    &.boxed-light {
+      box-shadow: $box-shadow;
+      background-color: $white;
+
+      .btnReadMore {
+        text-align: left;
+      }
+
+      @include hover-focus-active {
+        .btnReadMore {
+          background-color: $dark;
+          color: $white;
+        }
+      }
+
+    }
+
+    &.boxed,
+    &.hoverShadow {
+      .inner {
+        padding: $spacer3;
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+
+        .btnReadMore {
+          margin: $spacer2;
+          text-align: center;
+        }
+      }
+
+    }
+
+    @include hover-focus-active {
+      //background-color: $gray-100;
+      transition: inherit;
+      text-decoration: inherit;
+      transition-duration: 1s;
+    }
+
+    &.hoverShadow {
+      @include media-breakpoint-up(sm) {
+
+      }
+    }
+
+
+
+
+    @include hover-focus-active {
+      .post-image {
+        .image-wrapper img {
+          html.desktop & {
+            transform: scale(1.1);
+          }
+        }
+
+        .image-wrapper.rounded-circle img {
+          html.desktop & {
+            transform: scale(1.2);
+          }
+        }
+      }
+
+    }
+  }
+}

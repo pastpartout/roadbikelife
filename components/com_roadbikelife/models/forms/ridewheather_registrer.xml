@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form
+		addrulepath="/components/com_memberarea/models/rules"
+		addfieldpath="/components/com_memberarea/models/fields"
+>
+	<fieldset name="maininfo">
+		<!-- Default Fields. -->
+		<!-- Id Field. Type: Text (joomla) -->
+		<field
+				name="prename"
+				type="text" class="form-control" required="true" label="Vorname"
+		/>
+		<field
+				name="lastname"
+				type="text" class="form-control" required="true" label="Nachname"
+		/>
+		<field
+				name="email"
+				type="email" class="form-control" required="true" label="E-Mail Adresse"
+		/>
+		<field
+				name="password"
+				type="password" class="form-control" minlength="4" label="Passwort" required="true"
+		/>
+
+		<field
+				name="captcha"
+				type="captcha"
+				label="COM_USERS_CAPTCHA_LABEL"
+				description="COM_USERS_CAPTCHA_DESC"
+				validate="captcha"
+		/>
+
+	</fieldset>
+
+
+</form>
+
+
+
+
+
+
+
+
+
+
+
+

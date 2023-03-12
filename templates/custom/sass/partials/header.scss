@@ -1,0 +1,43 @@
+.navbar {
+  position: absolute;
+  top:0;
+  width: 100%;
+  left:0;
+  padding: $spacer3 0;
+  z-index: 3;
+
+  ul {
+    display: none;
+  }
+
+
+}
+
+header {
+  .navbar-brand {
+    padding: 0;
+    display: flex;
+    align-items: center;
+    margin: 0 $spacer3;
+
+    a {
+      display: block;
+    }
+
+
+    .logo {
+      min-width: 12rem;
+
+      @include media-breakpoint-up(md) {
+        min-width: 16rem;
+      }
+    }
+  }
+}
+
+body.itemid-101.view-category {
+  header .navbar-brand {
+    display: none;
+  }
+}
+

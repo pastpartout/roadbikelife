@@ -1,0 +1,109 @@
+@mixin loadingGradient() {
+  color: transparent !important;
+  background-color: $gray-200 !important;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+  animation-iteration-count: infinite;
+  animation-name: placeHolderShimmer;
+  animation-timing-function: linear;
+  background:  linear-gradient(to right,
+          rgba($layout-darkblue,1) 30%, rgba($layout-darkblue-lighter-1,1) 50%, rgba($layout-darkblue,1) 80%);
+  background-size: 200% 100%;
+  backface-visibility: hidden;
+}
+
+@mixin smallDividerBottom {
+  position: relative;
+
+  &:after {
+    display: block;
+    @include primaryGradient;
+    //background-color: ;
+    content: "";
+    height: 3px;
+    bottom: -$spacer5;
+    width: 10%;
+    position: absolute;
+    left: 0%;
+
+    //margin-left: -5%;
+
+  }
+}
+
+
+@mixin primaryGradient($deg: 115deg) {
+  background-color: $primary;
+  //@include gradient-directional($purple,$primary,$deg)
+}
+
+@mixin primaryGradientBorder() {
+  border-image: linear-gradient(115deg,$purple,$primary);
+}
+
+
+@mixin filter($filter) {
+  -webkit-filter: $filter; /* Safari 6.0 - 9.0 */
+  filter: $filter;
+}
+
+@mixin text-gradient {
+  color: $primary;
+  @include primaryGradient;
+  text-fill-color: transparent;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+
+  &:before {
+    @include primaryGradient;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+}
+
+@mixin postImageOverlayContent {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  color: $white;
+  padding: $spacer3;
+  @include gradient-y(rgba($layout-darkblue, 0), rgba($layout-darkblue-darker-2, .95));
+
+  .btnLike {
+    background-color: $white;
+  }
+}
+
+@mixin rblSscrollbar() {
+  &::-webkit-scrollbar-track
+  {
+    background-color: $layout-darkblue-lighter-1;
+    padding: .2em;
+  }
+
+  &::-webkit-scrollbar
+  {
+    width: $spacer2;
+    background-color: $white;
+
+  }
+
+  &::-webkit-scrollbar-thumb {
+    //background-color: $primary;
+    background-color: lighten($layout-darkblue-lighter-4,50%);
+
+  }
+}
+
+@mixin aspect-ratio($width, $height) {
+  position: relative;
+
+  &:before {
+    display: block;
+    content: "";
+    width: 100%;
+    padding-top: ($height / $width) * 100%;
+    pointer-events: none;
+  }
+
+}

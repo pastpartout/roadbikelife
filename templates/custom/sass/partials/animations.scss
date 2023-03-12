@@ -1,0 +1,27 @@
+@keyframes placeHolderShimmer {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+
+
+
+@include media-breakpoint-up(md) {
+  html.cssanimations {
+   section .fader {
+      opacity: 0;
+      transition: opacity 500ms ease,transform 1000ms ease;
+      transform: translate3d(0,20px,0) scale(0.995);
+
+      &.visible {
+        opacity: 1;
+        transform: translate3d(0,0,0) scale(1.0);
+      }
+
+    }
+  }
+}

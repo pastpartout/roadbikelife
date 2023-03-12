@@ -1,0 +1,21 @@
+.paginationWrapper {
+  //border-top: 2px solid $gray-200;
+  padding: $spacer3 0;
+}
+
+ul.pagination {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+
+  @extend .btn-group;
+
+  li {
+    @extend .page-item;
+
+    a {
+      @extend .page-link;
+    }
+  }
+
+}

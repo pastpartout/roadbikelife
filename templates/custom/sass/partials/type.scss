@@ -1,0 +1,163 @@
+
+
+
+.fa-3x {
+  font-size: 48px;
+}
+
+
+.fa-ul {
+  padding-left: 0;
+  margin-left: $fa-li-width;
+
+  .fa-li {
+    transform: translateY(-2px);
+  }
+}
+
+.icon-margin-right {
+  margin-right: map_get($spacers, 2);
+}
+
+// Type#
+
+.text-body-lighten {
+  color: lighten($body-color, 15%) !important;
+}
+
+
+.text-gradient {
+  @include text-gradient;
+}
+
+.fp-introtext {
+  font-size: $h6-font-size;
+  max-width: 650px;
+  display: inline-block;
+  text-align: center;
+  font-weight: normal;
+  //font-family: Arial, serif;
+  text-rendering: optimizelegibility;
+  @include media-breakpoint-up(md) {
+    font-size: $font-size-base * 1.15;
+  }
+}
+
+
+.borderBottomHeadline {
+  font-size: $h5-font-size;
+  position: relative;
+  margin-bottom: $spacer5;
+  padding: $spacer2 0;
+  border-bottom: $imgBorderWidth-sm solid $gray-200;
+}
+
+
+.rblHeadline {
+  font-size: $h5-font-size;
+  margin-bottom: $spacer4;
+  display: flex;
+  overflow: hidden;
+  flex-direction: row;
+
+
+  .mobileBottomBar & {
+    span {
+      max-width: 100%;
+    }
+  }
+}
+
+
+.large, large {
+  font-size: 115%;
+}
+
+.small {
+  font-size: $font-size-sm;
+}
+
+.xsmall {
+  font-size: $font-size-xsm;
+}
+
+.bold, b, strong {
+  font-weight: $font-weight-bold;
+}
+
+
+.text-underline {
+  text-decoration: underline;
+}
+
+
+a.no-hover:hover {
+  text-decoration: none;
+}
+
+.clear {
+  clear: both
+}
+
+
+.no-br {
+  white-space: nowrap
+}
+
+p {
+  text-rendering: optimizelegibility;
+}
+
+ul {
+  padding-left: 20px
+}
+
+
+.clickable-element {
+  cursor: pointer;
+}
+
+.fa {
+  display: inline-block;
+}
+
+
+.fade.in {
+  opacity: 1
+}
+
+
+.strava-link a, a.strava-link {
+
+  color: $secondary;
+  text-decoration: underline;
+  text-align: center;
+  display: block;
+
+  img {
+    max-width: 100px;
+    margin: $spacer2 auto;
+  }
+}
+
+a.anchor {
+  display: block;
+  position: relative;
+  top: -30px;
+  visibility: hidden;
+}
+
+.text-shadow {
+  text-shadow: 0 0 20px rgba(#000,.35);
+}
+
+
+
+.gdpr-cookie-notice-modal-cookies li {
+  &:nth-child(2),
+  &:nth-child(4),
+  &:nth-child(5)
+  {
+   display: none;
+  }
+}
