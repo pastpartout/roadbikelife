@@ -52,7 +52,7 @@ ini_set('memory_limit', '512M');
         <jdoc:include type="modules" name="content-bottom" style="bootstrap3"/>
     </section>
 </main>
-<?php if ($view != 'ridewheather'): ?>
+<?php if ($view != 'ridewheather' && $layout != 'customrblfrontpage'): ?>
     <footer>
         <div class="container-fluid px-0">
 

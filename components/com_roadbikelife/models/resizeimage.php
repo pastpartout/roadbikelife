@@ -82,8 +82,8 @@ class RoadbikelifeModelResizeimage {
 	}
 
 	public function returnDestination() {
-		$destination = str_replace(JPATH_BASE.'/', '',$this->destination);
-		return JURI::base().$destination;
+        $destination = str_replace(JPATH_ROOT . '/','', $this->destination);
+		return  JURI::base().$destination;
 	}
 
 //	public function getResizedImage()
@@ -201,8 +201,7 @@ class RoadbikelifeModelResizeimage {
 		$this->webP  === 1 ? $ext = 'webp' : $ext = pathinfo($file, PATHINFO_EXTENSION);
 		$path = pathinfo($file, PATHINFO_DIRNAME);
 
-		$joomlaCacheFolder = $app->get('cache_path', JPATH_CACHE);
-		$newFileName = "$joomlaCacheFolder/$cacheFolderName/$name.$ext";
+		$newFileName = JPATH_CACHE."/$cacheFolderName/$name.$ext";
 
 		return $newFileName;
 	}

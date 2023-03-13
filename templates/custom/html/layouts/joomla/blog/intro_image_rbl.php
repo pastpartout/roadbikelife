@@ -9,28 +9,57 @@
 
 defined('JPATH_BASE') or die;
 
-$params = $displayData->params;
-JHtml::addIncludePath(JPATH_COMPONENT.'/helpers/html');
-$images = json_decode($displayData->images);
+JHtml::addIncludePath(JPATH_COMPONENT . '/helpers/html');
+extract($displayData);
+$params = $item->params;
+$imageModel = new RoadbikelifeModelResizeimage();
 
+$images = json_decode($item->images);
+if (!isset($aspectRatio)) $aspectRatio = ''
 ?>
 <?php if (!empty($images->image_intro)) : ?>
     <?php $imgfloat = empty($images->float_intro) ? $params->get('float_intro') : $images->float_intro; ?>
-    <div class="item-image img-thumbnail post-image post-image-16-10 no-hover-zoom">
-            <?php if ($params->get('link_titles') && $params->get('access-view')) : ?>
-                <a class="image-wrapper" href="<?php echo JRoute::_(ContentHelperRoute::getArticleRoute($displayData->id, $displayData->catid, $displayData->language)); ?>" title="<? $displayData->title; ?> ">
-	                <?= JLayoutHelper::render('joomla.blog.post_image_intro', $displayData);?>
-                </a>
-            <?php else : ?>
-                <div class="image-wrapper">
+    <div class="item-image post-image post-image-<?= $aspectRatio ?> no-hover-zoom">
+        <?php if ($params->get('link_titles') && $params->get('access-view')) : ?>
+            <a class="image-wrapper"
+               href="<?php echo JRoute::_(ContentHelperRoute::getArticleRoute($displayData->id, $displayData->catid, $displayData->language)); ?>"
+               title="<?= $item->title; ?> ">
+                <picture>
+                    <source type="image/webp"
+                            srcset="
+        <?= $imageModel->getResizedImagePath($images->image_fulltext, 400, null, 1) ?> 400w,
+        <?= $imageModel->getResizedImagePath($images->image_fulltext, 500, null, 1) ?> 500w,
+        <?= $imageModel->getResizedImagePath($images->image_fulltext, 900, null, 1) ?> 900w,
+        <?= $imageModel->getResizedImagePath($images->image_fulltext, 1300, null, 1) ?> 1300w,
+        <?= $imageModel->getResizedImagePath($images->image_fulltext, 1500, null, 1) ?> 1500w,
+        <?= $imageModel->getResizedImagePath($images->image_fulltext, 2000, null, 1) ?> 2000w"
+                    >
+                    <source
+                            srcset="
+        <?= $imageModel->getResizedImagePath($images->image_fulltext, 400, null) ?> 400w,
+        <?= $imageModel->getResizedImagePath($images->image_fulltext, 500, null) ?> 500w,
+        <?= $imageModel->getResizedImagePath($images->image_fulltext, 900, null) ?> 900w,
+        <?= $imageModel->getResizedImagePath($images->image_fulltext, 1300, null) ?> 1300w,
+        <?= $imageModel->getResizedImagePath($images->image_fulltext, 1500, null) ?> 1500w,
+        <?= $imageModel->getResizedImagePath($images->image_fulltext, 2000, null) ?> 2000w"
+                    >
                     <img
-                        <?php if ($images->image_intro_caption) : ?>
-                            <?php echo 'class="caption"' . ' title="' . htmlspecialchars($images->image_intro_caption, ENT_COMPAT, 'UTF-8') . '"'; ?>
-                        <?php endif; ?>
+                            src="<?= $imageModel->getResizedImagePath($images->image_fulltext, 800, null) ?>"
+                            alt="<?php echo htmlspecialchars($item->title, ENT_COMPAT, 'UTF-8'); ?>"
+                            class="<?= $item->css_class ?>"
+                    />
+                </picture>
+            </a>
+        <?php else : ?>
+            <div class="image-wrapper">
+                <img
+                    <?php if ($images->image_intro_caption) : ?>
+                        <?php echo 'class="caption"' . ' title="' . htmlspecialchars($images->image_intro_caption, ENT_COMPAT, 'UTF-8') . '"'; ?>
+                    <?php endif; ?>
                         src="<?php echo htmlspecialchars($images->image_intro, ENT_COMPAT, 'UTF-8'); ?>"
                         alt="<?php echo htmlspecialchars($images->image_intro_alt, ENT_COMPAT, 'UTF-8'); ?>"
                         itemprop="thumbnailUrl"/>
-                </div>
-            <?php endif; ?>
+            </div>
+        <?php endif; ?>
     </div>
 <?php endif; ?>

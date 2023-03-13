@@ -1,7 +1,7 @@
 $paddingXLg: 7rem;
+$itemScrollTransitionLg: all 1.25s ease-in-out;
 html {
-  scroll-snap-type: x mandatory;
-  scroll-behavior: smooth;
+
 
 
   @include media-breakpoint-up(lg) {
@@ -121,6 +121,11 @@ body.layout-customrblfrontpage.view-category {
     left: 0;
     background-color: transparent;
 
+    @include media-breakpoint-down(md) {
+      scroll-snap-type: x mandatory;
+      scroll-behavior: smooth;
+      overflow-x: auto;
+    }
 
     @include media-breakpoint-up(lg) {
       padding: 0 $paddingXLg;
@@ -143,6 +148,7 @@ body.layout-customrblfrontpage.view-category {
     flex-grow: 1;
     height: calc(100% - 5rem);
     display: flex;
+    max-height: 100vh;
 
     @include media-breakpoint-up(lg) {
       //flex-direction: column;
@@ -166,13 +172,19 @@ body.layout-customrblfrontpage.view-category {
     //margin-bottom: 5rem;
     flex-direction: column;
     align-items: center;
-    transition: all 1.25s ease-in-out;
+    transition: $itemScrollTransitionLg;
     scroll-snap-align: center;
 
     &.active {
 
+
       article > .item-image .image-wrapper {
         transform: scale(1.025);
+      }
+
+      .frontpage-grid-item-next {
+        opacity: 1;
+        transform: translateY(0);
       }
     }
 
@@ -190,7 +202,7 @@ body.layout-customrblfrontpage.view-category {
       position: relative;
       border-radius: $border-radius-lg;
       overflow: hidden;
-      box-shadow: 0 0 10px rgba($black, .3);
+      box-shadow: 0 0 10px rgba($black, 0);
 
       @include media-breakpoint-up(lg) {
         box-shadow: 0 0 40px rgba($black, .8);
@@ -209,7 +221,7 @@ body.layout-customrblfrontpage.view-category {
     .image-wrapper {
       border: 0 !important;
       background-color: $black;
-      transition: all 1.25s ease-in-out;
+      transition: $itemScrollTransitionLg;
 
     }
 
@@ -223,7 +235,8 @@ body.layout-customrblfrontpage.view-category {
         width: 100%;
         min-width: 20rem;
         max-width: 30rem;
-        background-color: rgba($layout-darkblue, .1);
+        @include gradient-y(rgba($layout-darkblue-darker-2, 0.6), rgba($layout-darkblue-darker-2, .9));
+
         right: 0;
         top: 0;
         padding: $spacer4;
@@ -253,20 +266,20 @@ body.layout-customrblfrontpage.view-category {
         }
       }
 
-      &:before {
-        @include gradient-y(rgba($layout-darkblue-darker-2, 0), rgba($layout-darkblue-darker-2, 1));
-        content: "";
-        position: absolute;
-        width: 100%;
-        height: 150%;
-        left: 0;
-        bottom: 0
+      @include media-breakpoint-down(md) {
+        &:before {
+          @include gradient-y(rgba($layout-darkblue-darker-2, 0), rgba($layout-darkblue-darker-2, 1));
+          content: "";
+          position: absolute;
+          width: 100%;
+          height: 150%;
+          left: 0;
+          bottom: 0
+        }
       }
+
     }
   }
-
-
-
 
 
   .frontpage-grid-dots {
@@ -313,6 +326,15 @@ body.layout-customrblfrontpage.view-category {
 
   .frontpage-grid-item-next {
     width: 100%;
+    opacity: 0;
+    transform: translateY(-10%);
+    transition: $itemScrollTransitionLg;
+    transition-delay: .7s;
+
+    @include media-breakpoint-down(sm) {
+      display: none;
+    }
+
 
     @include media-breakpoint-up(lg) {
       padding: $spacer5 0;
