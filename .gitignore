@@ -5,6 +5,7 @@
 !.gitignore
 !.rbl-dockercontainer/
 !.rbl-dockercontainer/**
+!configuration.php
 
 
 !components/
