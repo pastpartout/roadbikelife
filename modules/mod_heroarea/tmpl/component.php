@@ -32,7 +32,7 @@ $defaultImgUrl = 'templates/custom/img/bg_hero_area.jpg';
             <?php endif ?>
         />
     </picture>
-<!--    <div class="postImageOverlayContent">-->
+<!--    <div class="post-img-overlay">-->
 <!--        <div class="row w-100 align-items-center">-->
 <!--            <div class="col-md-6 col-lg-7">-->
 <!--                <div class="page-header">-->

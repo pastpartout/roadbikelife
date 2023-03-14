@@ -1,7 +1,7 @@
 <?php
 defined('_JEXEC') or die;
 ?>
-<div class="aboutMe mt-5">
+<div class="about-me">
     <div class="text-left align-items-start">
         <div class="small">
             <div class="float-right col-4 pl-3 mb-3">
@@ -16,13 +16,6 @@ defined('_JEXEC') or die;
                 </div>
             </div>
             <?= $articleAboutMe->introtext ?>
-            <div class="d-block d-md-none">
-                <p>
-                    <strong class="h6">
-
-                    </strong>
-                </p>
-            </div>
         </div>
         <hr>
         <div class="followBtnWrapper text-center">

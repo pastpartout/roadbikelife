@@ -1,35 +1,39 @@
-.navbar {
-  position: absolute;
-  top:0;
-  width: 100%;
-  left:0;
-  padding: $spacer3 0;
-  z-index: 3;
 
-  ul {
-    display: none;
+header {
+
+  .navbar {
+    position: absolute;
+    top:0;
+    width: 100%;
+    left:0;
+    right:0;
+    z-index: 3;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+
+    ul {
+      display: none;
+    }
+
   }
 
 
-}
-
-header {
   .navbar-brand {
-    padding: 0;
+    position: absolute;
+    top:0;
+    right:0;
     display: flex;
-    align-items: center;
-    margin: 0 $spacer3;
-
-    a {
-      display: block;
-    }
-
+    padding: $spacer2 $spacer3;
+    background-color: $red;
+    border-bottom-left-radius: $border-radius;
+    margin: 0;
 
     .logo {
-      min-width: 12rem;
+      min-width: 10rem;
 
       @include media-breakpoint-up(md) {
-        min-width: 16rem;
+        min-width: 12rem;
       }
     }
   }

@@ -1,3 +1,35 @@
+@mixin cssScrollbar($color,$bgColor,$width,$border-radius) {
+  overflow: auto;
+  scrollbar-width: thin; /* "auto" or "thin" */
+  scrollbar-color: $color $bgColor; /* scroll thumb and track */
+
+  &::-webkit-scrollbar {
+    width: $width;
+  }
+
+
+  &::-webkit-scrollbar-track {
+    box-shadow: 0 0 8px rgba($black, .3) inset;
+    padding-left: 1rem;
+    border-radius: $border-radius;
+    background-color: $bgColor;
+
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: $color;
+    background-clip: content-box;
+    border-radius: $border-radius;
+
+    &:hover {
+      background-color: lighten($color, 10);
+    }
+  }
+
+
+}
+
+
 @mixin loadingGradient() {
   color: transparent !important;
   background-color: $gray-200 !important;
@@ -61,7 +93,7 @@
   }
 }
 
-@mixin postImageOverlayContent {
+@mixin post-img-overlay {
   position: absolute;
   bottom: 0;
   width: 100%;

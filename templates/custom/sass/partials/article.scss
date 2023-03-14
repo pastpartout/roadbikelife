@@ -1,106 +1,60 @@
 .item-page {
-  //border-top: 3px solid $layout-darkblue;
-  //background-color: lighten($layout-darkblue-lighter-2,70%);
+  background-color: $layout-darkblue;
+  color: $white;
 
-  //@include media-breakpoint-down(sm) {
-  //  background-color: $layout-darkblue;
-  //  color:$text-white
-  //}
+  .img-thumbnail {
+    background-color: transparent;
+    padding: 0;
 
-
-  .articleCol {
-
-    @include media-breakpoint-down(sm) {
-      //font-size: $font-size-base * 0.96
-    }
-
-    //h2,
-    //h3,
-    //h4,
-    //h5,
-    //h6 {
-    //  font-size: $h5-font-size;
-    //  font-weight: $font-weight-bold;
-    //}
-  }
-
-  .rules {
-    list-style: none;
-    padding-left: 0;
-    counter-reset: rules;
-    padding-top: $spacer3;
-
-    .rule {
-      background-color: $light;
-      margin-bottom: $spacer4;
-      border-radius: $border-radius;
-      overflow: hidden;
-
-      .ruleTitle {
-        font-weight: $font-weight-bold;
-        background-color: darken($light,5%);
-        display: flex;
-        counter-increment: rules;
-
-        &:before {
-          content: counter(rules) ".";
-          min-width: 2rem;
-          min-height: 100%;
-          border-right: 1px solid rgba($black,.05);
-          padding: $spacer1;
-          display: block;
-          text-align: center;
-        }
-      }
-
-      .name {
-        padding: $spacer1 $spacer2;
-      }
-    }
-
-    .ruleContent {
-      padding: $spacer3;
-
-      p:last-child {
-        margin-bottom: 0;
-      }
+    img {
+      border-radius: $border-radius-lg;
+      box-shadow: $box-shadow-sm, $box-shadow, $box-shadow, $box-shadow-lg;
     }
   }
 
 
-
   .articleCol {
+
     padding: $spacer3;
+    font-size: 1.2rem;
+    line-height: 1.7;
+    font-weight: 200;
 
+    @include media-breakpoint-up(lg) {
+      font-size: 1.2rem;
+    }
+
+    @include media-breakpoint-up(xl) {
+      font-size: 1.15rem;
+    }
+
+    @include media-breakpoint-up(md) {
+      padding: $spacer3 $spacer5 $spacer5 $spacer5 *1.5;
+    }
 
     &:not(.hasSidebar) {
       width: 100%;
       max-width: 1100px;
-      margin-left:auto ;
+      margin-left: auto;
       margin-right: auto;
-
     }
 
-    @include media-breakpoint-up(md) {
-      padding:$spacer5;
-
-      &.hasSidebar {
-
-      }
+    a {
+      color: $white;
+      font-weight: $font-weight-bold;
+      text-decoration: underline;
     }
-
 
   }
 
   aside {
-    //border-left:3px solid $layout-darkblue-darker-1;
-    background-color: $layout-darkblue;
-    color: $white;
-    padding: 0;
+
+    @include media-breakpoint-up(md) {
+      padding: $spacer5;
+    }
 
     &:before {
       position: absolute;
-      background-color: rgba($layout-darkblue,.9);
       opacity: 0;
       background-image: url('../img/animated_loader.svg');
       background-position: center 10rem;
@@ -108,7 +62,7 @@
       background-size: 9rem;
       top: 0;
       left: 0;
-      content:"";
+      content: "";
       display: block;
       width: 100%;
       height: 100%;
@@ -133,6 +87,34 @@
         font-size: 0.8rem;
       }
     }
+
+    .mapWrapper {
+      margin-bottom: $spacer4;
+      overflow: visible;
+
+      .googleMap {
+        border-radius: $border-radius-xlg;
+        overflow: hidden;
+        border: 1px solid $layout-darkblue-darker-2;
+      }
+    }
+
+    .wheatherWidget {
+      box-shadow: $box-shadow-sm, $box-shadow;
+
+      .wind {
+        left: auto;
+        //right: 0;
+        transform: translateX(-35%);
+      }
+    }
+
+    .navGraphs {
+      margin-top: $spacer3;
+      border-radius: $border-radius-lg;
+    }
+
+
   }
 
 
@@ -197,8 +179,7 @@
 }
 
 .strava-activity-changer {
-
-  background-color: $layout-darkblue-darker-1;
+  margin-bottom: $spacer4;
 
   .title {
     flex-grow: 1;
@@ -210,19 +191,16 @@
     .summary {
       color: $white;
       display: flex;
-      padding: $spacer1;
       transition: $transition-base;
       font-size: $font-size-sm;
       align-items: center;
-      padding:  $spacer2;
+      padding: $spacer2;
       position: relative;
+
 
       @include media-breakpoint-down(sm) {
         flex-direction: column;
 
-        &:not(:first-child) {
-          border-top: 1px solid $layout-darkblue;
-        }
 
         .title {
           width: 100%;
@@ -233,7 +211,7 @@
       .badges {
         display: flex;
         justify-content: flex-end;
-        border:0;
+        border: 0;
         flex-wrap: wrap;
 
         @include media-breakpoint-down(sm) {
@@ -246,8 +224,8 @@
       .badge {
         margin-right: $spacer1;
         font-weight: $font-weight-normal;
-        background-color: rgba($white,.1) !important;
-        color:rgba($white,.65);
+        background-color: rgba($white, .1) !important;
+        color: rgba($white, .65);
         margin-top: $spacer1/2;
         margin-bottom: $spacer1/2;
 
@@ -256,7 +234,7 @@
         }
 
         @include media-breakpoint-down(sm) {
-          font-size:0.8em;
+          font-size: 0.8em;
 
 
           .badge-watts {
@@ -266,14 +244,29 @@
       }
     }
 
+    .summary {
+      padding-left: 2rem;
+      border-top: 2px solid $layout-darkblue-darker-1;
+      padding-top: $spacer3;
+      padding-bottom: $spacer3;
+      justify-content: flex-end;
+
+      @include media-breakpoint-down(sm) {
+        justify-content: flex-start;
+        padding-left: $spacer2;
+      }
+
+    }
+
     a.changeMap {
       $checkIconWidth: 1.5rem;
-
       cursor: pointer;
       display: flex;
       flex-wrap: wrap;
       align-items: center;
       padding-left: $checkIconWidth + .7rem;
+      border-radius: $border-radius-lg;
+      margin-bottom: $spacer2;
 
       @include media-breakpoint-down(sm) {
         padding-left: $spacer2;
@@ -316,9 +309,25 @@
 
       &.disabled {
         cursor: default;
+        background: $red;
+        box-shadow: $box-shadow-sm, $box-shadow;
+        cursor: default;
+
+        @include hover {
+          background: $red;
+        }
+
+        .date {
+          color: $white;
+        }
 
         i.fa-check {
           opacity: 1;
+        }
+
+        .badge {
+          background: rgba($dark, .2) !important;
+          color: $white !important;
         }
       }
 
@@ -326,26 +335,13 @@
         text-decoration: none;
 
         @include media-breakpoint-up(md) {
-          background-color: $layout-darkblue;
+          background-color: $layout-darkblue-lighter-1;
         }
       }
 
 
     }
 
-    .summary {
-      padding-left:2rem;
-      border-top:2px solid lighten($layout-darkblue-lighter-2,0%) !important;
-      padding-top: $spacer2;
-      padding-bottom: $spacer2;
-      justify-content: flex-end;
-
-      @include media-breakpoint-down(sm) {
-        justify-content: flex-start;
-        padding-left: $spacer2;
-      }
-
-    }
 
   }
 }
@@ -409,8 +405,6 @@
     }
   }
 }
-
-
 
 .social-sharing {
   a {
@@ -485,10 +479,10 @@
 }
 
 .galleria-theme-compojoom {
-  width:100% !important;
+  width: 100% !important;
 }
 
 .galleria-container.touch {
-  height:100% !important;
+  height: 100% !important;
 
 }

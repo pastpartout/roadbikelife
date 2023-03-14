@@ -11,6 +11,10 @@ body {
   //background-color: $layout-darkblue;
   //color: $text-white;
 
+  @include media-breakpoint-up(lg) {
+    padding-left: 3rem;
+  }
+
   &:not(.view-featured) {
     display: flex;
     flex-direction: column;
@@ -74,7 +78,8 @@ a:focus, button, button:focus {
 
 
 html.desktop body,html.desktop .fancybox-slide,.textCol .wrapper {
-  @include rblSscrollbar();
+  @include cssScrollbar(darken($primary,5), $layout-darkblue-darker-1, $spacer2 * 1.125, 0);
+
 }
 
 

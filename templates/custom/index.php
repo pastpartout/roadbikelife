@@ -52,24 +52,17 @@ ini_set('memory_limit', '512M');
         <jdoc:include type="modules" name="content-bottom" style="bootstrap3"/>
     </section>
 </main>
-<?php if ($view != 'ridewheather' && $layout != 'customrblfrontpage'): ?>
+<?php if ($view != 'ridewheather'  && $layout != 'customrblfrontpage' || $view == 'article'): ?>
     <footer>
         <div class="container-fluid px-0">
-
-            <div class="articleModules">
-                <div class="row no-gutters">
-                    <jdoc:include type="modules" name="footer-top" style="bootstrap3"/>
-                </div>
-            </div>
-            <div class="menuModules">
-                <div class="row no-gutters">
-                    <jdoc:include type="modules" name="footer-bottom" style="bootstrap3"/>
-                </div>
+            <div class="row no-gutters">
+                <jdoc:include type="modules" name="footer-bottom" style="bootstrap3"/>
             </div>
         </div>
 
     </footer>
 <?php endif ?>
 <jdoc:include type="modules" name="debug" style="none"/>
+<jdoc:include type="modules" name="bottombar" style="bootstrap3"/>
 </body>
 </html>

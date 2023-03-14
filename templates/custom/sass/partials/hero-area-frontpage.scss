@@ -94,8 +94,8 @@
             }
         }
 
-        .postImageOverlayContent {
-            @include postImageOverlayContent;
+        .post-img-overlay {
+            @include post-img-overlay;
             transition: $transition-base;
             transition-duration: .5s;
             pointer-events: none;
@@ -169,7 +169,7 @@
                     opacity: 1;
                 }
 
-                .postImageOverlayContent {
+                .post-img-overlay {
                     opacity: 0;
                 }
             }

@@ -1,3 +1,45 @@
+.rules {
+  list-style: none;
+  padding-left: 0;
+  counter-reset: rules;
+  padding-top: $spacer3;
+
+  .rule {
+    background-color: $light;
+    margin-bottom: $spacer4;
+    border-radius: $border-radius;
+    overflow: hidden;
+
+    .ruleTitle {
+      font-weight: $font-weight-bold;
+      background-color: darken($light,5%);
+      display: flex;
+      counter-increment: rules;
+
+      &:before {
+        content: counter(rules) ".";
+        min-width: 2rem;
+        min-height: 100%;
+        border-right: 1px solid rgba($black,.05);
+        padding: $spacer1;
+        display: block;
+        text-align: center;
+      }
+    }
+
+    .name {
+      padding: $spacer1 $spacer2;
+    }
+  }
+
+  .ruleContent {
+    padding: $spacer3;
+
+    p:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
 
 
 

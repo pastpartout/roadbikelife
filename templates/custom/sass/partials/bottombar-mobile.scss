@@ -8,7 +8,7 @@
   display: flex;
   flex-direction: column;
   z-index: 999999;
-  color: $body-color;
+  color: $white;
 
   @include media-breakpoint-up(lg) {
     left:0;
@@ -124,7 +124,7 @@
 
     }
 
-    .nav-item-rbl {
+    .nav-item-about {
       background-color: $red;
       padding: $spacer2;
     }
@@ -148,14 +148,13 @@
 
   .tab-content {
     flex-grow: 1;
-    overflow: auto;
     transition: $transition-base;
-    height: 0vh;
   }
 
   .tab-pane {
     padding: $spacer3;
     height: 100%;
+    @include cssScrollbar($primary, $dark, $spacer2, 0);
   }
 
   &.expand {
@@ -189,3 +188,4 @@
     }
   }
 }
+

@@ -1,64 +1,24 @@
-
-
 /************** FOOTER ***************/
 
 
 footer {
   //border-top: 3px solid $primary;
-  background-color: $layout-darkblue-lighter-1;
+  background-color: $layout-darkblue-darker-3;
   width: 100%;
   position: relative;
   color: $white;
+  font-size: $font-size-small;
+  padding: $spacer3 $spacer4 ;
   padding-bottom: $mobileBarNavHeightSm;
 
   @include media-breakpoint-up(lg) {
-    padding-bottom: $mobileBarNavHeightLg;
+    padding: $spacer3 $spacer4 ;
   }
 
 
   a {
     color: inherit;
   }
-
-
-  .articleModules {
-    overflow-x:hidden;
-
-    .post .item-image {
-      width:60px;
-    }
-
-    .moduleBoostrap {
-      .heading {
-        background-color: $layout-darkblue;
-        font-size: $font-size-base;
-        padding:$spacer3 $spacer4;
-        font-weight: $font-weight-base;
-        border:0;
-        color: lighten($layout-darkblue, 60%);
-
-        + div {
-          padding-left: $spacer4;
-          padding-right: $spacer4;
-        }
-      }
-
-    }
-
-    @include media-breakpoint-down(sm) {
-      //padding: $spacer5 0;
-    }
-
-    .personalStravaStats-year,
-    .personalStravaStats {
-      .item {
-        @include make-col(6);
-      }
-    }
-
-
-  }
-
 
 
   .heading {
@@ -69,68 +29,46 @@ footer {
     margin-bottom: 0;
   }
 
-  .aboutMe {
-    .item-image {
-      max-width:100px;
-    }
-  }
 
-  .menuModules {
-    border-top:1px solid $layout-darkblue;
-    font-size: $font-size-small;
-    padding-top: $spacer4;
-    padding-left: $spacer3;
-    padding-right: $spacer3;
-    margin-top: $spacer4;
-    margin-bottom: $spacer4;
-
-    .menu {
-      margin: 0;
-      padding: 0;
-      display: flex;
-      align-items: center;
-      flex-wrap: wrap;
+  .menu {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
 
 
-      li {
-        margin-right:  $spacer3;
-        list-style: none;
+    li {
+      margin-right: $spacer3;
+      list-style: none;
 
+      @include media-breakpoint-down(sm) {
+        width: 100%;
+        margin: 0;
+      }
+
+      a {
+        font-size: $font-size-small;
+        white-space: nowrap;
+        display: block;
+        text-align: center;
+        padding: $spacer2;
         @include media-breakpoint-down(sm) {
-          width: 100%;
-          margin: 0;
-        }
-
-        a {
-          font-size: $font-size-small;
-          white-space: nowrap;
-          display: block;
-          text-align: center;
-          padding: $spacer2;
-          @include media-breakpoint-down(sm) {
-            padding: $spacer1 $spacer2;
-
-          }
+          padding: $spacer1 $spacer2;
 
         }
 
-        .post {
-          margin-bottom: $spacer3;
-        }
+      }
 
-        .postLinkItem {
-          padding: 0;
-          margin: 0;
-        }
+      .post {
+        margin-bottom: $spacer3;
+      }
+
+      .postLinkItem {
+        padding: 0;
+        margin: 0;
       }
     }
-
-
   }
-
-  .blogListLinks {
-
-  }
-
 
 }
