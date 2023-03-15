@@ -95,9 +95,11 @@ modules/*
 !modules/mod_articlebloginfos/
 !modules/mod_articlebloginfos/**
 
-
 !modules/mod_articlebloginfos/
 !modules/mod_articlebloginfos/**
+
+!modules/mod_bottom_bar/
+!modules/mod_bottom_bar/**
 
 !plugins/
 plugins/*

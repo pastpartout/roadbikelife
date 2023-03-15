@@ -8,7 +8,7 @@
  */
 
 defined('_JEXEC') or die;
-require_once JPATH_BASE.'/components/com_roadbikelife/models/resizeimage.php';
+require_once JPATH_BASE . '/components/com_roadbikelife/models/resizeimage.php';
 $imageModel = new RoadbikelifeModelResizeimage();
 /** @var plgcontentContentMedia $googleMapHtml */
 /** @var array $stravaActivityFieldValues */
@@ -16,26 +16,26 @@ $imageModel = new RoadbikelifeModelResizeimage();
 /** @var object $stravaActivity */
 /** @var object $modArticleStravaMap */
 /** @var array $stravaActivitiesTotals */
-$mapIdleImage = 'images/gmaps_route_images/gmaps_'.$stravaActivity->activity_json->id.'_large.png'
+$mapIdleImage = 'images/gmaps_route_images/gmaps_' . $stravaActivity->activity_json->id . '_large.png'
 
 ?>
 <div class="stravaRideDetails">
     <a class="anchor" id="content-gpx"></a>
-	<?php if (isset($stravaActivities)): ?>
+    <?php if (isset($stravaActivities)): ?>
         <div class="strava-activity-changer">
             <div class="d-flex align-items-center text-center">
-                <button
+                <div
                         data-toggle="collapse" data-target="#collapse-tours"
                         aria-expanded="true"
                         aria-controls="collapse-tours"
-                        class="btn btn-primary d-block text-center w-100 btn-sm dropdown-toggle text-white font-weight-bold"
+                        class="h5 d-block dropdown-toggle text-center text-white"
                         type="button"
                         id="dropdownToursButton" data-toggle="dropdown" data-toggle="collapse">
-					<?= count($stravaActivities) ?> Aktivitäten
-                </button>
+                    <?= count($stravaActivities) ?> Aktivitäten
+                </div>
             </div>
             <div class="activities show" id="collapse-tours">
-				<?php foreach ($stravaActivities as $key => $stravaActivityCollapseItem) : ?>
+                <?php foreach ($stravaActivities as $key => $stravaActivityCollapseItem) : ?>
                     <a data-href="<?= JURI::base() . 'component/roadbikelife/mapdata/' . $stravaActivityCollapseItem->id ?>"
                        class="changeMap <? if ($key == 0): ?>disabled<? endif ?>"
                        data-strava-id="<?= $stravaActivityCollapseItem->id ?>">
@@ -66,18 +66,18 @@ $mapIdleImage = 'images/gmaps_route_images/gmaps_'.$stravaActivity->activity_jso
                             </span>
                         </span>
                     </a>
-				<?php endforeach ?>
+                <?php endforeach ?>
                 <div class="summary">
                     <span class="title font-weight-bold">
                         Gesamt
                     </span>
                     <span class="badges">
-                            <?php if((int)$stravaActivitiesTotals['average_watts'] > 0):?>
-                            <span class="badge bage-sm badge-watts">
+                            <?php if ((int)$stravaActivitiesTotals['average_watts'] > 0): ?>
+                                <span class="badge bage-sm badge-watts">
                                 <i class="fal fa-bolt"></i>
                                 <?= $stravaActivitiesTotals['average_watts'] ?>
                             </span>
-                        <?php endif ?>
+                            <?php endif ?>
                             <span class="badge bage-sm badge-calories">
                                 <i class="fal fa-pizza-slice"></i>
                                 <?= $stravaActivitiesTotals['calories'] ?>
@@ -102,7 +102,7 @@ $mapIdleImage = 'images/gmaps_route_images/gmaps_'.$stravaActivity->activity_jso
                 </div>
             </div>
         </div>
-	<?php endif ?>
+    <?php endif ?>
 
     <div class="mapWrapper" id="map-wrapper">
         <div id="googlemap" class="googleMap">
@@ -121,9 +121,11 @@ $mapIdleImage = 'images/gmaps_route_images/gmaps_'.$stravaActivity->activity_jso
                 <div class="content">
                     <p class="font-weight-bold">Google Maps Datenschutzhinweis</p>
                     <p>
-                        Diese Website verwendet Google Maps. Mit Klick auf diesen Button werden Daten wie z.B. deine IP-Adresse
+                        Diese Website verwendet Google Maps. Mit Klick auf diesen Button werden Daten wie z.B. deine
+                        IP-Adresse
                         an Google übermittelt. Weitere Informationen können der
-                        <a href="<?= JUri::base() . 'datenschutzerklaerung?tmpl=component' ?>" class="prevent-event" data-fancybox data-type="iframe" class="data-privacy-iframe">Datenschutzerklärung</a>
+                        <a href="<?= JUri::base() . 'datenschutzerklaerung?tmpl=component' ?>" class="prevent-event"
+                           data-fancybox data-type="iframe" class="data-privacy-iframe">Datenschutzerklärung</a>
                         entnommen werden.
                     </p>
                     <a class="btn btn-sm btn-outline-light my-3">Zustimmen</a>
@@ -131,7 +133,7 @@ $mapIdleImage = 'images/gmaps_route_images/gmaps_'.$stravaActivity->activity_jso
 
             </div>
         </div>
-		<?php if (isset($stravaActivity->wheather_json)): ?>
+        <?php if (isset($stravaActivity->wheather_json)): ?>
             <div id="wheather" class="wheatherWidget">
                 <div class="wind">
                     <div class="windBearing">
@@ -155,7 +157,7 @@ $mapIdleImage = 'images/gmaps_route_images/gmaps_'.$stravaActivity->activity_jso
                     </div>
                 </div>
             </div>
-		<?php endif; ?>
+        <?php endif; ?>
     </div>
 
     <div class="controls-ridewheather">
@@ -173,13 +175,13 @@ $mapIdleImage = 'images/gmaps_route_images/gmaps_'.$stravaActivity->activity_jso
                 </div>
             </div>
             <div class="col-8 text-right">
-				<?php if ($stravaActivity->activity_json->id > 0): ?>
+                <?php if ($stravaActivity->activity_json->id > 0): ?>
                     <a href="<?= JURI::base() . 'component/roadbikelife/gpxdownload/' . $stravaActivity->activity_json->id ?>"
                        class="font-weight-bold py-1 px-2 small" id="btn-gpxdownload">
                         <i class="fas fa-route mr-1"></i>
                         GPX Download
                     </a>
-				<?php endif ?>
+                <?php endif ?>
             </div>
             <div class="col-8 text-right d-none">
                 <a href="<?= JRoute::_('index.php?option=com_roadbikelife&view=ridewheather&task=login') ?>"
@@ -197,39 +199,43 @@ $mapIdleImage = 'images/gmaps_route_images/gmaps_'.$stravaActivity->activity_jso
 
     <div class="small detailNumbers pt-1 pt-md-0">
         <div class="row no-gutters">
-			<?php foreach ($flotGraphs as $key => $flotGraph): ?>
+            <?php foreach ($flotGraphs as $key => $flotGraph): ?>
                 <div class="col-6 col-lg-3">
                     <div class="px-3 py-0 py-md-2 small">
                         <i class="fa <?= $flotGraph['icon'] ?> icon-margin-right fa-fw"></i>
                         <span class="<?= $key ?>">-</span>&nbsp;<?= $flotGraph['unit'] ?>
                     </div>
                 </div>
-			<?php endforeach; ?>
+            <?php endforeach; ?>
         </div>
     </div>
-    <div class="graphWrapper">
-        <div class="tab-content">
-			<?php foreach ($flotGraphs as $key => $flotGraph): ?>
-                <div class="tab-pane fade <?php if ($key == 'altitude'): ?>show active<?php endif ?>"
-                     id="nav-<?= $key ?>" role="tabpanel">
-                    <div id="<?= $key ?>-graph" class="stravaGraph"></div>
-                    <div class="marker"></div>
-                </div>
-			<?php endforeach; ?>
-        </div>
-    </div>
-    <div class="nav navGraphs" id="nav-tab" role="tablist">
-		<?php foreach ($flotGraphs as $key => $flotGraph): ?>
-            <a class="nav-item d-none <?php if ($key == 'altitude'): ?>active<?php endif ?>"
-               data-toggle="tab"
-               data-graph-name="#<?= $key ?>-graph"
-               href="#nav-<?= $key ?>"
-               role="tab" aria-controls="nav-<?= $key ?>"
+    <div class="">
 
-            >
-                <i class="fal fa-fw <?= $flotGraph['icon'] ?> icon-margin-right fa-fw"></i><?= JText::_(strtoupper("COLLAPSIBLE_$key")); ?>
-            </a>
-		<?php endforeach; ?>
+        <div class="graphWrapper ">
+            <div class="tab-content">
+                <?php foreach ($flotGraphs as $key => $flotGraph): ?>
+                    <div class="tab-pane fade <?php if ($key == 'altitude'): ?>show active<?php endif ?>"
+                         id="nav-<?= $key ?>" role="tabpanel">
+                        <div id="<?= $key ?>-graph" class="stravaGraph"></div>
+                        <div class="marker"></div>
+                    </div>
+                <?php endforeach; ?>
+            </div>
+        </div>
+        <div class="nav navGraphs" id="nav-tab" role="tablist">
+            <?php foreach ($flotGraphs as $key => $flotGraph): ?>
+                <a class="nav-item d-none <?php if ($key == 'altitude'): ?>active<?php endif ?>"
+                   data-toggle="tab"
+                   data-graph-name="#<?= $key ?>-graph"
+                   href="#nav-<?= $key ?>"
+                   role="tab" aria-controls="nav-<?= $key ?>"
+
+                >
+                    <i class="fal fa-fw <?= $flotGraph['icon'] ?> icon-margin-right fa-fw"></i><?= JText::_(strtoupper("COLLAPSIBLE_$key")); ?>
+                </a>
+            <?php endforeach; ?>
+        </div>
     </div>
-	<?= $modArticleStravaMap->googleMapHtml ?>
+
+    <?= $modArticleStravaMap->googleMapHtml ?>
 </div>

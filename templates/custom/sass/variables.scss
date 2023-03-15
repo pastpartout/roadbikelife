@@ -238,9 +238,9 @@ $border-radius-sm:            .15rem;
 
 $rounded-pill:                50rem;
 
-$box-shadow-sm:               0 .125rem .25rem rgba($black, .075);
-$box-shadow:                  0 .5rem 1rem rgba($black, .15);
-$box-shadow-lg:               0 1rem 3rem rgba($black, .175);
+$box-shadow-sm:               0 .125rem .25rem rgba($black, .135);
+$box-shadow:                  0 .5rem 1rem rgba($black, .2);
+$box-shadow-lg:               0 1rem 3rem rgba($black, .185);
 
 $component-active-color:      $white;
 $component-active-bg:         theme-color("primary");
@@ -288,7 +288,7 @@ $font-weight-bolder:          bolder;
 $font-weight-base:            $font-weight-normal;
 $line-height-base:            1.65;
 
-$h1-font-size:                $font-size-base * 2.5;
+$h1-font-size:                $font-size-base * 2.85;
 $h2-font-size:                $font-size-base * 2;
 $h3-font-size:                $font-size-base * 1.75;
 $h4-font-size:                $font-size-base * 1.5;
@@ -1019,11 +1019,11 @@ $list-group-action-active-bg:       $gray-200;
 
 // Image thumbnails
 
-$thumbnail-padding:                 .2rem;
-$thumbnail-bg:                      $body-bg;
+$thumbnail-padding:                 .3rem;
+$thumbnail-bg:                      $dark;
 $thumbnail-border-width:            0;
 $thumbnail-border-color:            $gray-300;
-$thumbnail-border-radius:           0;
+$thumbnail-border-radius:           $border-radius;
 $thumbnail-box-shadow:              none;
 
 

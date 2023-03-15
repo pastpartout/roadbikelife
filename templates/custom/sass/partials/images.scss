@@ -139,6 +139,7 @@
   width: 100%;
   max-height: 100%;
   @include rblSscrollbar();
+  pointer-events: all;
 
 
   @include media-breakpoint-down(sm) {

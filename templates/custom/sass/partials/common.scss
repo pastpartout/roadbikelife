@@ -19,3 +19,53 @@ iframe, .avPlayerWrapper {
     display: block !important;
   }
 }
+
+
+.article-modules {
+  overflow-x:hidden;
+
+  .post .item-image {
+    width:60px;
+  }
+
+  .moduleBoostrap {
+    .heading {
+      background-color: $layout-darkblue;
+      font-size: $font-size-base;
+      padding:$spacer3 $spacer4;
+      font-weight: $font-weight-base;
+      border:0;
+      color: lighten($layout-darkblue, 60%);
+
+      + div {
+        padding-left: $spacer4;
+        padding-right: $spacer4;
+      }
+    }
+
+  }
+
+  @include media-breakpoint-down(sm) {
+    //padding: $spacer5 0;
+  }
+
+  .personalStravaStats-year,
+  .personalStravaStats {
+    .item {
+      @include make-col(6);
+    }
+  }
+
+
+}
+
+.module-wrapper-dark-rounded {
+  //border:1px solid $border-color;
+  padding: $spacer3;
+  background-color: rgba($black,.3);
+  border-radius: $btn-border-radius-lg;
+  margin-bottom: $spacer3;
+
+  .module-wrapper-dark-rounded-title {
+  }
+}

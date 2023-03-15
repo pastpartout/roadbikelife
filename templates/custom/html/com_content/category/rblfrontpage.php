@@ -37,7 +37,7 @@ function short_str($str, $max = 350)
 }
 
 foreach ($items as $key => $article) {
-    $article->introtext = short_str($article->introtext,300);
+    $article->introtext = short_str($article->introtext, 300);
     if ($fieldModel->getFieldValue(8, $article->id) == '1' && JFactory::getApplication()->input->get('show_unpublished', '0') == '0') {
         unset($items[$key]);
     }
@@ -67,17 +67,10 @@ $doc->addScript('templates/custom/js/frontpage.js');
         <?php foreach ($items as $key => $item): ?>
             <div class="frontpage-grid-item  <?php if ($key === 0): ?>active<?php endif ?>"
                  id="item-<?= $item->id ?>" data-sectionid="<?= $item->id ?>">
-                <?php echo JLayoutHelper::render('joomla.blog.post_item_fp',['item' =>  $item]); ?>
-                <?php echo JLayoutHelper::render('joomla.blog.post_item_fp_next', ['nextItem' => $items[$key+1]]); ?>
+                <?php echo JLayoutHelper::render('rbl.blog.post_item_fp', ['item' => $item]); ?>
+                <?php echo JLayoutHelper::render('rbl.blog.post_item_fp_next', ['nextItem' => $items[$key + 1]]); ?>
             </div>
         <?php endforeach ?>
     </div>
-    <div class="frontpage-grid-dots">
-        <?php foreach ($items as $key => $item): ?>
-            <a href="#item-<?= $item->id ?>" class="dot <?php if ($key === 0): ?>active<?php endif ?>"
-               id="dot-<?= $item->id ?>"></a>
-        <?php endforeach ?>
-    </div>
-
-
+    <?php  echo $this->pagination->getPaginationLinks('rbl.pagination.frontpage', ['items' => $items]);  ?>
 </section>

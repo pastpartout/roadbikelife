@@ -13,7 +13,7 @@ defined('_JEXEC') or die;
 ?>
 <?php // The menu class is deprecated. Use nav instead. ?>
 <div class="row">
-    <div class="col-lg-6">
+    <div class="col-auto">
         <ul class="menu<?php echo $class_sfx; ?>"<?php
         $tag = '';
 
@@ -99,7 +99,7 @@ defined('_JEXEC') or die;
             }
             ?></ul>
     </div>
-    <div class="col-lg-6">
+    <div class="col">
         <div class="d-flex w-100 align-items-center justify-content-center justify-content-lg-end pr-0 pr-lg-5 py-3 py-lg-0 blogListLinks">
             <div class="ml-2">
                 <a href="https://www.bloggerei.de/" target="_blank">

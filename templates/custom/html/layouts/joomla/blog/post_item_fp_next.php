@@ -27,7 +27,7 @@ $images = json_decode($nextItem->images);
         <div class="d-flex justify-content-center">
             <a href="#item-<?= $nextItem->id ?>"
                class="text-muted  text-decoration-none col-auto text-center d-flex border-right pr-3 mr-3">
-                <i class="fa fa-2x mr-3 fa-angle-double-down"></i>
+                <i class="fal fa-2x mr-3 fa-angle-double-down"></i>
                 <div class="py-1 font-weight-light">Nächster Beitrag</div>
             </a>
             <div class="col-title ps-3 d-flex align-items-center">

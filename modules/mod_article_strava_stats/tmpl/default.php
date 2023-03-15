@@ -15,7 +15,7 @@ $fields = [
 ?>
 
 <?php if (isset($stravaActivitiesPepared) && count($stravaActivitiesPepared) > 0): ?>
-<div class="content-strava container-fluid">
+<div class="content-strava">
     <a class="anchor" id="content-strava"></a>
     <?php if ($module->showtitle): ?>
         <h3 class="rblHeadline">
