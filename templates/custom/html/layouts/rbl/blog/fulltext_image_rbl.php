@@ -22,7 +22,7 @@ if (!isset($aspectRatio)) $aspectRatio = ''
     <div class="item-image post-image post-image-<?= $aspectRatio ?> no-hover-zoom">
         <?php if ($params->get('link_titles') && $params->get('access-view')) : ?>
             <a class="image-wrapper"
-               href="<?php echo JRoute::_(ContentHelperRoute::getArticleRoute($displayData->id, $displayData->catid, $displayData->language)); ?>"
+               href="<?php echo JRoute::_(ContentHelperRoute::getArticleRoute($item->id, $displayData->catid, $item->language)); ?>"
                title="<?= $item->title; ?> ">
                 <picture>
                     <source type="image/webp"

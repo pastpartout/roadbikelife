@@ -55,7 +55,7 @@ $doc->addScript('templates/custom/js/frontpage.js');
                     <?= file_get_contents(JPATH_BASE . '/templates/custom/img/logo_white.svg') ?>
                 </a>
             </div>
-            <h1 class="h2 mb-2">
+            <h1 class="h2 mb-2 font-weight-light">
                 <?= $this->params->get('intro_heading') ?>
             </h1>
             <div class="small collapse">
@@ -64,13 +64,20 @@ $doc->addScript('templates/custom/js/frontpage.js');
         </div>
     </div>
     <div class="frontpage-grid-items">
-        <?php foreach ($items as $key => $item): ?>
-            <div class="frontpage-grid-item  <?php if ($key === 0): ?>active<?php endif ?>"
-                 id="item-<?= $item->id ?>" data-sectionid="<?= $item->id ?>">
-                <?php echo JLayoutHelper::render('rbl.blog.post_item_fp', ['item' => $item]); ?>
-                <?php echo JLayoutHelper::render('rbl.blog.post_item_fp_next', ['nextItem' => $items[$key + 1]]); ?>
-            </div>
-        <?php endforeach ?>
+        <?php if (count($items) > 0): ?>
+            <?php foreach ($items as $key => $item): ?>
+                <div class="frontpage-grid-item  <?php if ($key === 0): ?>active<?php endif ?>  <?php if ($key+1 === count($items)): ?>last<?php endif ?> <?php if ($key === 0): ?>first<?php endif ?>"
+                     id="item-<?= $item->id ?>" data-sectionid="<?= $item->id ?>">
+                    <?php echo JLayoutHelper::render('rbl.blog.post_item_fp', ['item' => $item]); ?>
+                    <?php echo JLayoutHelper::render('rbl.blog.post_item_fp_next', ['nextItem' => $items[$key + 1]]); ?>
+                    <?php if ($key === 0): ?>
+                        <a class="btn btn-next-item d-flex d-lg-none fade" style="line-height: 1">
+                            <i class="fal fa-2x fa-angle-right fa-fw"></i>
+                        </a>
+                    <?php endif ?>
+                </div>
+            <?php endforeach ?>
+        <?php endif ?>
     </div>
     <?php  echo $this->pagination->getPaginationLinks('rbl.pagination.frontpage', ['items' => $items]);  ?>
 </section>

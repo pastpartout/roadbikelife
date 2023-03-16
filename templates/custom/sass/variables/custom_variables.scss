@@ -24,6 +24,7 @@ $layout-darkblue-lighter-4: lighten($layout-darkblue,15%);
 $text-white: lighten($layout-darkblue,80%);
 
 $body-color-link-hover: lighten($body-color,7%);
+$body-color-light: $layout-darkblue;
 $stravaOrange: #FC4C02;
 
 // Device Vars
@@ -47,3 +48,5 @@ $border-radius-xlg: 1rem;
 
 $mobileBarNavHeightSm: 3rem;
 $mobileBarNavHeightLg: 2.75rem;
+
+// overrides

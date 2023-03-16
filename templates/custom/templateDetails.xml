@@ -32,6 +32,7 @@
 		<position>content-bottom</position>
 		<position>content-top</position>
 		<position>blog_sidebar</position>
+		<position>blog_sidebar_about</position>
 		<position>bottombar</position>
 		<position>article_sidebar</position>
 		<position>article_bottom</position>

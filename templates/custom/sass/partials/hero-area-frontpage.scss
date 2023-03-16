@@ -101,6 +101,7 @@
             pointer-events: none;
             overflow: hidden;
 
+
         }
 
         .headline {
@@ -158,13 +159,10 @@
         .post-image img {
             //transform: scale(1.01);
             image-rendering: optimizeQuality
-
         }
 
         &:hover {
             @include media-breakpoint-up(lg) {
-
-
                 .introtext {
                     opacity: 1;
                 }

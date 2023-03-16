@@ -116,7 +116,7 @@ $imageModel = new RoadbikelifeModelResizeimage();
         </div>
     <?php endif ?>
 </section>
-<div class="w-100 pb-3 d-flex d-lg-none">
+<div class="w-100 d-flex d-lg-none">
     <?php
     jimport('joomla.application.module.helper');
     $module = JModuleHelper::getModule('mod_article_fwgallery', 'Weitere Bilder Headbereich');

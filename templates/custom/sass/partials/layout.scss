@@ -8,7 +8,7 @@ html, body {
 }
 
 body {
-  //background-color: $layout-darkblue;
+  background-color: $layout-darkblue;
   //color: $text-white;
 
   @include media-breakpoint-up(lg) {

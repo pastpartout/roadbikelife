@@ -11,7 +11,7 @@ extract($displayData);
 ?>
 <article
         data-href="<?php echo JRoute::_(ContentHelperRoute::getArticleRoute($item->id, $item->catid, $item->language)); ?>">
-    <?php echo JLayoutHelper::render('joomla.blog.intro_image_rbl', ['item' => $item]); ?>
+    <?php echo JLayoutHelper::render('rbl.blog.fulltext_image_rbl', ['item' => $item]); ?>
     <div class="post-img-overlay px-lg-5 py-lg-5">
         <div>
             <div class="article-date">
@@ -36,6 +36,5 @@ extract($displayData);
             </div>
         </div>
     </div>
-
 </article>
 

@@ -22,7 +22,7 @@ $upper_limit = $lang->getUpperLimitSearchWord();
                maxlength="<?php echo $upper_limit; ?>" value="<?php echo $this->escape($this->origkeyword); ?>"
                class="form-control"/>
         <div class="input-group-append">
-            <button name="Search" onclick="this.form.submit()" class="btn btn-secondary rounded-right"
+            <button name="Search" onclick="this.form.submit()" class="btn btn-primary rounded-right"
                     title="<?php echo JHtml::_('tooltipText', 'COM_SEARCH_SEARCH'); ?>">
                 <span class="icon-search"></span>
                 <i class="fa fa-search"></i>

@@ -50,11 +50,17 @@
 
 }
 
+.btn-xsm {
+    @extend .btn-sm;
+    padding: $spacer1*.5  $spacer2;
+    font-size: $font-size-sm;
+}
 .btnLike {
     transform: translate3d(0, 0, 0);
     box-shadow: $box-shadow;
     @extend .badge;
     border-radius: $border-radius-sm;
+    background-color: $white;
 
     span {
         @include text-gradient;
@@ -65,7 +71,7 @@
 
         i {
             font-weight: $font-weight-bolder;
-            color: $primary;
+            background-color: $primary;
         }
     }
 }

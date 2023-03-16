@@ -43,7 +43,7 @@
       overflow: hidden;
       background-color: $layout-darkblue;
       @include loadingGradient;
-      border: $thumbnail-padding solid $white;
+      border: $thumbnail-padding solid $thumbnail-border-color;
     }
   }
 
@@ -183,7 +183,7 @@
   z-index: 2;
 
   @include media-breakpoint-up(xl) {
-    max-width: 80%;
+    //max-width: 80%;
   }
 
   &.sm-left {
@@ -225,7 +225,7 @@
     display: block;
     font-size: small;
     color: inherit;
-    padding: $spacer1;
+    padding: $spacer3 $spacer2 $spacer2;
     font-style: italic;
   }
 }

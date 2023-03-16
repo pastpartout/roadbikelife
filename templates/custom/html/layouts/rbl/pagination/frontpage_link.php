@@ -38,7 +38,7 @@ switch ((string)$item->text) {
     case $item->text === Text::_('JPREV'):
         $icon = 'angle-up';
         $text = 'zu Seite'.$activePage-1;
-        $aria = 'Vorherige Seite (' . $activePage-1 . '/' . count($pages['pages']) . ')';
+        $aria = 'Zu Seite ' . $activePage-1 . ' von ' . count($pages['pages']);
         $class = 'prev';
         $disabled = ($activePage === 1);
         break;
@@ -47,7 +47,7 @@ switch ((string)$item->text) {
     case Text::_('JNEXT'):
         $icon = 'angle-down';
         $text = 'zu Seite'.$activePage+1;
-        $aria = 'Nächste Seite (' . $activePage+1 . '/' . count($pages['pages']) . ')';
+        $aria = 'Zu Seite ' . $activePage+1 . ' von '. count($pages['pages']);
         $class = 'next';
         $disabled = ($activePage === count($pages['pages']));
         break;
@@ -58,10 +58,9 @@ $link = 'href="' . $item->link . '"';
 ?>
 <?php if($disabled === false):?>
     <li class="page-item">
-    <a aria-label="<?php echo $aria; ?>" <?php echo $link; ?> class="<?php if($disabled === false):?>hasTooltip text-white<?php else: ?>text-white-50<?php endif ?>" <?php if($disabled === false):?>title="<?= $aria ?>"<?php endif ?>>
-        <i class="fal fa-2x fa-fw fa-<?php echo $icon; ?>"></i>
-
-    </a>
+        <a aria-label="<?php echo $aria; ?>" <?php echo $link; ?> class="fade hasTooltip <?php if($disabled === false):?> page-nav-link page-nav-link-<?= $class; ?> text-white<?php else: ?>text-white-50<?php endif ?>" <?php if($disabled === false):?> title="<?= $aria ?>"<?php endif ?>>
+            <i class="fal fa-2x fa-fw fa-<?php echo $icon; ?>"></i>
+        </a>
     </li>
 <?php endif ?>
 

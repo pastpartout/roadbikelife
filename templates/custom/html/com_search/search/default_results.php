@@ -38,10 +38,10 @@ defined('_JEXEC') or die;
                         <?php echo $result->text; ?>
                     </div>
                     <?php if ($result->href) : ?>
-                    <span class="btn btn-outline-primary btn-sm">
+                    <o class="text-left">
                     <i class="fa fa-angle-right icon-margin-right"></i>
                     <?php echo JText::_('Weiterlesen'); ?>
-                </span>
+                </o>
                 </a>
 
                 <?php endif; ?>

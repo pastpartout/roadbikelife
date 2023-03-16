@@ -7,7 +7,8 @@ services:
       context: .
       dockerfile: Dockerfile-php81-apache
     ports:
-      -  127.0.0.9:80:80
+      - 127.0.0.9:80:80
+      - 192.168.178.32:80:80
     volumes:
       - ./..:/var/www/html/
       - ./php.ini:/usr/local/etc/php/conf.d/php.ini

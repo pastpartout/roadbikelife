@@ -30,17 +30,14 @@ iframe, .avPlayerWrapper {
 
   .moduleBoostrap {
     .heading {
-      background-color: $layout-darkblue;
       font-size: $font-size-base;
-      padding:$spacer3 $spacer4;
+      padding:$spacer2 $spacer3;
+      margin-top: -$spacer2;
       font-weight: $font-weight-base;
-      border:0;
+      border-bottom: 1px solid $border-color;
       color: lighten($layout-darkblue, 60%);
-
-      + div {
-        padding-left: $spacer4;
-        padding-right: $spacer4;
-      }
+      text-align: center;
+      margin-bottom: $spacer3;
     }
 
   }
@@ -67,5 +64,6 @@ iframe, .avPlayerWrapper {
   margin-bottom: $spacer3;
 
   .module-wrapper-dark-rounded-title {
+
   }
 }

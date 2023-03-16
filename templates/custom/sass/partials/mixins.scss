@@ -49,8 +49,7 @@
 
   &:after {
     display: block;
-    @include primaryGradient;
-    //background-color: ;
+    background-color: $gray-700;
     content: "";
     height: 3px;
     bottom: -$spacer5;

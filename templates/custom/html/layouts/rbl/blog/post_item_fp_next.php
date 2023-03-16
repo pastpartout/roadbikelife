@@ -23,7 +23,7 @@ $images = json_decode($nextItem->images);
 
 ?>
 <?php if (!empty($displayData)) : ?>
-    <div class="frontpage-grid-item-next">
+    <div class="frontpage-grid-item-next d-none d-lg-block">
         <div class="d-flex justify-content-center">
             <?php if (isset($nextItem)): ?>
 
@@ -56,7 +56,9 @@ $images = json_decode($nextItem->images);
                     </div>
                 </div>
             <?php else: ?>
-                Weiter zur nächsten Seite
+                <a class="d-flex align-items-center text-decoration-none" href="javascript:;" onclick="document.querySelector('.frontpage-grid-dots .page-nav-link-next').click()">
+                    <i class="fal fa-2x fa-angle-right mr-3"></i><span class="h4 font-weight-light mb-0">Weiter zur nächsten Seite</span>
+                </a>
             <?php endif; ?>
 
         </div>

@@ -24,6 +24,7 @@ if (strpos(JURI::base(), 'localhost') !== false) {
 	$wa->registerAndUseStyle('template_Css','templates/' . $this->template . '/css/template.css',['rel' => 'preload']);
 }
 
+JHtml::_('jquery.framework');
 $wa->registerAndUseStyle('fancybox_Css','templates/' . $this->template . '/css/jquery.fancybox.min.css',['rel' => 'preload']);
 $wa->registerAndUseScript('popper','templates/' . $this->template . '/js/popper.js');
 $wa->registerAndUseScript('bootstrap','templates/' . $this->template . '/js/bootstrap.min.js');

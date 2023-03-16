@@ -25,7 +25,7 @@ $mitemid    = $set_Itemid > 0 ? $set_Itemid : $app->input->getInt('Itemid');
                    placeholder="<?php echo JText::_('SEARCH_KEYWORD_PLACEHOLDER'); ?>"
                    class="form-control"/>
             <div class="input-group-append">
-                <button name="Search" onclick="this.form.submit()" class="btn btn-secondary rounded-right"
+                <button name="Search" onclick="this.form.submit()" class="btn btn-primary rounded-right"
                         title="<?php echo JHtml::_('tooltipText', 'COM_SEARCH_SEARCH'); ?>">
                     <i class="fa fa-search"></i>
                 </button>

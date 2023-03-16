@@ -22,14 +22,22 @@
     margin-bottom: 0;
 }
 
-.tag {
+.tag,a.tag {
     @extend .badge;
     margin-right: $spacer3;
     margin-bottom: $spacer2;
     font-weight: $font-weight-base;
-    color: $red;
     font-size: $font-size-small;
-    padding: $spacer1;
+    padding: $spacer2;
+    background-color: $gray-700;
+    color: $white ;
+
+
+        &:hover {
+            background-color: $primary;
+            color: $white ;
+        }
+
 
     strong {
         font-weight: inherit;
@@ -38,19 +46,9 @@
     @include media-breakpoint-down(xs) {
     }
 
-    &.tag-primarySpecial {
-        @include primaryGradient;
-        border-color: darken($purple, 7%);
-        transition: $transition-base;
-        background-size: 100%;
-        color: $white;
-    }
-
-
     .tag-count {
         background-color: rgba($gray-900,.4);
     }
-
 }
 
 a.tag {

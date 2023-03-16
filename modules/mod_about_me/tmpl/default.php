@@ -5,10 +5,9 @@ defined('_JEXEC') or die;
     <div class="text-left align-items-start">
         <div class="small">
             <div class="float-right col-4 pl-3 mb-3">
-                <div class=" item-image img-thumbnail shadow
-                 post-image no-hover-zoom post-image-1-1 rounded-circle border-sm
-            ">
-                    <div class="image-wrapper rounded-circle">
+                <div class="item-image shadow-sm
+                 post-image no-hover-zoom post-image-1-1 rounded-circle">
+                    <div class="image-wrapper rounded-circle border-sm">
                         <img src="/images/hero-area/stephan-riedel-portrait.jpg" loading="lazy"
                              alt="Der Autor von  <?= $sitename ?>: Stephan Riedel"
                              class="img-fluid">

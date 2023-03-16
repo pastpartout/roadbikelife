@@ -44,14 +44,11 @@ function PopupCenter(pageURL, title, w, h) {
 ');
 ?>
 <div id="article-text" class="item-page <?php echo $this->pageclass_sfx; ?> <?php if ($stravaActivityId > 0): ?>stravaActivityPost<?php endif ?>">
-    <div class="d-flex">
+    <div class="d-flex flex-wrap">
         <div class="articleCol <?php if ($stravaActivityId > 0): ?>col-lg-7 hasSidebar<?php endif ?>">
-
-
             <h2 class="h2 font-weight-light">
                 <?= $fields['2']->value; ?>
             </h2>
-
 
             <?php if (!$params->get('show_intro')) : echo $this->item->event->afterDisplayTitle; endif; ?>
             <?php echo $this->item->event->beforeDisplayContent; ?>
@@ -115,42 +112,44 @@ function PopupCenter(pageURL, title, w, h) {
                     </p>
                 <?php endif; ?>
             <?php endif; ?>
-            <div class="row">
-                <div class="col-auto col-md-3 mb-3 mb-md-0">
-                    <?= JLayoutHelper::render('joomla.blog.btn_like', $this->item); ?>
-                </div>
-                <div class="col-auto col-md-9">
-                    <?php if ($info == 0 && $params->get('show_tags', 1) && !empty($this->item->tags->itemTags)) : ?>
-                        <?php $this->item->tagLayout = new JLayoutFile('joomla.content.tags_rbl'); ?>
-                        <?php echo $this->item->tagLayout->render($this->item->tags->itemTags); ?>
-                    <?php endif; ?>
-                </div>
-            </div>
+
 
             <?php
                 $shareurl = JUri::current();
                 $shareurl = urlencode($shareurl);
             ?>
-            <div class="social-sharing py-3 text-center clearfix">
-                <p class="small text-black-50">
-                    Like and Share...
+            <div class="social-sharing py-5 text-center clearfix">
+                <p class="large text-light py-3 text-white-50">
+                    <em>Like and Share...</em>
                 </p>
                 <ul class="list-unstyled mb-0 row justify-content-center">
                     <li class="col-2">
                         <a class="no-hover"
                            onclick="PopupCenter('https://www.facebook.com/sharer/sharer.php?u=<?php echo $shareurl ?>','<?php echo JText::_('POST_TO_FACEBOOK') ?>','600','650')">
-                            <i class="text-gradient fab fa-2x fa-fw fa-facebook"></i>
+                            <i class="text-white fab fa-2x fa-fw fa-facebook"></i>
                         </a>
                     </li>
                     <li class="col-2">
                         <a class="no-hover"
                            onclick="PopupCenter('https://twitter.com/home?status=<?php echo $shareurl ?>','<?php echo JText::_('POST_TO_TWITTER') ?>','500','600')">
-                            <i class="text-gradient fab fa-2x fa-fw fa-twitter-square"></i>
+                            <i class="text-white fab fa-2x fa-fw fa-twitter-square"></i>
                         </a>
                     </li>
                 </ul>
             </div>
-
+            <div class="module-wrapper-dark-rounded">
+                <div class="row">
+                    <div class="col-auto col-md-3 mb-3 mb-md-0">
+                        <?= JLayoutHelper::render('joomla.blog.btn_like', $this->item); ?>
+                    </div>
+                    <div class="col-auto col-md-9">
+                        <?php if ($info == 0 && $params->get('show_tags', 1) && !empty($this->item->tags->itemTags)) : ?>
+                            <?php $this->item->tagLayout = new JLayoutFile('joomla.content.tags_rbl'); ?>
+                            <?php echo $this->item->tagLayout->render($this->item->tags->itemTags); ?>
+                        <?php endif; ?>
+                    </div>
+                </div>
+            </div>
             <?php echo $this->item->event->afterDisplayContent; ?>
             <div class="d-none d-lg-block">
                 <?php
@@ -171,13 +170,7 @@ function PopupCenter(pageURL, title, w, h) {
             </aside>
         <?php endif ?>
 
-        <div class="col-12 d-block d-lg-none mobilePageNav">
-            <?php
-            if (!empty($this->item->pagination) && $this->item->pagination && $this->item->paginationposition && $this->item->paginationrelative) :
-                echo $this->item->pagination;
-                ?>
-            <?php endif; ?>
-        </div>
+
     </div>
 
 
