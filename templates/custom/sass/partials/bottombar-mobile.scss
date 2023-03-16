@@ -23,6 +23,10 @@
   transition: $transition-base;
   background-color: rgba($layout-darkblue-darker-2, .6);
 
+  @include media-breakpoint-down(md) {
+    background-color: rgba($layout-darkblue-darker-3, .9);
+  }
+
 
   @include media-breakpoint-up(lg) {
     left: 0;
@@ -51,9 +55,6 @@
     top: $mobileBarNavHeightSm * -1;
     padding: 0;
     display: flex;
-    //backdrop-filter: blur(15px);
-
-
 
     @include media-breakpoint-up(lg) {
       display: flex;
@@ -177,6 +178,10 @@
     padding: $spacer3;
     height: 100%;
     @include cssScrollbar($gray-600, $dark, $spacer2, 0);
+
+    @include media-breakpoint-up(xl) {
+      padding: $spacer4;
+    }
   }
 
   &.expand {

@@ -6,13 +6,8 @@ html {
   @include media-breakpoint-up(lg) {
     flex-direction: column;
     scroll-snap-type: y mandatory;
-    -ms-overflow-style: none;
-    scrollbar-width: none;
   }
 
-  &::-webkit-scrollbar {
-    display: none;
-  }
 
 }
 
@@ -22,13 +17,19 @@ body.layout-customrblfrontpage.view-category {
   @include gradient-y($red, $layout-darkblue-darker-1,3rem,70% );
 
 
-  &::-webkit-scrollbar {
-    display: none;
-  }
+
 
 
   @include media-breakpoint-up(lg) {
     background-image: none;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+
+
   }
 
   header {
