@@ -24,9 +24,18 @@
   background-color: rgba($layout-darkblue-darker-2, .6);
 
   @include media-breakpoint-down(md) {
-    background-color: rgba($layout-darkblue-darker-3, .9);
+    &:after {
+      display: block;
+      position: absolute;
+      bottom: -100px;
+      height: 100px;
+      width: 100vw;
+      left: 0;
+      content: "";
+      background-color: darken($layout-darkblue-darker-1, 5);
+      pointer-events: none;
+    }
   }
-
 
   @include media-breakpoint-up(lg) {
     left: 0;
@@ -41,7 +50,7 @@
 
     &.expand {
       transform: translateX(0);
-      box-shadow: $box-shadow,$box-shadow-lg;
+      box-shadow: $box-shadow, $box-shadow-lg;
     }
   }
 
