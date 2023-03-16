@@ -161,7 +161,7 @@ $sizes: map-merge(
 //
 // Settings for the `<body>` element.
 
-$body-bg:                   $white;
+$body-bg:                   $gray-900;
 $body-color:                $gray-300;
 
 
@@ -826,7 +826,7 @@ $card-inner-border-radius:          calc(#{$card-border-radius} - #{$card-border
 $card-cap-bg:                       rgba($black, .03);
 $card-cap-color:                    null;
 $card-color:                        null;
-$card-bg:                           $white;
+$card-bg:                           $body-bg;
 
 $card-img-overlay-padding:          1.25rem;
 

@@ -18,10 +18,10 @@ $task = $app->input->getCmd('task', '');
 $itemid = $app->input->getCmd('Itemid', '');
 $sitename = $doc->getTitle();
 
-if (strpos(JURI::base(), 'localhost') !== false) {
-	$wa->registerAndUseStyle('template_Css','templates/' . $this->template . '/css/template_debug.css');
+if (strpos(JURI::base(), 'roadbikelife.de') !== false) {
+    $wa->registerAndUseStyle('rbl_template_css','/templates/' . $this->template . '/css/template.css');
 } else {
-	$wa->registerAndUseStyle('template_Css','templates/' . $this->template . '/css/template.css',['rel' => 'preload']);
+	$wa->registerAndUseStyle('rbl_template_css','/templates/' . $this->template . '/css/template.css?v='.strtotime('now'));
 }
 
 JHtml::_('jquery.framework');

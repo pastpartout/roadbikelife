@@ -28,7 +28,7 @@ $mapIdleImage = 'images/gmaps_route_images/gmaps_' . $stravaActivity->activity_j
                         data-toggle="collapse" data-target="#collapse-tours"
                         aria-expanded="true"
                         aria-controls="collapse-tours"
-                        class="h5 d-block dropdown-toggle text-center text-white"
+                        class="h5 d-block dropdown-toggle text-center text-white pt-3 pt-lg-0"
                         type="button"
                         id="dropdownToursButton" data-toggle="dropdown" data-toggle="collapse">
                     <?= count($stravaActivities) ?> Aktivitäten

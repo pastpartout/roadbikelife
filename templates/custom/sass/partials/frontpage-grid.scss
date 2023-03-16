@@ -1,8 +1,7 @@
 $paddingXLg: 7rem;
 $itemScrollTransitionLg: all 1.25s ease-in-out;
+
 html {
-
-
 
   @include media-breakpoint-up(lg) {
     flex-direction: column;
@@ -20,7 +19,7 @@ html {
 body.layout-customrblfrontpage.view-category {
   background-color: $layout-darkblue-darker-1;
   flex-grow: 1;
-  @include gradient-y($red, $layout-darkblue-darker-1, 0, 50%);
+  @include gradient-y($red, $layout-darkblue-darker-1,3rem,70% );
 
 
   &::-webkit-scrollbar {
@@ -42,9 +41,68 @@ body.layout-customrblfrontpage.view-category {
     flex-grow: 1;
   }
 
+  footer {
+    position: fixed;
+    bottom:0;
+    right:0;
+    font-size: $font-size-sm * .9;
+    display: flex;
+    justify-content: flex-end;
+    background-color: transparent;
+    padding: 0;
+    z-index: 0;
+
+    @include media-breakpoint-down(sm) {
+      display: none;
+    }
+
+    .blogListLinks {
+      display: none !important;
+    }
+
+    .col-menu {
+      overflow: hidden;
+
+      li {
+        padding: 0;
+        margin: 0;
+
+        &:first-child {
+          a {
+            border-top-left-radius: $border-radius;
+          }
+        }
+
+        a {
+          font-size: $font-size-sm * .7;
+          padding: $spacer1 ;
+          color: rgba($white,.5);
+          font-weight: $font-weight-light;
+          background-color: $layout-darkblue-darker-2;
+          transition: $transition-base;
+          letter-spacing: 0.025em;
+
+          i {
+            display: none;
+          }
+
+          &:hover {
+            background-color: $layout-darkblue-lighter-2;
+            color: $white;
+          }
+        }
+      }
+
+    }
+    .col-links {
+      display: none;
+    }
+  }
+
+
   .intro {
-    padding: $spacer1 $spacer3;
-    color: #fff;
+    padding: $spacer2  $spacer3 * 1.25;
+    color: $white;
     position: fixed;
     top: 0;
     width: 100%;
@@ -56,8 +114,11 @@ body.layout-customrblfrontpage.view-category {
       padding-left: $paddingXLg + 2rem;
     }
 
+    h1 {
+      flex-grow: 1;
+      font-weight: $font-weight-light;
+    }
     .text {
-
       @include media-breakpoint-up(lg) {
         top: 0;
         right: 0;
@@ -65,12 +126,6 @@ body.layout-customrblfrontpage.view-category {
         display: flex;
         flex-direction: row-reverse;
         align-items: center;
-
-        h1 {
-          flex-grow: 1;
-          font-weight: $font-weight-light;
-
-        }
       }
     }
   }
@@ -103,6 +158,7 @@ body.layout-customrblfrontpage.view-category {
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-bottom: $spacer2;
 
     @include media-breakpoint-up(lg) {
       width: 100%;
@@ -146,7 +202,7 @@ body.layout-customrblfrontpage.view-category {
 
   .frontpage-grid-items {
     padding: 1rem;
-    padding-top: 9rem;
+    padding-top: 10rem;
     flex-grow: 1;
     height: calc(100% - 5rem);
     display: flex;
@@ -186,6 +242,7 @@ body.layout-customrblfrontpage.view-category {
     @include media-breakpoint-down(md) {
       &:last-child {
         padding-right: 1rem;
+        min-width: calc(100% - 1.5rem);
       }
 
       .post-img-overlay > div {
@@ -223,19 +280,19 @@ body.layout-customrblfrontpage.view-category {
     > article {
       height: 100%;
       width: 100%;
-      overflow: hidden;
       display: flex;
       flex-direction: column;
       position: relative;
-      border-radius: $border-radius-lg;
       overflow: hidden;
+      border-radius: $border-radius-lg;
       box-shadow: 0 0 15px rgba($black, 0.35);
+      transform: translateZ(0);
 
       @include media-breakpoint-up(lg) {
         box-shadow: 0 0 40px rgba($black, .8);
         border-radius: $border-radius-xlg;
-        //max-height: 80%;
         margin-top: 7rem;
+        margin-bottom: 7rem;
       }
     }
 
@@ -243,6 +300,9 @@ body.layout-customrblfrontpage.view-category {
       flex-grow: 1;
       padding: 0;
       margin: 0;
+      overflow: hidden;
+      border-radius: $border-radius-lg;
+
     }
 
     .image-wrapper {
@@ -256,9 +316,10 @@ body.layout-customrblfrontpage.view-category {
       position: absolute;
       bottom: 0;
       width: 100%;
-      padding: $spacer2;
+      padding: $spacer3;
       width: 100%;
       @include gradient-y(rgba($layout-darkblue-darker-2, 0.6), rgba($layout-darkblue-darker-2, .9));
+      pointer-events: none;
 
       @include media-breakpoint-down(md) {
         background: transparent;
@@ -270,7 +331,7 @@ body.layout-customrblfrontpage.view-category {
           width: 100%;
           height: 150%;
           left: 0;
-          bottom: 0
+          bottom: -2px
         }
       }
 
@@ -329,12 +390,11 @@ body.layout-customrblfrontpage.view-category {
 
     @include media-breakpoint-down(md) {
       top:auto;
-      bottom: $spacer3 * 1.25;
+      bottom: $spacer3 ;
       align-items: center;
       flex-direction: row;
       width: 100%;
       left: 0;
-      transform: translateY(-50%);
       justify-content: center;
     }
 
@@ -352,7 +412,7 @@ body.layout-customrblfrontpage.view-category {
       min-height: $dotSize;
       border: 1px solid rgba($white, .5);
       border-radius: $dotSize;
-      margin: $dotSize * .5;
+      margin: $dotSize * .75;
       transition: $transition-base;
       transform: scale(1);
       cursor: pointer;
@@ -429,6 +489,9 @@ body.layout-customrblfrontpage.view-category {
     transform: translateY(-10%);
     transition: $itemScrollTransitionLg;
     transition-delay: .35s;
+    position: absolute;
+    bottom:0;
+    left:0;
 
     @include media-breakpoint-down(sm) {
       display: none;
@@ -436,7 +499,7 @@ body.layout-customrblfrontpage.view-category {
 
 
     @include media-breakpoint-up(lg) {
-      padding: $spacer5 0;
+      padding-bottom: 2.25rem;
     }
 
     .item-image {
@@ -450,3 +513,4 @@ body.layout-customrblfrontpage.view-category {
 
 
 }
+

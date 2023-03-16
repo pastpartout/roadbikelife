@@ -11,17 +11,16 @@ defined('_JEXEC') or die;
 require_once JPATH_BASE . '/components/com_roadbikelife/models/resizeimage.php';
 $imageModel = new RoadbikelifeModelResizeimage();
 
+JHtml::_('jquery.framework');
 $app = Factory::getApplication();
 $doc = $app->getDocument();
-$sitename = $app->getConfig('sitename');
 $wa = $doc->getWebAssetManager();
+$doc = JFactory::getDocument();
+$wa->registerAndUseScript('rbl_frontpage','templates/custom/js/frontpage.js');
 
-$component = Factory::getApplication()->bootComponent('com_fields');
-$fieldModel = $component->getMVCFactory()->createModel('Field', 'Administrator');
-
+$fieldModel = Factory::getApplication()->bootComponent('com_fields')->getMVCFactory()->createModel('Field', 'Administrator');
 $items = $this->items;
 $isSmartphone = ($app->client->mobile === true);
-
 
 function short_str($str, $max = 350)
 {
@@ -43,9 +42,6 @@ foreach ($items as $key => $article) {
     }
 }
 
-JHtml::_('jquery.framework');
-$doc = JFactory::getDocument();
-$doc->addScript('templates/custom/js/frontpage.js');
 ?>
 <section class="frontpage-grid">
     <div class="intro">
@@ -69,7 +65,9 @@ $doc->addScript('templates/custom/js/frontpage.js');
                 <div class="frontpage-grid-item  <?php if ($key === 0): ?>active<?php endif ?>  <?php if ($key+1 === count($items)): ?>last<?php endif ?> <?php if ($key === 0): ?>first<?php endif ?>"
                      id="item-<?= $item->id ?>" data-sectionid="<?= $item->id ?>">
                     <?php echo JLayoutHelper::render('rbl.blog.post_item_fp', ['item' => $item]); ?>
-                    <?php echo JLayoutHelper::render('rbl.blog.post_item_fp_next', ['nextItem' => $items[$key + 1]]); ?>
+                    <?php if ($this->pagination->pagesCurrent < $this->pagination->pagesTotal): ?>
+                        <?php echo JLayoutHelper::render('rbl.blog.post_item_fp_next', ['nextItem' => $items[$key + 1]]); ?>
+                    <?php endif ?>
                     <?php if ($key === 0): ?>
                         <a class="btn btn-next-item d-flex d-lg-none fade" style="line-height: 1">
                             <i class="fal fa-2x fa-angle-right fa-fw"></i>
@@ -81,3 +79,7 @@ $doc->addScript('templates/custom/js/frontpage.js');
     </div>
     <?php  echo $this->pagination->getPaginationLinks('rbl.pagination.frontpage', ['items' => $items]);  ?>
 </section>
+<footer>
+    <?php $metamenuModule = JModuleHelper::getModuleById('95'); ?>
+    <?= JModuleHelper::renderModule($metamenuModule) ?>
+</footer>

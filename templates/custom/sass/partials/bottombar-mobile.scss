@@ -4,6 +4,10 @@
   &.show {
     pointer-events: all;
   }
+
+  @include media-breakpoint-down(md) {
+    display: none;
+  }
 }
 
 .mobileBottomBar {
@@ -11,15 +15,14 @@
   left: 0;
   bottom: unquote('env(safe-area-inset-bottom)');
   width: 100vw;
-  //background-color: rgba($gray-700, .3);
-  //backdrop-filter: blur(55px);
-  background-color: rgba($layout-darkblue, 1);
   display: flex;
   flex-direction: column;
-  z-index: 999999;
+  z-index: $zindex-modal;
   color: $white;
   height: 0;
   transition: $transition-base;
+  background-color: rgba($layout-darkblue-darker-2, .6);
+
 
   @include media-breakpoint-up(lg) {
     left: 0;
@@ -34,8 +37,7 @@
 
     &.expand {
       transform: translateX(0);
-      box-shadow: 2rem 0 1.35rem 1rem rgba(0, 0, 0, .7);
-
+      box-shadow: $box-shadow,$box-shadow-lg;
     }
   }
 
@@ -49,9 +51,9 @@
     top: $mobileBarNavHeightSm * -1;
     padding: 0;
     display: flex;
-
-    background-color: rgba($layout-darkblue-darker-2, .95);
     //backdrop-filter: blur(15px);
+
+
 
     @include media-breakpoint-up(lg) {
       display: flex;
@@ -69,7 +71,6 @@
     .nav-item, .btnLike {
       color: $white;
       padding: 0 $spacer3;
-      display: block;
       text-align: center;
       align-items: center;
       position: relative;
@@ -82,19 +83,18 @@
       text-decoration: none;
 
       @include media-breakpoint-down(sm) {
-        padding: 0 $spacer1;
+        padding: $spacer1;
         flex-grow: 1;
-        max-width: 3rem;
-
+        font-size: $font-size-sm;
+        max-width: none;
       }
 
       @include media-breakpoint-up(lg) {
-        width: 3rem;
-        height: 3rem;
+        width: $mobileBarNavHeightSm;
+        height: $mobileBarNavHeightSm;
         flex-grow: 0;
         border-right: 0;
         border-bottom: 1px solid darken($layout-darkblue-darker-2, 5%);
-
       }
 
 
@@ -113,11 +113,10 @@
     }
 
     .mobileBottomBarToggle {
-      opacity: 1;
       pointer-events: all;
       margin-left: auto;
       border-right: 0;
-      opacity: 0;
+      opacity: .2;
 
       @include media-breakpoint-up(lg) {
         margin-top: auto;
@@ -131,6 +130,22 @@
     .nav-item-about {
       background-color: $red;
       padding: $spacer2;
+      display: flex;
+
+      svg {
+        flex-grow: 1;
+        max-width: 85%;
+        max-height: 85%;
+
+        @include media-breakpoint-down(md) {
+          max-width: 70%;
+          max-height: 70%;
+        }
+      }
+
+      @include media-breakpoint-down(md) {
+        background-color: transparent;
+      }
     }
 
     .btnLike {
@@ -165,6 +180,8 @@
   }
 
   &.expand {
+    -webkit-backdrop-filter: blur(30px);
+    backdrop-filter: blur(30px);
 
     .nav-item-about {
       background-color: transparent;

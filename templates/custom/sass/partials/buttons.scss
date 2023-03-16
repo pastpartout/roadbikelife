@@ -8,6 +8,10 @@
     }
 }
 
+.btn-layout-dark {
+    @include button-variant($layout-darkblue-darker-1,$layout-darkblue-darker-1,$primary )
+}
+
 .btn-primaryGradient {
     @include primaryGradient;
     border-color: darken($purple, 2%);

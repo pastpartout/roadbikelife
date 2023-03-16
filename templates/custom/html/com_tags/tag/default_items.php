@@ -76,7 +76,7 @@ JFactory::getDocument()->addScriptDeclaration("
                 <?php $images = json_decode($item->core_images); ?>
 
                 <div class="col-md-6 post postLink p-3 mb-4" href="<?php echo JRoute::_($item->link); ?>">
-                    <a class="postLinkItem boxed boxed-light" href="<?php echo JRoute::_($item->link); ?>">
+                    <a class="postLinkItem boxed boxed-dark" href="<?php echo JRoute::_($item->link); ?>">
                         <div class="item-image mb-3 post-image post-image-16-9  ">
                             <div class="image-wrapper">
                                 <?= JLayoutHelper::render('joomla.blog.post_image_intro', $item);?>
@@ -94,10 +94,9 @@ JFactory::getDocument()->addScriptDeclaration("
                             <div class="tag-body postLinkText">
                                 <?php echo JHtml::_('string.truncate', strip_tags($item->core_body), $this->params->get('tag_list_item_maximum_characters')); ?>
                             </div>
-                            <div class="mt-3 btn btn-light btn-sm btnReadMore"
+                            <div class="mt-3 btn btn-layout-dark"
                                  href="<?php echo JRoute::_($item->link) ?>">
                                 <i class="fa fa-angle-right icon-margin-right"></i><?php echo JText::_('READ_MORE'); ?>
-
                             </div>
                         </div>
                     </a>
