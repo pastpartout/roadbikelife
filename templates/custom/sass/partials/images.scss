@@ -223,10 +223,9 @@
 
   .subtitle {
     display: block;
-    font-size: small;
+    font-size: $font-size-sm;
     color: inherit;
     padding: $spacer3 $spacer2 $spacer2;
-    font-style: italic;
   }
 }
 
