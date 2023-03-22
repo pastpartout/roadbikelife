@@ -26,7 +26,7 @@ $wa->registerAndUseScript('offcanvas_js', JUri::base().'modules/mod_bottom_bar/a
             <a class="nav-item nav-item-about d-flex"
                data-toggle="tab" href="#nav-about" role="tab"
                aria-controls="nav-tabContent">
-                <svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" class="w-100 h-100" style="enable-background:new 0 0 53.6 60"
+                <svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" style="enable-background:new 0 0 53.6 60"
                      viewBox="0 0 53.6 60"><path
                             d="M26.9.4 12.3 8.8c8.8 6 13.7 17.2 12.5 27.9A29.5 29.5 0 0 1 16 53.8l-5.5-3.2c4.2-3.7 7.5-8.6 8.2-13.7 1.4-9.6-3.4-20.5-12.4-24.6l-5.3 3v29.9l25.9 14.9 25.9-14.9V15.3L26.9.4zm14.3 16.3c-.3 1.8-1.9 5-2 7.4-.1 2.4.7 6.1-2.7 9.3-3.4 3.3-3.4 9.6-2.7 11.9l1.1 3.8c.2.6-.1 1.2-.4 1.4-.3.2-.6 0-.9-.8 0 0-4.1-7.1-3.2-12.4 1-5.3 4.8-4.8 5.6-8.2 1.1-4.8-2.3-6-3.5-5-1 .8-3.4 4.2-3.4 4.2-.2.3-.6.1-.6-.2-1-7.1-4.2-11.8-4.2-11.8-.3-.5.2-1 .7-.8.7.4 1.4.7 1.8.7 2.2.3 7.4 1.1 8.9-2 1.4-2.9 3-2.2 4.2-1.4 1.4.9 1.6 2.1 1.3 3.9z"
                             style="fill:#fff"/></svg>
@@ -62,7 +62,7 @@ $wa->registerAndUseScript('offcanvas_js', JUri::base().'modules/mod_bottom_bar/a
                 <?= $modulesCollected[$key]['html'] ?>
             </div>
         <?php endforeach; ?>
-        <div class="tab-pane fade article-modules pr-3" role="tabpanel"
+        <div class="tab-pane fade article-modules" role="tabpanel"
              id="nav-about">
             <?php if(JUri::base() !== JUri::current()): ?>
                 <a class="text-white btn-sm mb-3 text-center btn-home d-block" href="<?=JUri::base() ?>">

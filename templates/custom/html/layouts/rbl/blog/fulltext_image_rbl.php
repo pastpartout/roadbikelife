@@ -13,12 +13,11 @@ JHtml::addIncludePath(JPATH_COMPONENT . '/helpers/html');
 extract($displayData);
 $params = $item->params;
 $imageModel = new RoadbikelifeModelResizeimage();
-
 $images = json_decode($item->images);
 if (!isset($aspectRatio)) $aspectRatio = ''
 ?>
-<?php if (!empty($images->image_intro)) : ?>
-    <?php $imgfloat = empty($images->float_intro) ? $params->get('float_intro') : $images->float_intro; ?>
+<?php if (!empty($images->image_fulltext)) : ?>
+    <?php $imgfloat = empty($images->float_fulltext) ? $params->get('float_fulltext') : $images->float_fulltext; ?>
     <div class="item-image post-image post-image-<?= $aspectRatio ?> no-hover-zoom">
         <?php if ($params->get('link_titles') && $params->get('access-view')) : ?>
             <a class="image-wrapper"
@@ -53,11 +52,11 @@ if (!isset($aspectRatio)) $aspectRatio = ''
         <?php else : ?>
             <div class="image-wrapper">
                 <img
-                    <?php if ($images->image_intro_caption) : ?>
-                        <?php echo 'class="caption"' . ' title="' . htmlspecialchars($images->image_intro_caption, ENT_COMPAT, 'UTF-8') . '"'; ?>
+                    <?php if ($images->image_fulltext_caption) : ?>
+                        <?php echo 'class="caption"' . ' title="' . htmlspecialchars($images->image_fulltext_caption, ENT_COMPAT, 'UTF-8') . '"'; ?>
                     <?php endif; ?>
-                        src="<?php echo htmlspecialchars($images->image_intro, ENT_COMPAT, 'UTF-8'); ?>"
-                        alt="<?php echo htmlspecialchars($images->image_intro_alt, ENT_COMPAT, 'UTF-8'); ?>"
+                        src="<?php echo htmlspecialchars($images->image_fulltext, ENT_COMPAT, 'UTF-8'); ?>"
+                        alt="<?php echo htmlspecialchars($images->image_fulltext_alt, ENT_COMPAT, 'UTF-8'); ?>"
                         itemprop="thumbnailUrl"/>
             </div>
         <?php endif; ?>

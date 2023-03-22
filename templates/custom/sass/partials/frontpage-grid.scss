@@ -1,4 +1,6 @@
 $paddingXLg: 7rem;
+$textColWidth: 25vw;
+$textColWidthMd: 35vw;
 $itemScrollTransitionLg: all 1.25s ease-in-out;
 
 html {
@@ -302,28 +304,39 @@ body.layout-customrblfrontpage.view-category {
       padding: 0;
       margin: 0;
       overflow: hidden;
-      border-radius: $border-radius-lg;
+
+      @include media-breakpoint-up(lg) {
+        max-width: calc(100% - #{$textColWidthMd});
+      }
+
+      @include media-breakpoint-up(xl) {
+        max-width: calc(100% - #{$textColWidth});
+      }
 
     }
 
     .image-wrapper {
-      border: 0 !important;
+      //border: 0 !important;
       background-color: $black;
       transition: $itemScrollTransitionLg;
-
     }
 
     .post-img-overlay {
       position: absolute;
       bottom: 0;
+      right: 0;
       width: 100%;
-      padding: $spacer3;
-      width: 100%;
-      @include gradient-y(rgba($layout-darkblue-darker-2, 0.6), rgba($layout-darkblue-darker-2, .9));
-      pointer-events: none;
+      height: 100%;
+      @include gradient-radial(rgba($layout-darkblue-darker-2, 0.5), rgba($layout-darkblue-darker-2, .85));
+
+      > div {
+        max-height: 100%;
+      }
 
       @include media-breakpoint-down(md) {
         background: transparent;
+        padding: $spacer3;
+        height: auto;
 
         &:before {
           @include gradient-y(rgba($black, 0), rgba($black, 1));
@@ -337,18 +350,19 @@ body.layout-customrblfrontpage.view-category {
       }
 
       @include media-breakpoint-up(lg) {
-        max-width: 20rem;
+        max-width: $textColWidthMd;
+
+      }
+
+
+      @include media-breakpoint-up(xl) {
+        max-width: $textColWidth;
         right: 0;
         top: 0;
         padding: $spacer4;
-        backdrop-filter: blur(5px);
+        backdrop-filter: blur(15px);
         display: flex;
         flex-direction: column;
-      }
-
-      @include media-breakpoint-up(xl) {
-        min-width: 20rem;
-        max-width: 30rem;
       }
 
       > div {
@@ -364,19 +378,41 @@ body.layout-customrblfrontpage.view-category {
         display: flex;
         flex-direction: column;
         align-items: center;
+        overflow: auto;
+        @include rblSscrollbar();
 
         .btn-primary {
           margin-top: auto;
           max-width: 20rem;
-          box-shadow: 0 0 25px rgba(213, 35, 54, 0.54);
+          box-shadow: $box-shadow-sm, $box-shadow;
         }
       }
 
       @include media-breakpoint-down(md) {
-
+        .btn-primary {
+          background-color: transparent;
+          color: inherit;
+          //@include button-size($btn-padding-y-sm, $btn-padding-x-sm, $btn-font-size-sm, $btn-line-height-sm, $btn-border-radius-sm);
+          @include button-outline-variant($white,$primary);
+          border-color: rgba($white,.2);
+          //background-color: rgba($black,.15);
+        }
       }
 
+
+
     }
+  }
+
+  .post-img-overlaybg {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 200%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+    pointer-events: none;
   }
 
 
@@ -503,12 +539,6 @@ body.layout-customrblfrontpage.view-category {
       padding-bottom: 2.25rem;
     }
 
-    .item-image {
-      width: 100%;
-      max-width: 5rem;
-      border-radius: $border-radius;
-      margin-right: $spacer4;
-    }
   }
 
 

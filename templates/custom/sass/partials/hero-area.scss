@@ -13,7 +13,7 @@
     picture {
         display: block;
         position: relative;
-        min-height: calc(100vh - 3rem);
+        min-height: calc(90vh - 4rem);
 
         @include media-breakpoint-up(md) {
             max-height: 100vh;
@@ -63,41 +63,46 @@
     .post-img-overlay {
         @include post-img-overlay;
         max-height: 100%;
+        height: 100%;
         padding: 0;
-        background: linear-gradient(rgba($layout-darkblue, 0) 0, rgba($layout-darkblue, 1));
+        @include gradient-y(rgba($layout-darkblue, 0),rgba($layout-darkblue, 1), 35%,100%);
         pointer-events: none;
         display: flex;
 
-        @include media-breakpoint-down(md) {
-            &:before {
-                font-family: 'Font Awesome 5 Pro';
-                position: absolute;
-                right: $spacer3;
-                bottom: $spacer4;
-                display: block;
-                content: fa-content($fa-var-angle-double-down);
-                animation: downSwing infinite ease forwards;
-                animation-duration: 5s;
-                z-index: 3;
-                font-weight: 100;
-                font-size: 1.5rem;
-                pointer-events: none;
-                animation-delay: 3s;
-            }
+
+        &:before {
+            font-family: 'Font Awesome 5 Pro';
+            position: absolute;
+            right: $spacer3;
+            bottom: $spacer3;
+            display: block;
+            content: fa-content($fa-var-angle-double-down);
+            animation: downSwing infinite ease forwards;
+            animation-duration: 5s;
+            z-index: 3;
+            font-weight: 100;
+            font-size: 1.5rem;
+            pointer-events: none;
+            animation-delay: 3s;
         }
 
         @include media-breakpoint-up(md) {
             padding-right: 0;
-            height: 70%;
             align-items: flex-end;
-            padding-left: $spacer5 *1.5;
+            padding-left: $spacer4;
         }
+
+        @include media-breakpoint-up(xl) {
+            padding-left: $spacer5 *1.5;
+
+        }
+
         @include media-breakpoint-down(sm) {
-            height: auto;
             padding: $spacer3;
             padding-bottom: 0;
             z-index: 2;
         }
+
 
         .item-image {
 

@@ -56,11 +56,9 @@ switch ((string)$item->text) {
 $link = 'href="' . $item->link . '"';
 
 ?>
-<?php if($disabled === false):?>
     <li class="page-item">
         <a aria-label="<?php echo $aria; ?>" <?php echo $link; ?> class="fade hasTooltip <?php if($disabled === false):?> page-nav-link page-nav-link-<?= $class; ?> text-white<?php else: ?>text-white-50<?php endif ?>" <?php if($disabled === false):?> title="<?= $aria ?>"<?php endif ?>>
             <i class="fal fa-2x fa-fw fa-<?php echo $icon; ?>"></i>
         </a>
     </li>
-<?php endif ?>
 

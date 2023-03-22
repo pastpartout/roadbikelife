@@ -19,7 +19,7 @@ $itemid = $app->input->getCmd('Itemid', '');
 $sitename = $doc->getTitle();
 
 if (strpos(JURI::base(), 'roadbikelife.de') !== false) {
-    $wa->registerAndUseStyle('rbl_template_css','/templates/' . $this->template . '/css/template.css');
+    $wa->registerAndUseStyle('rbl_template_css',JUri::base().'templates/' . $this->template . '/css/template.css');
 } else {
 	$wa->registerAndUseStyle('rbl_template_css','/templates/' . $this->template . '/css/template.css?v='.strtotime('now'));
 }

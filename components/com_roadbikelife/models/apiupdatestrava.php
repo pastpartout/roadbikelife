@@ -602,13 +602,42 @@ class RoadbikelifeModelApiupdatestrava extends RoadbikelifeModelRoadbikelife
 			mkdir($imageDir, $this->mkDirMode, true);
 		}
 
-		$imageUrl    = $this->getGmapsImageUrl('200x200', $polyline);
-		$sourceImage = self::createImageFromFile($imageUrl);
-		imagepng($sourceImage, $imageDir . '/gmaps_' . $filename . '.png');
-		$imageUrl    = $this->getGmapsImageUrl('1000x750', $polyline);
-		$sourceImage = self::createImageFromFile($imageUrl);
-		imagepng($sourceImage, $imageDir . '/gmaps_' . $filename . '_large.png');
+
+
+        self::downloadImage($this->getGmapsImageUrl('200x200', $polyline),$imageDir . '/gmaps_' . $filename . '.png' );
+        self::downloadImage($this->getGmapsImageUrl('1000x750', $polyline),$imageDir . '/gmaps_' . $filename . '_large.png' );
+
+
+
 	}
+
+    private static function downloadImage($url,$filename){
+        if(file_exists($filename)){
+            @unlink($filename);
+        }
+        $fp = fopen($filename,'w');
+        if($fp){
+            $ch = curl_init ($url);
+            curl_setopt($ch, CURLOPT_HEADER, 0);
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+            curl_setopt($ch, CURLOPT_BINARYTRANSFER, 1);
+            $result = parse_url($url);
+            curl_setopt($ch, CURLOPT_REFERER, $result['scheme'].'://'.$result['host']);
+            curl_setopt($ch, CURLOPT_USERAGENT,'Mozilla/5.0 (Windows NT 10.0; WOW64; rv:45.0) Gecko/20100101 Firefox/45.0');
+            $raw=curl_exec($ch);
+            curl_close ($ch);
+            if($raw){
+                fwrite($fp, $raw);
+            }
+            fclose($fp);
+            if(!$raw){
+                @unlink($filename);
+                return false;
+            }
+            return true;
+        }
+        return false;
+    }
 
 	protected function getGmapsImageUrl($size, $polyline)
 	{
@@ -617,20 +646,13 @@ class RoadbikelifeModelApiupdatestrava extends RoadbikelifeModelRoadbikelife
 		return $imageUrl;
 	}
 
-	private function createImageFromFile($filename, $use_include_path = false, $context = null, &$info = null)
+	private function createImageFromFile($filename)
 	{
-		// try to detect image informations -> info is false if image was not readable or is no php supported image format (a  check for "is_readable" or fileextension is no longer needed)
-		$info          = ["image" => getimagesize($filename)];
-		$info["image"] = getimagesize($filename);
-		if ($info["image"] === false) throw new InvalidArgumentException("\"" . $filename . "\" is not readable or no php supported format");
+
+        $imageRes = imagecreatefromstring(file_get_contents($filename));
+		if (!isset($imageRes) ||!$imageRes) throw new InvalidArgumentException("\"" . $filename . "\" is not readable or no php supported format");
 		else
 		{
-			// fetches filecontent from url and creates an image ressource by string data
-			// if file is not readable or not supported by imagecreate FALSE will be returnes as $imageRes
-			$imageRes = imagecreatefromstring(file_get_contents($filename, $use_include_path, $context));
-			// export $http_response_header to have this info outside of this function
-			if (isset($http_response_header)) $info["http"] = $http_response_header;
-
 			return $imageRes;
 		}
 	}

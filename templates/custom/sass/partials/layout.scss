@@ -78,7 +78,7 @@ a:focus, button, button:focus {
 
 
 html.desktop body,html.desktop .fancybox-slide,.textCol .wrapper {
-  @include cssScrollbar(darken($primary,5), $layout-darkblue-darker-1, $spacer2 * 1.125, 0);
+  @include cssScrollbar(darken($primary,15), $layout-darkblue-darker-1, $spacer2 * 1.125, 0);
 
 }
 

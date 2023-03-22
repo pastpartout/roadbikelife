@@ -33,9 +33,9 @@ $(document).ready(function () {
         sectionsObserver.observe (sections);
     });
 
-    setTimeout(function() {
-        document.querySelector('.frontpage-grid-items .btn-next-item').classList.add('show');
-    }, 3000);
+    // setTimeout(function() {
+    //     document.querySelector('.frontpage-grid-items .btn-next-item').classList.add('show');
+    // }, 3000);
 
     $('.frontpage-grid-items .btn-next-item').on('touchstart click',function() {
         console.log($('.frontpage-grid-dots li:nth-child(2) a'));

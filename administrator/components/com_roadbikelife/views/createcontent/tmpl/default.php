@@ -61,11 +61,9 @@ if ($detect->isMobile() && !$detect->isTablet()) {
                     <hr class="clear">
                     <h4>Contentpluginvorlagen</h4>
                     <p>Bild im Content:</p>
-                    <pre>{contentimage images/content/42/123.jpg|Die "Kinderecke"|sm-right}</pre>
+                    <pre>{contentimage images/content/42/123.jpg|Caption|sm-right}</pre>
                     <p>Link zu Gallereibild im Content:</p>
                     <pre>{contentimagelink 4|Die "Kinderecke"|sm-right} </pre>
-                    <p>Karte:</p>
-                    <pre> {googlemap} </pre>
                     <hr>
                     <a class="btn btn-primary" href="<?= JRoute::_('index.php?option=com_roadbikelife&task=createcontent.deleteimagecache&id=' . $this->item->id); ?>" target="_blank">
                         Bildercache leeren
@@ -78,10 +76,8 @@ if ($detect->isMobile() && !$detect->isTablet()) {
                     <?php endif ?>
                 </div>
                 <div class="col-lg-3">
-<!--                    --><?//= $this->form->getGroup($extraFieldsName)['com_fields_stravaactivityid']->s(); ?>
                     <?= $this->form->getGroup($extraFieldsName)['com_fields_stravaactivityid']->renderField(); ?>
-                    <?= $this->form->getGroup($extraFieldsName)['com_fields_komooot_url']->renderField(); ?>
-                    <?= $this->form->getGroup($extraFieldsName)['com_fields_beitrag_verstecken']->renderField(); ?>
+<!--                    --><?php //= $this->form->getGroup($extraFieldsName)['com_fields_beitrag_verstecken']->renderField(); ?>
                     <?php foreach ($this->form->getFieldset('general_sidebar') as $field) : ?>
                         <?php echo $field->renderField(); ?>
                     <?php endforeach; ?>
@@ -99,22 +95,6 @@ if ($detect->isMobile() && !$detect->isTablet()) {
                             <label id="images_image_intro-lbl" for="images_image_intro">
                                 Volltext Bild</label>
                         </div>
-			            <?php if ($this->item->images['image_fulltext'] != ''): ?>
-
-                            <div class="controls">
-                                <div class="thumbnail mb-3">
-                                    <div class="image-scroller">
-                                        <img style="object-position: center <?= $this->form->getGroup($extraFieldsName)['com_fields_image_fulltext_position']->value; ?>"
-                                             class="img-fluid feature-image"
-                                             src="<?= JURI::base().'../' . $this->item->images['image_fulltext'] ?>"/>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div <?php if ($isSmartphone === false): ?> class="hide"<?php endif; ?>>
-					            <?= $this->form->getGroup($extraFieldsName)['com_fields_image_fulltext_position']->renderField(); ?>
-                            </div>
-			            <?php endif ?>
                     </div>
                     <div class="control-group">
                         <div class="controls">

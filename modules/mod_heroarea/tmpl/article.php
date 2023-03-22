@@ -1,13 +1,13 @@
 <?php
+/** @var object $images */
+/** @var \Joomla\Component\Content\Administrator\Table\ArticleTable $article */
+
 defined('JPATH_BASE') or die;
 require_once JPATH_BASE . '/components/com_roadbikelife/models/resizeimage.php';
 $imageModel = new RoadbikelifeModelResizeimage();
-
-
 ?>
 <section class="hero-area-blog <?php if ($images->image_fulltext == ''): ?>default-image<?php endif ?>">
     <a href="#article-text">
-
     <picture>
 
         <?php if ($images->image_fulltext != ''): ?>
@@ -79,21 +79,15 @@ $imageModel = new RoadbikelifeModelResizeimage();
                 <?php endif ?>
             />
         <?php endif ?>
-
     </picture>
     </a>
-
-
-    <!--    <h3 class="h6 rblHeroAreaHeadline d-none d-lg-block">-->
-    <!--        Der Rennrad Blog aus Leipzig-->
-    <!--    </h3>-->
     <?php if ($article->catid == 8): ?>
         <div class="post-img-overlay">
-            <div class="row w-100 align-items-center">
+            <div class="row w-100 align-items-end">
                 <div class="col-md-6 col-lg-7">
                     <div class="page-header">
-                        <div class="">
-                            <i class="fal fa-calendar text-white-50 icon-margin-right"></i>
+                        <div class="mb-2">
+                            <i class="fal fa-calendar icon-margin-right"></i>
                             <time datetime="
             <?php echo JHtml::_('date', $article->publish_up, 'c'); ?>" itemprop="datePublished">
                                 <?php echo JHtml::_('date', $article->publish_up, JText::_('DATE_FORMAT_LC4')); ?>
@@ -112,7 +106,6 @@ $imageModel = new RoadbikelifeModelResizeimage();
                     ?>
                 </div>
             </div>
-
         </div>
     <?php endif ?>
 </section>

@@ -46,7 +46,7 @@ function PopupCenter(pageURL, title, w, h) {
 <div id="article-text" class="item-page <?php echo $this->pageclass_sfx; ?> <?php if ($stravaActivityId > 0): ?>stravaActivityPost<?php endif ?>">
     <div class="d-flex flex-wrap">
         <div class="articleCol <?php if ($stravaActivityId > 0): ?>col-lg-7 hasSidebar<?php endif ?>">
-            <h2 class="h2 font-weight-light">
+            <h2>
                 <?= $fields['2']->value; ?>
             </h2>
 
@@ -137,17 +137,15 @@ function PopupCenter(pageURL, title, w, h) {
                     </li>
                 </ul>
             </div>
-            <div class="module-wrapper-dark-rounded">
-                <div class="row">
-                    <div class="col-auto col-md-3 mb-3 mb-md-0">
-                        <?= JLayoutHelper::render('joomla.blog.btn_like', $this->item); ?>
-                    </div>
-                    <div class="col-auto col-md-9">
-                        <?php if ($info == 0 && $params->get('show_tags', 1) && !empty($this->item->tags->itemTags)) : ?>
-                            <?php $this->item->tagLayout = new JLayoutFile('joomla.content.tags_rbl'); ?>
-                            <?php echo $this->item->tagLayout->render($this->item->tags->itemTags); ?>
-                        <?php endif; ?>
-                    </div>
+            <div class="row">
+                <div class="col-auto col-md-3 mb-3 mb-md-0">
+                    <?= JLayoutHelper::render('joomla.blog.btn_like', $this->item); ?>
+                </div>
+                <div class="col-auto col-md-9">
+                    <?php if ($info == 0 && $params->get('show_tags', 1) && !empty($this->item->tags->itemTags)) : ?>
+                        <?php $this->item->tagLayout = new JLayoutFile('joomla.content.tags_rbl'); ?>
+                        <?php echo $this->item->tagLayout->render($this->item->tags->itemTags); ?>
+                    <?php endif; ?>
                 </div>
             </div>
             <?php echo $this->item->event->afterDisplayContent; ?>

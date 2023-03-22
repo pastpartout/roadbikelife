@@ -36,7 +36,7 @@ function short_str($str, $max = 350)
 }
 
 foreach ($items as $key => $article) {
-    $article->introtext = short_str($article->introtext, 300);
+    $article->introtext = short_str($article->introtext, 350);
     if ($fieldModel->getFieldValue(8, $article->id) == '1' && JFactory::getApplication()->input->get('show_unpublished', '0') == '0') {
         unset($items[$key]);
     }
@@ -51,7 +51,7 @@ foreach ($items as $key => $article) {
                     <?= file_get_contents(JPATH_BASE . '/templates/custom/img/logo_white.svg') ?>
                 </a>
             </div>
-            <h1 class="h2 mb-2 font-weight-light">
+            <h1 class="h3 mb-2 font-weight-light">
                 <?= $this->params->get('intro_heading') ?>
             </h1>
             <div class="small collapse">
