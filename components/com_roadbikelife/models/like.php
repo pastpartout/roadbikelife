@@ -65,6 +65,27 @@ class RoadbikelifeModelLike extends RoadbikelifeModelRoadbikelife
     }
 
 
+    public function getCommentsCount(int|string $id) {
+        $tableName = '#__comment';
+        $app = JFactory::getApplication();
+
+        if ($id !== false && $id !== false) {
+            $db = JFactory::getDbo();
+            $query = $db->getQuery(true);
+            $query->select('COUNT(id)');
+            $query->from($db->quoteName($tableName));
+            $query->where(array($db->quoteName('published') . ' = 1'));
+            $query->where(array($db->quoteName('contentid') . ' = ' . $db->quote($id)));
+            $db->setQuery($query);
+            $result = $db->loadResult();
+
+            if($result) {
+                return (int)$result;
+            } else {
+                return 0;
+            }
+        }
+    }
     public function getLikesCount($id=false,$type=false) {
         $tableName = '#__likes';
         $app = JFactory::getApplication();

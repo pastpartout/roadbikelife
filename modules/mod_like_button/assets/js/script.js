@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    $('.btnLike').each(function (){
+    $('.btn-Likes').each(function (){
         $btnLike = $(this);
         var contentId = $btnLike.attr('data-content-id');
         var type = $btnLike.attr('data-type');
@@ -8,7 +8,7 @@ $(document).ready(function () {
             $btnLikeClicked = $(this);
             $btnLikeClicked.addClass('liked');
             var number =   $btnLikeClicked.find('.number').text();
-            $btnLikeClicked.find('.content').text(parseInt(number) + 1 + ' Likes');
+            $btnLikeClicked.find('.content').text(parseInt(number) + 1);
 
             $.ajax({
                 url: window.baseUrl + "component/roadbikelife/like/" + type + "/" + contentId,

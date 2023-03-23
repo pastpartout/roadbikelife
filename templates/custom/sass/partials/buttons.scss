@@ -59,25 +59,38 @@
     padding: $spacer1*.5  $spacer2;
     font-size: $font-size-sm;
 }
-.btnLike {
-    transform: translate3d(0, 0, 0);
-    box-shadow: $box-shadow;
-    @extend .badge;
-    border-radius: $border-radius-sm;
-    background-color: $white;
 
-    span {
-        @include text-gradient;
-    }
+.btn-Likes,.btn-likes-and-comments-count {
+    transform: translate3d(0, 0, 0);
+    @extend .badge;
+    border-radius: $border-radius;
+    background-color: $white;
+    color: $primary;
 
     &.liked {
         pointer-events: none;
 
         i {
             font-weight: $font-weight-bolder;
-            background-color: $primary;
         }
     }
+
+    .btn-likes-and-comments & {
+        background-color: transparent;
+        color: $white;
+        box-shadow: none;
+
+        .btn {
+            color: $white;
+
+        }
+    }
+}
+
+.btn-likes-and-comments {
+    border-radius: $border-radius;
+    background-color: rgba($white,.1);
+    display: inline-block;
 }
 
 .btnStrava {

@@ -19,12 +19,11 @@ defined('_JEXEC') or die;
         <hr>
         <div class="followBtnWrapper text-center">
             <div class="mb-3">
-                <?php echo JLayoutHelper::render('joomla.blog.btn_strava_follow_me'); ?>
+                <?php echo JLayoutHelper::render('rbl.common.btn_strava_follow_me'); ?>
             </div>
             <div class="mb-3">
-                <?php echo JLayoutHelper::render('joomla.blog.btn_strava_follow_club'); ?>
+                <?php echo JLayoutHelper::render('rbl.common.btn_strava_follow_club'); ?>
             </div>
         </div>
-
     </div>
 </div>

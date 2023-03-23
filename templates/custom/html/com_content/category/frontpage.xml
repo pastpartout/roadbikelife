@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <metadata>
-	<layout title="roadbikelife Frontpage Blog" option="rblfrontpage">
-		<help key = "JHELP_MENUS_MENU_ITEM_ARTICLE_CATEGORY_BLOG" />
-		<message>
-			<![CDATA[COM_CONTENT_CATEGORY_VIEW_BLOG_DESC]]>
-		</message>
+	<layout title="roadbikelife Frontpage" option="frontpage">
+
 	</layout>
 
 	<!-- Add fields to the request variables for the layout. -->

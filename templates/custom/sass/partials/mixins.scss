@@ -93,15 +93,10 @@
 }
 
 @mixin post-img-overlay {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  color: $white;
-  padding: $spacer3;
-  @include gradient-y(rgba($layout-darkblue, 0), rgba($layout-darkblue-darker-2, .95));
 
-  .btnLike {
-    background-color: $white;
+
+  .btn-Likes {
+    background-color: rgba($white,.3);
   }
 }
 

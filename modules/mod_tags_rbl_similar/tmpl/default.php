@@ -28,7 +28,7 @@ defined('_JEXEC') or die;
                         <a class="postLinkItem boxed boxed-dark" href="<?php echo JRoute::_($item->link); ?>">
                             <div class="item-image mb-3 post-image post-image-16-9">
                                 <div class="image-wrapper">
-                                    <?= JLayoutHelper::render('rbl.blog.post_image_intro_medium', $item);?>
+                                    <?= JLayoutHelper::render('rbl.common.image_intro_medium', $item);?>
                                 </div>
                             </div>
                             <div class="inner">

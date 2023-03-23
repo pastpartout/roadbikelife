@@ -31,6 +31,7 @@ $likesCount = $RoadbikelifeModelLike->getLikesCount($this->item->id, 'content');
 
 $likesDisabled = $RoadbikelifeModelLike->getLikesIsDisabled($this->item->id, 'content');
 $isSmartphone = ($app->client->mobile === true);
+$shareurl = urlencode(JUri::current());
 
 
 $stravaActivityId = (int)$fields['5']->rawvalue;
@@ -46,6 +47,14 @@ function PopupCenter(pageURL, title, w, h) {
 <div id="article-text" class="item-page <?php echo $this->pageclass_sfx; ?> <?php if ($stravaActivityId > 0): ?>stravaActivityPost<?php endif ?>">
     <div class="d-flex flex-wrap">
         <div class="articleCol <?php if ($stravaActivityId > 0): ?>col-lg-7 hasSidebar<?php endif ?>">
+
+            <p class="small mb-2">
+                <i class="fal fa-calendar icon-margin-right"></i>
+                <time datetime="
+            <?php echo JHtml::_('date', $article->publish_up, 'c'); ?>" itemprop="datePublished">
+                    <?php echo JHtml::_('date', $article->publish_up, JText::_('DATE_FORMAT_LC4')); ?>
+                </time>
+            </p>
             <h2>
                 <?= $fields['2']->value; ?>
             </h2>
@@ -112,11 +121,7 @@ function PopupCenter(pageURL, title, w, h) {
                     </p>
                 <?php endif; ?>
             <?php endif; ?>
-
-
             <?php
-                $shareurl = JUri::current();
-                $shareurl = urlencode($shareurl);
             ?>
             <div class="social-sharing py-5 text-center clearfix">
                 <p class="large text-light py-3 text-white-50">

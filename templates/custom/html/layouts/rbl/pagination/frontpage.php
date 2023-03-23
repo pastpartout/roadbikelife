@@ -44,7 +44,7 @@ if ($currentPage >= $step) {
     }
 }
 ?>
-<ul class="frontpage-grid-dots">
+<ul class="frontpage-dots">
     <?php echo LayoutHelper::render('rbl.pagination.frontpage_link', ['page' => $pages['previous'], 'pages' => $pages]); ?>
     <?php foreach ($options->get('items') as $key => $item): ?>
         <li>

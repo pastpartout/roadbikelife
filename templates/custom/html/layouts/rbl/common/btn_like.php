@@ -8,8 +8,8 @@ $likesCount = $RoadbikelifeModelLike->getLikesCount($item->id, 'content');
 $likesDisabled = $RoadbikelifeModelLike->getLikesIsDisabled($item->id, 'content');
 JFactory::getDocument()->addScript('modules/mod_like_button/assets/js/script.js');
 ?>
-
-<span class="btn  btnLike text-danger <? if ($likesDisabled === true): ?>liked<?php endif ?>"
+<span class="btn btn-Likes <?php if ($likesDisabled === true): ?>liked<?php endif ?>"
       data-content-id="<?= $item->id ?>" data-type="content">
-    <i class="fal fa-thumbs-up icon-margin-right"></i><span class="content"><span class="number"><?= $likesCount ?> </span></span>
+<i class="fal fa-thumbs-up icon-margin-right"></i><span class="content"><span class="number"><?= $likesCount ?> </span></span>
 </span>
+

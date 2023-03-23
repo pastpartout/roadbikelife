@@ -1,3 +1,135 @@
+.hero-area-blog {
+  width: 100%;
+  padding: 0 !important;
+  position: relative;
+  background-color: $black;
+  height: auto;
+
+  .btn-likes-and-comments {
+    margin-bottom: $spacer3;
+    pointer-events: all;
+  }
+
+  h1 {
+    margin-bottom: $spacer5;
+    pointer-events: none;
+  }
+
+  picture {
+    display: block;
+    position: relative;
+    min-height: calc(90vh - 4rem);
+
+    @include media-breakpoint-up(md) {
+      max-height: 100vh;
+      min-height: 100vh;
+    }
+
+    body:not(.com_content) &,
+    body.no-layout &
+    {
+      min-height: 40vh;
+      max-height: 40vh;
+    }
+
+    img.bg-image {
+      object-fit: cover;
+      position: absolute;
+      display: block;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      top: 0;
+      left: 0;
+      image-rendering: optimizeQuality;
+      @include loadingGradient;
+    }
+  }
+
+
+  @include media-breakpoint-down(md) {
+    height: auto;
+  }
+
+  &.default-image {
+
+    picture:before {
+      padding-top: 40vh;
+    }
+
+    @include media-breakpoint-down(sm) {
+
+
+    }
+
+  }
+
+
+  .post-img-overlay {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    color: $white;
+    padding: $spacer3;
+    height: 100%;
+    padding: 0;
+    @include gradient-y(rgba($layout-darkblue, 0),rgba($layout-darkblue, 1), 35%,100%);
+    pointer-events: none;
+    display: flex;
+
+
+    &:before {
+      font-family: 'Font Awesome 5 Pro';
+      position: absolute;
+      right: $spacer3;
+      bottom: $spacer3;
+      display: block;
+      content: fa-content($fa-var-angle-double-down);
+      animation: downSwing infinite ease forwards;
+      animation-duration: 5s;
+      z-index: 3;
+      font-weight: 100;
+      font-size: 1.5rem;
+      pointer-events: none;
+      animation-delay: 3s;
+    }
+
+    @include media-breakpoint-up(md) {
+      padding-right: 0;
+      align-items: flex-end;
+      padding-left: $spacer4;
+    }
+
+    @include media-breakpoint-up(xl) {
+      padding-left: $spacer5 *1.5;
+
+    }
+
+    @include media-breakpoint-down(sm) {
+      padding: $spacer3;
+      padding-bottom: 0;
+      z-index: 2;
+    }
+
+
+    .item-image {
+
+      @include media-breakpoint-up(lg) {
+        max-width: 125px;
+      }
+
+    }
+
+
+  }
+
+  .tags {
+    justify-content: center;
+  }
+
+
+}
+
 .item-page {
   background-color: $layout-darkblue;
 
@@ -29,10 +161,14 @@
 
 
   .articleCol {
-    padding: $spacer4;
+    padding: $spacer4 $spacer3;
     font-size: 1.2rem;
     line-height: 1.7;
     font-weight: 200;
+
+    @include media-breakpoint-up(md) {
+      padding: $spacer4;
+    }
 
     @include media-breakpoint-up(lg) {
       font-size: 1.2rem;

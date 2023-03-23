@@ -43,7 +43,7 @@ foreach ($items as $key => $article) {
 }
 
 ?>
-<section class="frontpage-grid">
+<section class="frontpage">
     <div class="intro">
         <div class="text ">
             <div class="logo-wrapper">
@@ -59,14 +59,14 @@ foreach ($items as $key => $article) {
             </div>
         </div>
     </div>
-    <div class="frontpage-grid-items">
+    <div class="frontpage-items">
         <?php if (count($items) > 0): ?>
             <?php foreach ($items as $key => $item): ?>
-                <div class="frontpage-grid-item  <?php if ($key === 0): ?>active<?php endif ?>  <?php if ($key+1 === count($items)): ?>last<?php endif ?> <?php if ($key === 0): ?>first<?php endif ?>"
+                <div class="frontpage-item  <?php if ($key === 0): ?>active<?php endif ?>  <?php if ($key+1 === count($items)): ?>last<?php endif ?> <?php if ($key === 0): ?>first<?php endif ?>"
                      id="item-<?= $item->id ?>" data-sectionid="<?= $item->id ?>">
-                    <?php echo JLayoutHelper::render('rbl.blog.post_item_fp', ['item' => $item]); ?>
+                    <?php echo JLayoutHelper::render('frontpage_item', ['item' => $item],__DIR__); ?>
                     <?php if ($this->pagination->pagesCurrent < $this->pagination->pagesTotal): ?>
-                        <?php echo JLayoutHelper::render('rbl.blog.post_item_fp_next', ['nextItem' => $items[$key + 1]]); ?>
+                        <?php echo JLayoutHelper::render('frontpage_item_next', ['nextItem' => $items[$key + 1]], __DIR__); ?>
                     <?php endif ?>
                     <?php if ($key === 0): ?>
                         <a class="btn btn-next-item d-flex d-lg-none fade" style="line-height: 1">

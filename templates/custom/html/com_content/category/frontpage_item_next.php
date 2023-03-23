@@ -23,7 +23,7 @@ $images = json_decode($nextItem->images);
 
 ?>
 <?php if (!empty($displayData)) : ?>
-    <div class="frontpage-grid-item-next d-none d-lg-block">
+    <div class="frontpage-item-next d-none d-lg-block">
         <div class="d-flex justify-content-center">
             <?php if (isset($nextItem)): ?>
 
@@ -34,29 +34,13 @@ $images = json_decode($nextItem->images);
                 </a>
                 <div class="col-title ps-3 d-flex align-items-center">
                     <div class="">
-                        <div class="item-image post-image post-image-1-1 d-none">
-                            <a class="image-wrapper" href="#item-<?= $nextItem->id ?>"
-                               title="<?= $nextItem->title; ?> ">
-                                <picture>
-                                    <source type="image/webp"
-                                            srcset="<?= RoadbikelifeModelResizeimage::resizeImage($images->image_intro, 200, null, 1) ?> 400w">
-                                    <source srcset=" <?= RoadbikelifeModelResizeimage::resizeImage($images->image_intro, 200, null) ?> 400w">
-                                    <img
-                                            src="<?= RoadbikelifeModelResizeimage::resizeImage($images->image_intro, 200, null) ?>"
-                                            alt="<?php echo htmlspecialchars($item->title, ENT_COMPAT, 'UTF-8'); ?>"
-                                            class="<?= $item->css_class ?>"
-                                    />
-                                </picture>
-                            </a>
-
-                        </div>
                         <a href="#item-<?= $nextItem->id ?>" class="h4 mb-0 font-weight-light text-white">
                             <?= $nextItem->title ?>
                         </a>
                     </div>
                 </div>
             <?php else: ?>
-                <a class="d-flex align-items-center text-decoration-none" href="javascript:;" onclick="document.querySelector('.frontpage-grid-dots .page-nav-link-next').click()">
+                <a class="d-flex align-items-center text-decoration-none" href="javascript:;" onclick="document.querySelector('.frontpage-dots .page-nav-link-next').click()">
                     <i class="fal fa-2x fa-angle-right mr-3"></i><span class="h4 font-weight-light mb-0">Weiter zur nächsten Seite</span>
                 </a>
             <?php endif; ?>
