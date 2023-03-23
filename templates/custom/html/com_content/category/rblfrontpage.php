@@ -9,7 +9,7 @@ use \Joomla\Component\Fields\Administrator\Helper\FieldsHelper;
 
 defined('_JEXEC') or die;
 require_once JPATH_BASE . '/components/com_roadbikelife/models/resizeimage.php';
-$imageModel = new RoadbikelifeModelResizeimage();
+
 
 JHtml::_('jquery.framework');
 $app = Factory::getApplication();

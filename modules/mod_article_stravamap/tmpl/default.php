@@ -9,7 +9,7 @@
 
 defined('_JEXEC') or die;
 require_once JPATH_BASE . '/components/com_roadbikelife/models/resizeimage.php';
-$imageModel = new RoadbikelifeModelResizeimage();
+
 /** @var plgcontentContentMedia $googleMapHtml */
 /** @var array $stravaActivityFieldValues */
 /** @var array $flotGraphs */
@@ -110,11 +110,11 @@ $mapIdleImage = 'images/gmaps_route_images/gmaps_' . $stravaActivity->activity_j
                 <picture>
                     <source
                             type="image/webp"
-                            srcset="<?= $imageModel->getResizedImagePath($mapIdleImage, 2000, null, 1) ?>">
+                            srcset="<?= RoadbikelifeModelResizeimage::resizeImage($mapIdleImage, 2000, null, 1) ?>">
                     <img <?php if (isset($imagePosition)): ?>
                         style="object-position: center <?= $imagePosition ?>"<?php endif ?>
                             itemprop="image"
-                            src="<?= $imageModel->getResizedImagePath($mapIdleImage, 2000, null) ?>"
+                            src="<?= RoadbikelifeModelResizeimage::resizeImage($mapIdleImage, 2000, null) ?>"
                             alt=""
                             class="bg-image img-fluid">
                 </picture>

@@ -12,7 +12,7 @@ defined('JPATH_BASE') or die;
 use Joomla\Registry\Registry;
 
 JLoader::register('TagsHelperRoute', JPATH_BASE . '/components/com_tags/helpers/route.php');
-$imageModel = new RoadbikelifeModelResizeimage();
+
 
 $authorised = JFactory::getUser()->getAuthorisedViewLevels();
 $app = JFactory::getApplication();
@@ -39,10 +39,10 @@ $images = json_decode($nextItem->images);
                                title="<?= $nextItem->title; ?> ">
                                 <picture>
                                     <source type="image/webp"
-                                            srcset="<?= $imageModel->getResizedImagePath($images->image_intro, 200, null, 1) ?> 400w">
-                                    <source srcset=" <?= $imageModel->getResizedImagePath($images->image_intro, 200, null) ?> 400w">
+                                            srcset="<?= RoadbikelifeModelResizeimage::resizeImage($images->image_intro, 200, null, 1) ?> 400w">
+                                    <source srcset=" <?= RoadbikelifeModelResizeimage::resizeImage($images->image_intro, 200, null) ?> 400w">
                                     <img
-                                            src="<?= $imageModel->getResizedImagePath($images->image_intro, 200, null) ?>"
+                                            src="<?= RoadbikelifeModelResizeimage::resizeImage($images->image_intro, 200, null) ?>"
                                             alt="<?php echo htmlspecialchars($item->title, ENT_COMPAT, 'UTF-8'); ?>"
                                             class="<?= $item->css_class ?>"
                                     />

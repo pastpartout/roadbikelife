@@ -1,10 +1,6 @@
 <?php
 /** @var Joomla\CMS\Document\HtmlDocument $this */
-JLoader::register('Mobile_Detect', JPATH_ROOT . '/vendor/mobiledetect/mobiledetectlib/Mobile_Detect.php');
-
 use Joomla\CMS\Factory;
-
-$detect = new Mobile_Detect;
 $app            = Factory::getApplication();
 $doc            = $app->getDocument();
 $this->language = $doc->language;
@@ -30,7 +26,6 @@ $wa->registerAndUseScript('popper','templates/' . $this->template . '/js/popper.
 $wa->registerAndUseScript('bootstrap','templates/' . $this->template . '/js/bootstrap.min.js');
 $wa->registerAndUseScript('modernizr','templates/' . $this->template . '/js/modernizr.js');
 $wa->registerAndUseScript('detectizr','templates/' . $this->template . '/js/detectizr.min.js');
-//$wa->addScript('templates/' . $this->template . '/js/cookie_consent_script.js');
 $wa->registerAndUseScript('functions_js','templates/' . $this->template . '/js/functions.js');
 $wa->addInlineScript("window.baseUrl = '" . JURI::base() . "';");
 

@@ -19,9 +19,6 @@ use phpGPX\Models\Point;
 use phpGPX\Models\Segment;
 use phpGPX\Models\Track;
 
-require_once JPATH_BASE . '/vendor/autoload.php';
-
-
 jimport('joomla.application.component.modellist');
 jimport('joomla.component.models.roadbikelife');
 JLoader::register('RoadbikelifeModelRoadbikelife', __DIR__ . '/roadbikelife.php');
@@ -94,7 +91,6 @@ class RoadbikelifeModelLike extends RoadbikelifeModelRoadbikelife
         $app = JFactory::getApplication();
         $id = $app->input->get('id', false);
         $this->deleteCache($id);
-
     }
 
     public function getLikeItem()

@@ -9,7 +9,7 @@
 
 defined('_JEXEC') or die;
 require_once JPATH_BASE.'/components/com_roadbikelife/models/resizeimage.php';
-$imageModel = new RoadbikelifeModelResizeimage();
+
 ?>
 <div class="tagsSimilar ">
     <div class="container-fluid">
@@ -32,16 +32,16 @@ $imageModel = new RoadbikelifeModelResizeimage();
                                     <picture>
                                         <source
                                                 media="(max-width: 480px)" type="image/webp"
-                                                srcset="<?= $imageModel->getResizedImagePath($images->image_intro, 700, null,1) ?>">
+                                                srcset="<?= RoadbikelifeModelResizeimage::resizeImage($images->image_intro, 700, null,1) ?>">
                                         <source  type="image/webp"
-                                                 srcset="<?= $imageModel->getResizedImagePath($images->image_intro, 300,null,1) ?>">
+                                                 srcset="<?= RoadbikelifeModelResizeimage::resizeImage($images->image_intro, 300,null,1) ?>">
                                         <source
                                                 media="(max-width: 480px)"
-                                                srcset="<?= $imageModel->getResizedImagePath($images->image_intro, 700,null) ?>">
+                                                srcset="<?= RoadbikelifeModelResizeimage::resizeImage($images->image_intro, 700,null) ?>">
                                         <source
-                                                srcset="<?= $imageModel->getResizedImagePath($images->image_intro, 300,null) ?>">
+                                                srcset="<?= RoadbikelifeModelResizeimage::resizeImage($images->image_intro, 300,null) ?>">
                                         <img
-                                                src="<?= $imageModel->getResizedImagePath($images->image_intro, 300,null) ?>"
+                                                src="<?= RoadbikelifeModelResizeimage::resizeImage($images->image_intro, 300,null) ?>"
                                                 alt="<?php echo htmlspecialchars($images->image_intro_alt, ENT_COMPAT, 'UTF-8'); ?>"
                                                 itemprop="thumbnailUrl"/>
                                     </picture>

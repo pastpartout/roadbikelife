@@ -19,7 +19,7 @@ $doc->addStyleSheet(JUri::base() . 'components/com_roadbikelife/assets/css/roadb
 $doc->addStyleSheet(JUri::base() . 'components/com_roadbikelife/assets/css/image-scroller.css' . $version);
 
 JLoader::register('RoadbikelifeModelResizeimage', JPATH_ROOT . '/components/com_roadbikelife/models/resizeimage.php');
-$imageModel = new RoadbikelifeModelResizeimage();
+
 JFactory::getDocument()->addScriptDeclaration("
 		Joomla.submitbutton = function(task)
 		{

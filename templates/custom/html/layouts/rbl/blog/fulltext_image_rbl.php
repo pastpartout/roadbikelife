@@ -12,7 +12,7 @@ defined('JPATH_BASE') or die;
 JHtml::addIncludePath(JPATH_COMPONENT . '/helpers/html');
 extract($displayData);
 $params = $item->params;
-$imageModel = new RoadbikelifeModelResizeimage();
+
 $images = json_decode($item->images);
 if (!isset($aspectRatio)) $aspectRatio = ''
 ?>
@@ -26,24 +26,24 @@ if (!isset($aspectRatio)) $aspectRatio = ''
                 <picture>
                     <source type="image/webp"
                             srcset="
-        <?= $imageModel->getResizedImagePath($images->image_fulltext, 400, null, 1) ?> 400w,
-        <?= $imageModel->getResizedImagePath($images->image_fulltext, 500, null, 1) ?> 500w,
-        <?= $imageModel->getResizedImagePath($images->image_fulltext, 900, null, 1) ?> 900w,
-        <?= $imageModel->getResizedImagePath($images->image_fulltext, 1300, null, 1) ?> 1300w,
-        <?= $imageModel->getResizedImagePath($images->image_fulltext, 1500, null, 1) ?> 1500w,
-        <?= $imageModel->getResizedImagePath($images->image_fulltext, 2000, null, 1) ?> 2000w"
+        <?= RoadbikelifeModelResizeimage::resizeImage($images->image_fulltext, 400, null, 1) ?> 400w,
+        <?= RoadbikelifeModelResizeimage::resizeImage($images->image_fulltext, 500, null, 1) ?> 500w,
+        <?= RoadbikelifeModelResizeimage::resizeImage($images->image_fulltext, 900, null, 1) ?> 900w,
+        <?= RoadbikelifeModelResizeimage::resizeImage($images->image_fulltext, 1300, null, 1) ?> 1300w,
+        <?= RoadbikelifeModelResizeimage::resizeImage($images->image_fulltext, 1500, null, 1) ?> 1500w,
+        <?= RoadbikelifeModelResizeimage::resizeImage($images->image_fulltext, 2000, null, 1) ?> 2000w"
                     >
                     <source
                             srcset="
-        <?= $imageModel->getResizedImagePath($images->image_fulltext, 400, null) ?> 400w,
-        <?= $imageModel->getResizedImagePath($images->image_fulltext, 500, null) ?> 500w,
-        <?= $imageModel->getResizedImagePath($images->image_fulltext, 900, null) ?> 900w,
-        <?= $imageModel->getResizedImagePath($images->image_fulltext, 1300, null) ?> 1300w,
-        <?= $imageModel->getResizedImagePath($images->image_fulltext, 1500, null) ?> 1500w,
-        <?= $imageModel->getResizedImagePath($images->image_fulltext, 2000, null) ?> 2000w"
+        <?= RoadbikelifeModelResizeimage::resizeImage($images->image_fulltext, 400, null) ?> 400w,
+        <?= RoadbikelifeModelResizeimage::resizeImage($images->image_fulltext, 500, null) ?> 500w,
+        <?= RoadbikelifeModelResizeimage::resizeImage($images->image_fulltext, 900, null) ?> 900w,
+        <?= RoadbikelifeModelResizeimage::resizeImage($images->image_fulltext, 1300, null) ?> 1300w,
+        <?= RoadbikelifeModelResizeimage::resizeImage($images->image_fulltext, 1500, null) ?> 1500w,
+        <?= RoadbikelifeModelResizeimage::resizeImage($images->image_fulltext, 2000, null) ?> 2000w"
                     >
                     <img
-                            src="<?= $imageModel->getResizedImagePath($images->image_fulltext, 800, null) ?>"
+                            src="<?= RoadbikelifeModelResizeimage::resizeImage($images->image_fulltext, 800, null) ?>"
                             alt="<?php echo htmlspecialchars($item->title, ENT_COMPAT, 'UTF-8'); ?>"
                             class="<?= $item->css_class ?>"
                     />

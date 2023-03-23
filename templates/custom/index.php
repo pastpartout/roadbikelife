@@ -9,7 +9,6 @@
 defined('_JEXEC') or die;
 // Getting params from template
 require_once __DIR__ . '/prepare_template.php';
-ini_set('memory_limit', '512M');
 ?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?= $this->language; ?>"

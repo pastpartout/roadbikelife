@@ -9,19 +9,19 @@ $app = Factory::getApplication();
 $isSmartphone = ($app->client->mobile === true);
 extract($displayData);
 $images = json_decode($item->images);
-$imageModel = new RoadbikelifeModelResizeimage();
 
 ?>
 <article
         data-href="<?php echo JRoute::_(ContentHelperRoute::getArticleRoute($item->id, $item->catid, $item->language)); ?>">
     <?php echo JLayoutHelper::render('rbl.blog.fulltext_image_rbl', ['item' => $item]); ?>
     <img
-            src="<?= $imageModel->getResizedImagePath($images->image_fulltext, 300, null) ?>"
+            src="<?= RoadbikelifeModelResizeimage::resizeImage($images->image_fulltext, 300, null) ?>"
             alt="<?php echo htmlspecialchars($item->title, ENT_COMPAT, 'UTF-8'); ?>"
             class="post-img-overlaybg"
     />
     <div class="post-img-overlay px-lg-5 py-lg-5">
         <div>
+            <?= JLayoutHelper::render('rbl.blog.btn_like',$displayData); ?>
             <div class="article-date">
                 <small>
                     <i class="fal fa-calendar icon-margin-right"></i>
@@ -42,7 +42,6 @@ $imageModel = new RoadbikelifeModelResizeimage();
                 <p>
                     <?= $item->introtext; ?>
                 </p>
-
             </div>
             <a class="btn btn-primary w-100"
                href="<?php echo JRoute::_(ContentHelperRoute::getArticleRoute($item->id, $item->catid, $item->language)); ?>">
@@ -51,4 +50,3 @@ $imageModel = new RoadbikelifeModelResizeimage();
         </div>
     </div>
 </article>
-

@@ -24,7 +24,7 @@ else
 use Joomla\CMS\Factory;
 
 
-require_once JPATH_ROOT . '/vendor/autoload.php';
+require_once JPATH_ROOT . '/components/com_roadbikelife/vendor/autoload.php';
 
 
 
@@ -70,141 +70,49 @@ class RoadbikelifeModelResizeimage {
 
 	}
 
-	public function getResizedImagePath(
-		$file, $width = null, $height = 0, $webP = 0, $sharpenImage = null,$cropMode = '', $addWatermark = null, $watermarkPos = null, $imageQuality = null
-	)
-	{
-		$args = get_defined_vars();
-		$this->setArgs($args);
+    public static function resizeImage( string $file, int|string|null $width = 0, int|string|null $height = 0, int $webP = 1, int $sharpenImage = 0, int $imageQuality = 95 ): string
+    {
+        $zbImage                               = new Zebra_Image();
+        $fileAbsPath = JPATH_SITE . '/' . $file;
+        if (!is_file($fileAbsPath)) {
+            return $file;
+        } else {
+            $app             = Factory::getApplication();
+            $cacheFolderName = 'images';
+            $name            = pathinfo($file, PATHINFO_FILENAME);
+            $imageVersion    = filemtime($fileAbsPath);
+            $name            = $name . '_' . $width . '_' . $height . '_' . $sharpenImage . '_' . $imageQuality . '_' . $imageVersion;
+            $webP === 1 ? $ext = 'webp' : $ext = strtolower(pathinfo($file, PATHINFO_EXTENSION));
+            $joomlaCacheFolder = JPATH_ROOT . '/cache';
+            $destination       = $joomlaCacheFolder . '/' . $cacheFolderName . '/' . $name . '.' . $ext;
+            $newFolderName     = pathinfo($destination, PATHINFO_DIRNAME);
 
-		$this->processImage();
-		return $this->returnDestination();
-	}
+            if (!is_dir($newFolderName)) mkdir($newFolderName, 0755, true);
 
-	public function returnDestination() {
-        $destination = str_replace(JPATH_ROOT . '/','', $this->destination);
-		return  JURI::base().$destination;
-	}
+            if (!is_file($destination)) {
+                if ($width == 0) $width = null;
+                if ($height == 0) $height = null;
 
-//	public function getResizedImage()
-//	{
-//		$newFileName = $this->processImage();
-//		$this->readFile($newFileName);
-//		exit;
-//	}
+                $zbImage->source_path                  = $fileAbsPath;
+                $zbImage->target_path                  = $destination;
+                $zbImage->auto_handle_exif_orientation = true;
+                $webP === 1 ? $zbImage->webp_quality = $imageQuality : $zbImage->jpeg_quality = $imageQuality;
+                $zbImage->sharpen_images = (int)$sharpenImage;
+                $zbImage->resize((int)$width, (int)$height, ZEBRA_IMAGE_NOT_BOXED);
+            }
 
-	private function readFile($newFileName)
-	{
-		$ext = pathinfo($newFileName, PATHINFO_EXTENSION);
+            $output = str_replace(JPATH_ROOT . '/', '', $destination);
 
-		if ($ext === 'webp')
-		{
-			$type = 'image/webp';
-		}
-		elseif ($ext === 'jpeg' || $ext === 'jpg')
-		{
-			$type = 'image/jpeg';
-		}
+            if (!isset($zbImage) || $zbImage->error === 1) {
+                $output = $file;
+            }
 
-		header("Cache-Control: no-cache, must-revalidate"); //HTTP 1.1
-		header("Pragma: no-cache"); //HTTP 1.0
-		header("Expires: Sat, 26 Jul 1997 05:00:00 GMT"); // Date in the past
+            return \JUri::root() . $output;
+        }
 
-		//or, if you DO want a file to cache, use:
-		header("Cache-Control: max-age=2592000"); //30days (60sec * 60min * 24hours * 30days)
-		header('Content-Type:' . $type);
-		header('Content-Length: ' . filesize($newFileName));
-		readfile($newFileName);
-	}
 
-	private function getImageSize()
-	{
-		return getimagesize($this->file);
-	}
+    }
 
-	private function processImage()
-	{
-		$file = $this->file;
-
-		if (!is_file($file))
-		{
-			$this->destination = $file;
-			return;
-		}
-
-		$width         = $this->width;
-		$height        = $this->height;
-		$destination   = $this->getDestination();
-		$newFolderName = pathinfo($destination, PATHINFO_DIRNAME);
-
-		if (!is_dir($newFolderName))
-		{
-			mkdir($newFolderName, 0755, true);
-		}
-
-		if (!is_file($destination))	{
-			if ($width == 0)
-			{
-//				$width = $this->getImageSize()[0];
-				$width = null;
-			}
-			if ($height == 0)
-			{
-//				$height = $this->getImageSize()[1];
-				$height = null;
-
-			}
-
-				if (extension_loaded('imagick') && $this->processor === 'imagick')
-				{
-					$imagick = new \Imagick(JPATH_BASE . '/' . $file);
-					$imagick->adaptiveResizeImage($width, $height, true);
-					if($this->sharpenImage) {
-						$imagick->sharpenImage(0, 1);
-					}
-					$imagick->writeImage(JPATH_BASE . '/' . $destination);
-
-				}
-				elseif ($this->processor === 'zebra_image')
-				{
-					$zbImage               = new Zebra_Image();
-					$zbImage->source_path  = $file;
-					$zbImage->target_path  = $destination;
-					$zbImage->auto_handle_exif_orientation = true;
-					$zbImage->jpeg_quality = $this->imageQuality;
-					$zbImage->webp_quality = $this->imageQuality;
-					$zbImage->sharpen_images = $this->sharpenImage;
-					$zbImage->resize($width, $height, ZEBRA_IMAGE_NOT_BOXED);
-				}
-
-		}
-
-		$this->destination =  $destination;
-	}
-
-	private function getDestination()
-	{
-		$app = Factory::getApplication();
-		$file         = $this->file;
-		$width        = $this->width;
-		$height       = $this->height;
-		$addWatermark = $this->addWatermark;
-		$watermarkPos = $this->watermarkPos;
-		$cacheFolderName  = $this->cacheFolder;
-		$isWebP       = $this->webP;
-
-		$name = pathinfo($file, PATHINFO_FILENAME);
-		$imageVersion = filemtime($file);
-		
-		$name = crc32( $name.$width.$height.$addWatermark.$watermarkPos.$imageVersion);
-
-		$this->webP  === 1 ? $ext = 'webp' : $ext = pathinfo($file, PATHINFO_EXTENSION);
-		$path = pathinfo($file, PATHINFO_DIRNAME);
-
-		$newFileName = JPATH_CACHE."/$cacheFolderName/$name.$ext";
-
-		return $newFileName;
-	}
 
 
 
