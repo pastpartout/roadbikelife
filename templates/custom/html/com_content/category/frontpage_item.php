@@ -11,6 +11,7 @@ extract($displayData);
 $images = json_decode($item->images);
 $params = $item->params;
 
+
 ?>
 <article
         data-href="<?php echo JRoute::_(ContentHelperRoute::getArticleRoute($item->id, $item->catid, $item->language)); ?>">
