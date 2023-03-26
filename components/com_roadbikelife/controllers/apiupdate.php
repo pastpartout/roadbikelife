@@ -89,19 +89,19 @@ class RoadbikelifeControllerApiupdate extends RoadbikelifeController
         exit('poked!');
     }
 
-    public function openwheather()
-    {
-        $this->checkAccess();
-        $this->getModel('Apiupdateopenwheather')->update();
-
-    }
-
-    public function wheather()
-    {
-        $this->checkAccess();
-        $this->getModel('Apiupdatewheather')->update();
-
-    }
+//    public function openwheather()
+//    {
+//        $this->checkAccess();
+//        $this->getModel('Apiupdateopenwheather')->update();
+//
+//    }
+//
+//    public function wheather()
+//    {
+//        $this->checkAccess();
+//        $this->getModel('Apiupdatewheather')->update();
+//
+//    }
 
     public function runstrava()
     {
@@ -110,21 +110,17 @@ class RoadbikelifeControllerApiupdate extends RoadbikelifeController
 
     }
 
-    public function instagram()
-    {
-        $this->checkAccess();
-        $this->getModel('ApiupdateInstagram')->update();
-//        parent::display();
-
-    }
-
-    public function deleteunusedgpxuploads()
-    {
-        $this->checkAccess();
-        $this->getModel('ApiupdateDeleteUnusedGpxUploads')->run();
-//        parent::display();
-
-    }
+//    public function instagram()
+//    {
+//        $this->checkAccess();
+//        $this->getModel('ApiupdateInstagram')->update();
+//    }
+//
+//    public function deleteunusedgpxuploads()
+//    {
+//        $this->checkAccess();
+//        $this->getModel('ApiupdateDeleteUnusedGpxUploads')->run();
+//    }
 
 
 

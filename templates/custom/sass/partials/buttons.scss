@@ -67,6 +67,10 @@
     background-color: $white;
     color: $primary;
 
+    @include media-breakpoint-down(md) {
+        font-size: $font-size-sm;
+    }
+
     &.liked {
         pointer-events: none;
 
@@ -91,6 +95,7 @@
     border-radius: $border-radius;
     background-color: rgba($white,.1);
     display: inline-block;
+    line-height: 1;
 }
 
 .btnStrava {

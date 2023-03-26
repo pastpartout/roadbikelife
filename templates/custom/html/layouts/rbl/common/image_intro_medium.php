@@ -3,7 +3,12 @@ defined('_JEXEC') or die;
 
 JLoader::register('RoadbikelifeModelResizeimage', JPATH_BASE . '/components/com_roadbikelife/models/resizeimage.php');
 
-$images = json_decode($displayData->images);
+if(!is_object($displayData)) {
+    $images = json_decode($displayData->images);
+} else {
+    $images = $displayData;
+
+}
 
 ?>
 <picture>

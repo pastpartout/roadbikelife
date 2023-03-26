@@ -36,16 +36,7 @@ require_once JPATH_ROOT . '/components/com_roadbikelife/vendor/autoload.php';
  */
 class RoadbikelifeModelResizeimage {
 	private $file = '';
-	private $width = 500 ;
-	private $height = 0;
-	private $addWatermark = false;
-	private $watermarkPos = 'bottom center';
-	private $imageQuality = 85;
-	private $webP = 0;
-	private $processor = 'zebra_image';
-	private $sharpenImage = true;
-	private $cacheFolder = 'images';
-	private $destination = '';
+
 
 	public function __construct($config = null)
 	{
@@ -70,7 +61,7 @@ class RoadbikelifeModelResizeimage {
 
 	}
 
-    public static function resizeImage( string $file, int|string|null $width = 0, int|string|null $height = 0, int $webP = 1, int $sharpenImage = 0, int $imageQuality = 95 ): string
+    public static function resizeImage( string $file, int|string|null $width = 0, int|string|null $height = 0, int $webP = 1, int $sharpenImage = 1, int $imageQuality = 95 ): string
     {
         $zbImage                               = new Zebra_Image();
         $fileAbsPath = JPATH_SITE . '/' . $file;

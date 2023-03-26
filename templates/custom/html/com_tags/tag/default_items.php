@@ -79,7 +79,7 @@ JFactory::getDocument()->addScriptDeclaration("
                     <a class="postLinkItem boxed boxed-dark" href="<?php echo JRoute::_($item->link); ?>">
                         <div class="item-image mb-3 post-image post-image-16-9  ">
                             <div class="image-wrapper">
-                                <?= JLayoutHelper::render('joomla.blog.post_image_intro', $item);?>
+                                <?= JLayoutHelper::render('rbl.common.image_intro_medium', $images);?>
                             </div>
                         </div>
                         <div class="inner text-body">

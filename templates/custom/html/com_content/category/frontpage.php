@@ -79,7 +79,3 @@ foreach ($items as $key => $article) {
     </div>
     <?php  echo $this->pagination->getPaginationLinks('rbl.pagination.frontpage', ['items' => $items]);  ?>
 </section>
-<footer>
-    <?php $metamenuModule = JModuleHelper::getModuleById('95'); ?>
-    <?= JModuleHelper::renderModule($metamenuModule) ?>
-</footer>

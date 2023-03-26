@@ -1,6 +1,20 @@
 
 // Offline
 .offline,.error {
+  display: flex;
+  flex-direction: column;
+  scroll-snap-type: none ;
+
+  main {
+    flex-grow: 1;
+    display: flex;
+    min-height: 100vh;
+
+    section {
+      height: inherit;
+      width: 100%;
+    }
+  }
 
   img.bg-image {
     position: absolute;
@@ -18,7 +32,7 @@
     padding: 5vh 0;
     position: relative;
     z-index: 2;
-    min-height: 100vh;
+    min-height: 100%;
     display: flex;
     background-color: $black;
     text-align: center;
@@ -68,3 +82,17 @@
 
 
 
+body.error {
+  .tagspopular {
+    .tags {
+      justify-content: center;
+    }
+  }
+
+  .search {
+    .input-group {
+      background-color: rgba($black,.2);
+      backdrop-filter: blur(10px);
+    }
+  }
+}

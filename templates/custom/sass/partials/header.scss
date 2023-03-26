@@ -10,6 +10,7 @@ header {
     display: flex;
     align-items: center;
     justify-content: end;
+    padding:0;
 
     ul {
       display: none;
@@ -26,6 +27,7 @@ header {
     background-color: $red;
     border-bottom-left-radius: $border-radius-xlg;
     margin: 0;
+    position: absolute;
 
     @include media-breakpoint-up(lg) {
       position: fixed;

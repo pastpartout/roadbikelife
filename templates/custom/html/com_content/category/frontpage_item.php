@@ -41,6 +41,7 @@ $params = $item->params;
         <?= RoadbikelifeModelResizeimage::resizeImage($images->image_fulltext, 2000, null) ?> 2000w"
                         >
                         <img
+                                loading="lazy"
                                 src="<?= RoadbikelifeModelResizeimage::resizeImage($images->image_fulltext, 800, null) ?>"
                                 alt="<?php echo htmlspecialchars($item->title, ENT_COMPAT, 'UTF-8'); ?>"
                                 class="<?= $item->css_class ?>"
@@ -53,6 +54,7 @@ $params = $item->params;
                         <?php if ($images->image_fulltext_caption) : ?>
                             <?php echo 'class="caption"' . ' title="' . htmlspecialchars($images->image_fulltext_caption, ENT_COMPAT, 'UTF-8') . '"'; ?>
                         <?php endif; ?>
+                            loading="lazy"
                             src="<?php echo htmlspecialchars($images->image_fulltext, ENT_COMPAT, 'UTF-8'); ?>"
                             alt="<?php echo htmlspecialchars($images->image_fulltext_alt, ENT_COMPAT, 'UTF-8'); ?>"
                             itemprop="thumbnailUrl"/>
@@ -68,7 +70,7 @@ $params = $item->params;
     <div class="post-img-overlay">
         <div>
             <?= JLayoutHelper::render('rbl.common.btn_like_n_comments', $displayData); ?>
-            <div class="article-date text-white-50">
+            <div class="article-date text-white-50 d-none d-md-inline-block">
                 <small>
                     <i class="fal fa-calendar icon-margin-right"></i>
                     <time datetime="<?php echo JHtml::_('date', $item->publish_up, 'c'); ?>"

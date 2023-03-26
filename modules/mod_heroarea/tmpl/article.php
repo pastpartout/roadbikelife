@@ -44,7 +44,6 @@ require_once JPATH_BASE . '/components/com_roadbikelife/models/resizeimage.php';
                     <?= RoadbikelifeModelResizeimage::resizeImage($images->image_fulltext, 2500, null) ?> 2500w,
                     <?= RoadbikelifeModelResizeimage::resizeImage($images->image_fulltext, 3000, null) ?> 3000w"
                     >
-
                     <img <?php if (isset($imagePosition)): ?>
                         style="object-position: center <?= $imagePosition ?>"<?php endif ?>
                             itemprop="image"

@@ -51,14 +51,13 @@ require_once __DIR__ . '/prepare_template.php';
         <jdoc:include type="modules" name="content-bottom" style="bootstrap3"/>
     </section>
 </main>
-<?php if ($view != 'ridewheather'  && $layout != 'customrblfrontpage' || $view == 'article'): ?>
+<?php if ($view != 'ridewheather'): ?>
     <footer>
         <div class="container-fluid px-0">
             <div class="row no-gutters">
                 <jdoc:include type="modules" name="footer-bottom" style="bootstrap3"/>
             </div>
         </div>
-
     </footer>
 <?php endif ?>
 <jdoc:include type="modules" name="debug" style="none"/>

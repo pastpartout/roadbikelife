@@ -13,7 +13,7 @@ $config = JFactory::getConfig();
 ?>
 <?php // The menu class is deprecated. Use nav instead. ?>
 <header>
-    <nav class="navbar navbar-expand-lg <?php echo $class_sfx; ?>">
+    <nav class="navbar p-0 navbar-expand-lg <?php echo $class_sfx; ?>">
             <a class="navbar-brand" href="<?php echo Juri::base() ?>">
                 <img src="<?php echo JURI::base() ?>/templates/custom/img/logo_white.svg?v2"
                      class="logo img-fluid"

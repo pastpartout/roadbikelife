@@ -51,8 +51,8 @@ function PopupCenter(pageURL, title, w, h) {
             <p class="small mb-2">
                 <i class="fal fa-calendar icon-margin-right"></i>
                 <time datetime="
-            <?php echo JHtml::_('date', $article->publish_up, 'c'); ?>" itemprop="datePublished">
-                    <?php echo JHtml::_('date', $article->publish_up, JText::_('DATE_FORMAT_LC4')); ?>
+            <?php echo JHtml::_('date', $this->item->publish_up, 'c'); ?>" itemprop="datePublished">
+                    <?php echo JHtml::_('date', $this->item->publish_up, JText::_('DATE_FORMAT_LC4')); ?>
                 </time>
             </p>
             <h2>
