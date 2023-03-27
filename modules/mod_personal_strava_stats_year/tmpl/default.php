@@ -1,14 +1,22 @@
 <?php
+
+use Joomla\CMS\HTML\HTMLHelper;
+use Joomla\CMS\Language\Text;
+
 defined('_JEXEC') or die;
 
-/** @var TYPE_NAME $stravaFields */
+/** @var array $stravaFields */
+/** @var string $createdDate */
+
 JLoader::register('RoadbikelifeHelper', JPATH_ADMINISTRATOR . DIRECTORY_SEPARATOR . 'components' . DIRECTORY_SEPARATOR . 'com_roadbikelife' . DIRECTORY_SEPARATOR . 'helpers' . DIRECTORY_SEPARATOR . 'roadbikelife.php');
 
 ?>
 <?php if (isset($stravaStats->distance)) : ?>
     <div class="personalStravaStats personalStravaStats-year">
-
         <div class="text-center postInfos postInfos-strava">
+            <p class="small text-white-50">
+                Aktualisiert am <?= HTMLHelper::_('date', $createdDate, Text::_('DATE_FORMAT_LC5'))?>
+            </p>
             <div class="d-flex justify-content-around flex-wrap">
                 <?php foreach ($stravaFields as $key => $field): ?>
                     <?php if ((int)$stravaStats->{$key} !== 0 && $field != ''): ?>

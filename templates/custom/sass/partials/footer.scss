@@ -55,7 +55,10 @@ footer {
         padding: $spacer2;
         @include media-breakpoint-down(sm) {
           padding: $spacer1 $spacer2;
+        }
 
+        &:hover {
+          text-decoration: none;
         }
 
       }

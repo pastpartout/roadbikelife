@@ -9,7 +9,7 @@ defined('_JEXEC') or die;
                  post-image no-hover-zoom post-image-1-1 rounded-circle">
                     <div class="image-wrapper rounded-circle border-sm">
                         <img src="/images/hero-area/stephan-riedel-portrait.jpg" loading="lazy"
-                             alt="Der Autor von  <?= $sitename ?>: Stephan Riedel"
+                             alt="ich bin Stephan von <?= $sitename ?>"
                              class="img-fluid">
                     </div>
                 </div>

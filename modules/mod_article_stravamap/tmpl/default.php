@@ -16,7 +16,7 @@ require_once JPATH_BASE . '/components/com_roadbikelife/models/resizeimage.php';
 /** @var object $stravaActivity */
 /** @var object $modArticleStravaMap */
 /** @var array $stravaActivitiesTotals */
-$mapIdleImage = 'images/gmaps_route_images/gmaps_' . $stravaActivity->activity_json->id . '_large.png'
+$mapIdleImage = 'templates/custom/img/bg_map.jpg'
 
 ?>
 <div class="stravaRideDetails">
@@ -43,7 +43,7 @@ $mapIdleImage = 'images/gmaps_route_images/gmaps_' . $stravaActivity->activity_j
                         <span class="title">
                             <?= $stravaActivityCollapseItem->name ?>
                             <span class="date">
-					            <?php echo JHtml::_('date', $stravaActivityCollapseItem->start_date_local, JText::_('DATE_FORMAT_LC5')); ?>
+					            <?php echo JHtml::_('date', $stravaActivityCollapseItem->start_date, JText::_('DATE_FORMAT_LC5')); ?>
                             </span>
 
                         </span>

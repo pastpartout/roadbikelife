@@ -105,10 +105,16 @@ modules/*
 plugins/*
 !plugins/content/
 plugins/content/*
-!plugins/content/contentmedia
+!plugins/content/contentmedia/
+!plugins/content/contentmedia/**
 
-!plugins/
-plugins/*
+
 !plugins/system/
 plugins/system/*
 !plugins/system/ogimage
+
+
+!plugins/fields/
+plugins/fields/*
+!plugins/fields/stravaactivity/
+!plugins/fields/stravaactivity/**

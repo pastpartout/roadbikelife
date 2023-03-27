@@ -27,38 +27,8 @@ class RoadbikelifeViewApiupdate extends JViewLegacy
 
 	    $stravaUpdateModel = new RoadbikelifeModelApiupdatestrava();
 	    $this->items = $stravaUpdateModel->update();
-	    $this->stravaActivityStreams = ['activity','marker','segments','wheather','photos','segments','segment_efforts'];
-	    $idsToLoad = [];
-	    foreach ($this->items  as $item) {
-	    	$idsToLoad[] = $item->strava_id;
-	    }
-
-	    if(count($idsToLoad)>0) {
-		    $db    = JFactory::getDbo();
-		    $query = $db->getQuery(true);
-		    $query->select('sas.*,c.title as article_title,w.wheather_json');
-		    $query->from($db->quoteName('#__strava_activity_stats','sas'));
-		    $query->join('LEFT', $db->quoteName('#__fields_values', 'fv') . ' ON fv.value = sas.id');
-		    $query->join('LEFT', $db->quoteName('#__content', 'c') . ' ON c.id = fv.item_id');
-		    $query->join('LEFT', $db->quoteName('#__strava_activity_wheather', 'w') . ' ON w.id = sas.id');
-		    $query->where('sas.id IN ('.implode(',',$idsToLoad).')');
-		    $query->order('c.created DESC');
-		    $db->setQuery($query);
-		    $this->items = $db->loadObjectList();
-		    foreach ($this->items  as &$item)
-		    {
-			    $contentIds[] = $item->item_id;
-			    $contentTitles[] = $item->article_title;
-			    $item->activity = json_decode($item->activity_json);
-		    }
-		    $this->contentIds = array_unique($contentIds);
-		    $this->contentTitles = array_unique($contentTitles);
-	    }
-
-
-
-
-
+//	    $this->stravaActivityStreams = $stravaUpdateModel->streamFields;
+//	    $this->stravaActivityExtraFields = ['activity','segment_efforts','photos'];
 
 	    JHtml::_('jquery.framework');
 	    $doc =  JFactory::getDocument();

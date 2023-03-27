@@ -41,6 +41,11 @@ class RoadbikelifeModelApiupdateopenwheather extends RoadbikelifeModelRoadbikeli
     private $iconMap = [
         ''
     ];
+    /**
+     * @var \Joomla\Database\DatabaseInterface|mixed
+     * @since version
+     */
+    private array $stravaActivities;
 
     public function __construct($config = [])
     {
@@ -54,14 +59,14 @@ class RoadbikelifeModelApiupdateopenwheather extends RoadbikelifeModelRoadbikeli
 
         $curl = curl_init();
         $apiKey = RoadbikelifeHelper::getParam('openwheather_apiKey');
-        $timeStream = $activity->streams->time;
-        $activityLatLng = $activity->streams->latlng;
+        $timeStream = json_decode($activity->streams->time);
+        $activityLatLng = json_decode($activity->streams->latlng);
         $wheatherData = [];
 
         foreach ($activityLatLng as $key => $latlng) {
-            if ($key % 200 == 0) {
-                $time = $timeStream[$key] + strtotime($activity->start_date);
-                $url = "https://api.openweathermap.org/data/2.5/onecall/timemachine?lat=$latlng[0]&lon=$latlng[1]&dt=$time&only_current={true}&lang=de&units=metric&appid=$apiKey";
+            if ($key % 100 == 0) {
+                $time = $timeStream[$key] + strtotime($activity->start_date_local);
+                $url = "https://api.openweathermap.org/data/3.0/onecall/timemachine?lat=$latlng[0]&lon=$latlng[1]&dt=$time&only_current={true}&lang=de&units=metric&appid=$apiKey";
 
                 curl_setopt_array($curl, [
                     CURLOPT_URL => $url,
@@ -82,12 +87,12 @@ class RoadbikelifeModelApiupdateopenwheather extends RoadbikelifeModelRoadbikeli
                 if ($err) {
                     echo "cURL Error #:" . $err;
                     exit();
-                } else {
+                } elseif(isset($response->data[0])) {
 
                     $wheatherData['filtered'][] = [
-                        'icon'        => $response->current->weather[0]->icon,
-                        'windSpeed'   => $response->current->wind_speed,
-                        'windBearing' => $response->current->wind_deg,
+                        'icon'        => $response->data[0]->weather[0]->icon,
+                        'windSpeed'   => $response->data[0]->wind_speed,
+                        'windBearing' => $response->data[0]->wind_deg,
                     ];
 
                     $wheatherData['original'][] = $response;
@@ -98,38 +103,25 @@ class RoadbikelifeModelApiupdateopenwheather extends RoadbikelifeModelRoadbikeli
 
         return $wheatherData;
 
-
     }
 
     public function update()
     {
         $stravaAcitivties = $this->getStravaActivites();
-        $output = [];
 
         foreach ($stravaAcitivties as $activity) {
-
 
             $wheatherData = $this->getWheatherData($activity);
             if(isset($wheatherData['filtered'][0]['icon'])) {
                 $wheatherDataJson = json_encode($wheatherData['filtered']);
-
                 $data = new stdClass();
                 $data->id = $activity->id;
                 $data->wheather_json = $wheatherDataJson;
                 $data->original_data = json_encode($wheatherData['original']);
-                $data->created = date("Y-m-d H:i:s");
-
+                $data->created = Factory::getDate()->toSql();
                 $this->saveWheather($data);
-
-                $output[] = $wheatherData;
             }
-
-
         }
-        echo '<pre>' , var_dump($output) , '</pre>';
-        exit();
-
-
     }
 
     private function saveWheather($data) {
@@ -149,20 +141,11 @@ class RoadbikelifeModelApiupdateopenwheather extends RoadbikelifeModelRoadbikeli
 
     private function getStravaActivites()
     {
-        $stravaUpdateModel = new RoadbikelifeModelApiupdatestrava();
-        $stravaUpdateModel->setStravaApi();
-        $stravaUpdateModel->athenticate();
-        $api = $stravaUpdateModel->stravaApi;
-        $activites = $api->get('athlete/activities', ['per_page' => 5, [], 'after' => strtotime('now - 4 days')]);
-        foreach ($activites as &$activity) {
-            $stravaActivityStreams = $api->get("activities/$activity->id/streams", ['keys' => 'latlng,time', 'resolution' => 'medium']);
-            $activity->streams = new stdClass();
-            $activity->streams->latlng = $stravaActivityStreams[0]->data;
-            $activity->streams->time = $stravaActivityStreams[2]->data;
-        }
+        return $this->stravaActivities;
+    }
 
-        return $activites;
-
+    public function setStravaActivities($stravaActivities) {
+        $this->stravaActivities = $stravaActivities;
     }
 
 
@@ -172,5 +155,13 @@ class RoadbikelifeModelApiupdateopenwheather extends RoadbikelifeModelRoadbikeli
             echo json_encode($response);
             exit;
         }
+    }
+
+    /**
+     * @param   array  $stravaActivitiesIds
+     */
+    public function setStravaActivitiesIds($stravaActivitiesIds): void
+    {
+        $this->stravaActivitiesIds = $stravaActivitiesIds;
     }
 }

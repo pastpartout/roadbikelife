@@ -1,6 +1,5 @@
 <?php
 defined('_JEXEC') or die;
-require_once JPATH_ROOT . "/vendor/mobiledetect/mobiledetectlib/Mobile_Detect.php";
 $extraFieldsName = 'com_fields';
 $customFieldsDetails = $this->form->getFieldset('fields-0');
 $version = '?v3';
@@ -31,12 +30,6 @@ JFactory::getDocument()->addScriptDeclaration("
 		};
 ");
 
-$detect = new Mobile_Detect;
-if ($detect->isMobile() && !$detect->isTablet()) {
-    $isSmartphone = true;
-} else {
-    $isSmartphone = false;
-}
 
 
 ?>
@@ -88,31 +81,31 @@ if ($detect->isMobile() && !$detect->isTablet()) {
             <?php echo JHtml::_('uitab.addTab', 'myTab', 'images', 'Fotos'); ?>
 
             <h4>Bilder</h4>
-            <div class="row">
-                <div class="col-md-12">
+            <div class="row mb-4">
+                <div class="col-md-6">
                     <div class="control-group">
-                        <div class="control-label">
-                            <label id="images_image_intro-lbl" for="images_image_intro">
-                                Volltext Bild</label>
-                        </div>
-                    </div>
-                    <div class="control-group">
-                        <div class="controls">
-				            <?= $this->form->getGroup($extraFieldsName)['com_fields_header_img_alt']->renderField(); ?>
-                        </div>
-
-                    </div>
-                </div>
-
-                <div class="col-md-12">
-                    <div class="control-group">
-                        <div class="control-label"><label id="images_image_intro-lbl" for="images_image_intro">
+                        <div class="control-label w-100"><label id="images_image_intro-lbl" for="images_image_intro">
                                 Intro Bild</label>
                         </div>
                         <div class="controls">
                             <?php if ($this->item->images['image_intro'] != ''): ?>
                                 <div class="controls thumbnail">
-                                    <img src="<?= JURI::base().'../' . $this->item->images['image_intro'] ?>" class="img-fluid"/>
+                                    <img src="<?= JURI::base().'../' . $this->item->images['image_intro'] ?>" class="img-fluid img-thumbnail"/>
+                                </div>
+                            <?php endif ?>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="control-group">
+                        <div class="control-label w-100"><label id="images_image_intro-lbl" for="images_image_intro">
+                                Volltext Bild</label>
+                        </div>
+                        <div class="controls">
+                            <?php if ($this->item->images['image_fulltext'] != ''): ?>
+                                <div class="controls thumbnail">
+                                    <img  src="<?= JURI::base().'../' . $this->item->images['image_fulltext'] ?>" class="img-fluid img-thumbnail"/>
                                 </div>
                             <?php endif ?>
                         </div>
@@ -120,45 +113,36 @@ if ($detect->isMobile() && !$detect->isTablet()) {
                 </div>
             </div>
             <?php if (count($this->item->images['gallery_images'])): ?>
-                <h4>Galleriebilder</h4>
-
+                <h4 class="border-bottom pb-2">Galleriebilder</h4>
                 <div class="control-group">
                     <div class="controls">
-                        <ul class="gallery manager thumbnails">
+                        <ul class="gallery manager thumbnails list-unstyled d-flex flex-wrap justify-content-center">
                             <?php foreach ($this->item->images['gallery_images'] as $key => $image): ?>
-                                <li class="imgOutline thumbnail center">
-
-                                    <div class="imgThumb imgInput">
-                                        <img
-                                                class="img-fluid img-thumbnail"
-                                                src="<?php echo JURI::root() . "index.php?option=com_fwgallery&view=item&layout=img&format=raw&w=300&h=300&id=" . urlencode($image->id); ?>"
-                                                alt="<?php echo htmlspecialchars($image->name, ENT_COMPAT, 'UTF-8'); ?>"
-                                                itemprop="thumbnailUrl"/>
-                                    </div>
-                                    <div class="imgPreview nowrap small">
-                                        <p>
-                                            <?= $image->name ?>
-                                        </p>
-                                        <div>
-                                            <input type="text" placeholder="Bildunterschrift"
-                                                   name="galleryimage_alt_texts[<?= $image->id ?>]"
-                                                   class="form-control form-control-sm"/>
-                                            <input type="hidden" placeholder="Bildunterschrift"
-                                                   name="galleryimage_ordering[]" value="<?= $image->id ?>"
-                                                   class="form-control form-control-sm"/>
+                                <li class="imgOutline thumbnail center mb-3 d-flex flex-column">
+                                    <div class="card border p-1 flex-grow-1">
+                                        <div class="imgThumb imgInput ">
+                                            <img
+                                                    loading="lazy"
+                                                    class="img-fluid card-img"
+                                                    src="<?php echo JURI::root() . "index.php?option=com_fwgallery&view=item&layout=img&format=raw&w=500&h=500&id=" . urlencode($image->id); ?>"
+                                                    alt="<?php echo htmlspecialchars($image->name, ENT_COMPAT, 'UTF-8'); ?>"
+                                                    itemprop="thumbnailUrl"/>
                                         </div>
-                                        <?php if ($detect->isMobile()): ?>
-                                            <div class="btn-group" style="padding-top: 5px">
-                                                <a class="btn btn-micro active down">
-                                                    <span class="caret"></span>
-                                                </a>
-                                                <a class="btn btn-micro active up">
-                                                    <span class="caret" style="transform: rotate(180deg)"></span>
-                                                </a>
-
+                                        <div class="imgPreview nowrap small">
+                                        </div>
+                                        <div class="card-body p-0">
+                                            <p class="mb-0 py-2 small text-muted text-center">
+                                                <?= $image->name ?>
+                                            </p>
+                                            <div>
+                                                <input type="text" placeholder="Bildunterschrift"
+                                                       name="galleryimage_alt_texts[<?= $image->id ?>]"
+                                                       class="form-control form-control-sm"/>
+                                                <input type="hidden" placeholder="Bildunterschrift"
+                                                       name="galleryimage_ordering[]" value="<?= $image->id ?>"
+                                                       class="form-control form-control-sm"/>
                                             </div>
-
-                                        <?php endif; ?>
+                                        </div>
                                     </div>
                                 </li>
                             <?php endforeach; ?>

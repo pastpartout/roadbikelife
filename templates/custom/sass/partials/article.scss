@@ -227,6 +227,7 @@
       &:before {
         opacity: 1;
         pointer-events: initial;
+        background-color: rgba($layout-darkblue,.97);
 
       }
     }
@@ -240,22 +241,33 @@
     .mapWrapper {
       margin-bottom: $spacer4;
       overflow: visible;
+      transform: translateZ(0);
 
       .googleMap {
-        border-radius: $border-radius-xlg;
+        border-radius: $border-radius-lg;
         overflow: hidden;
         border: 1px solid $layout-darkblue-darker-2;
+      }
+
+      .gdpr-notice {
+        border-radius: $border-radius-lg;
+        overflow: hidden;
+
+        .content {
+          padding: $spacer4;
+          padding-left: 3rem;
+
+        }
       }
     }
 
     .wheatherWidget {
-      box-shadow: $box-shadow-sm, $box-shadow;
-
 
       .wind {
+
         left: auto;
         //right: 0;
-        transform: translateX(-35%);
+        transform: translateX(-30%);
         z-index: 3;
       }
     }

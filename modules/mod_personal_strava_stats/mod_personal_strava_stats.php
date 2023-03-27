@@ -16,6 +16,7 @@ $stravaFields = [
     'moving_time' => ['icon' => 'fa-clock'],
     'kudos_count' => ['icon' => 'fa-thumbs-up'],
     'count' => ['icon' => 'fa-redo'],
+    'created' => [],
 ];
 
 $db = JFactory::getDbo();
@@ -24,6 +25,7 @@ $query->select(implode(',',array_keys($stravaFields)));
 $query->from($db->quoteName('#__strava_member_stats'));
 $query->where(array($db->quoteName('id') . ' = '.$db->quote(RoadbikelifeHelper::getParam('strava_profileId'))));
 $db->setQuery($query);
-$stravaActivity =  $db->loadObject();
-
+$stravaStats =  $db->loadObject();
+$createdDate = $stravaStats->created;
+unset($stravaStats->created);
 require JModuleHelper::getLayoutPath('mod_personal_strava_stats', $params->get('layout', 'default'));

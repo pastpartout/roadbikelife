@@ -99,7 +99,6 @@ body.view-ridewheather {
   }
 
   .googleMap {
-    //height: ;
 
   }
 
@@ -119,7 +118,9 @@ body.view-ridewheather {
       .googleMap {
         min-height: 100%;
         height: auto;
-        g
+
+
+
 
 
         .gm-style-mtc,
@@ -631,9 +632,6 @@ body.view-ridewheather {
     }
 
 
-    //.bootstrap-datetimepicker-widget {
-    //    display: block;
-    //}
 
     .card-header {
       font-weight: bold;
@@ -756,6 +754,7 @@ body.view-ridewheather {
 .mapWrapper {
   overflow: hidden;
   position: relative;
+  color: $dark;
 
   &.fullscreen {
     position: fixed;
@@ -871,7 +870,7 @@ body.view-ridewheather {
       left: 10px;
       height: 340px;
       width: 2.5rem;
-      box-shadow: $box-shadow $box-shadow-sm;
+      box-shadow: $box-shadow-sm,$box-shadow, $box-shadow-lg;
 
       @include media-breakpoint-down(sm) {
         margin-top: -40vh;
@@ -898,7 +897,6 @@ body.view-ridewheather {
         font-size: 12px;
         text-align: center;
         line-height: 1;
-        color: $body-color;
       }
 
       #wheatherIcon {
@@ -916,7 +914,7 @@ body.view-ridewheather {
         .progress {
           position: relative;
           flex-grow: 1;
-          background-color: lighten($layout-darkblue, 70%);
+          background-color: $layout-darkblue-lighter-1;
         }
 
         .progress,
@@ -962,8 +960,10 @@ body.view-ridewheather {
 
   .googleMap {
     height: 450px;
-    //border-bottom: 1px solid $card-border-color;
-    //transform: scale(1.002);
+
+    & > div > div {
+      background-color: $layout-darkblue;
+    }
 
     .gdpr-notice {
       text-align: center;
@@ -1054,7 +1054,7 @@ body.view-ridewheather {
 
     .segment-tooltip {
       width: 160px;
-      color: $body-color;
+      color: $dark;
       text-align: center;
 
       .icon {

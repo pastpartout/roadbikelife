@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+    <fields name="fieldparams">
+        <fieldset name="fieldparams">
+            <field
+                    name="multiple"
+                    type="list"
+                    label="PLG_FIELDS_LIST_PARAMS_MULTIPLE_LABEL"
+                    description="PLG_FIELDS_LIST_PARAMS_MULTIPLE_DESC"
+                    filter="integer"
+            >
+                <option value="">COM_FIELDS_FIELD_USE_GLOBAL</option>
+                <option value="1">JYES</option>
+                <option value="0">JNO</option>
+            </field>
+            <field
+                    name="api_list_limit"
+                    type="number"
+                    min="1"
+                    max="200"
+                    step="1"
+                    label="Listenlänge"
+                    description="Listenlänge"
+                    filter="integer"
+            >
+            </field>
+            <field
+                    name="multiple"
+                    type="radio"
+                    label="PLG_FIELDS_LIST_PARAMS_MULTIPLE_LABEL"
+                    description="PLG_FIELDS_LIST_PARAMS_MULTIPLE_DESC"
+                    class="btn-group btn-group-yesno"
+                    default="0"
+                    filter="integer"
+            >
+                <option value="1">JYES</option>
+                <option value="0">JNO</option>
+            </field>
+        </fieldset>
+    </fields>
+</form>

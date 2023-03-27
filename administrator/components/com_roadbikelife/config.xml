@@ -12,6 +12,7 @@
                     class="span10"
                     label="Gewicht in kg"
             />
+            <field type="media" name="default_article_header_img"></field>
         </fieldset>
 
         <fieldset

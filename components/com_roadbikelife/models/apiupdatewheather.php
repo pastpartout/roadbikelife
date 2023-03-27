@@ -139,10 +139,7 @@ class RoadbikelifeModelApiupdatewheather extends RoadbikelifeModelRoadbikelife
 			{
 				$query->where($db->quoteName('id') . ' IN (' . implode(',', $this->stravaActivitiesIds) . ')');
 			}
-			else
-			{
-//				$query->setLimit(3);
-			}
+
 			$query->order('created DESC');
 			$db->setQuery($query);
 			$this->stravaActivities = $db->loadObjectList();

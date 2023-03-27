@@ -23,11 +23,9 @@ class RoadbikelifeViewMapdata extends JViewLegacy
 	public function display($tpl = null)
 	{
 		JLoader::register('modArticleStravaMap', JPATH_BASE . '/modules/mod_article_stravamap/helper/mod_article_stravamap.php');
-		$modArticleStravaMap = new modArticleStravaMap();
+		$modArticleStravaMap = new modArticleStravaMap(new \Joomla\Registry\Registry);
 		$data = $modArticleStravaMap->getStravaActivityJson();
 		$app = \Joomla\CMS\Factory::getApplication();
-//		header("Content-type: application/json");
-		$app->setHeader('Content-type','application/json');
 		$app->sendHeaders();
 		die($data);
 	}
