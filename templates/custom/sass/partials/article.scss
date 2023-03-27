@@ -26,8 +26,7 @@
     }
 
     body:not(.com_content) &,
-    body.no-layout &
-    {
+    body.no-layout & {
       min-height: 40vh;
       max-height: 40vh;
     }
@@ -56,12 +55,6 @@
     picture:before {
       padding-top: 40vh;
     }
-
-    @include media-breakpoint-down(sm) {
-
-
-    }
-
   }
 
 
@@ -73,7 +66,7 @@
     padding: $spacer3;
     height: 100%;
     padding: 0;
-    @include gradient-y(rgba($layout-darkblue, 0),rgba($layout-darkblue, 1), 35%,100%);
+    @include gradient-y(rgba($layout-darkblue, 0), rgba($layout-darkblue, 1), 35%, 100%);
     pointer-events: none;
     display: flex;
 
@@ -102,7 +95,6 @@
 
     @include media-breakpoint-up(xl) {
       padding-left: $spacer5 *1.5;
-
     }
 
     @include media-breakpoint-down(sm) {
@@ -112,21 +104,32 @@
     }
 
 
-    .item-image {
-
-      @include media-breakpoint-up(lg) {
-        max-width: 125px;
-      }
-
-    }
-
-
   }
 
   .tags {
     justify-content: center;
   }
 
+  &:not(.hasSidebar) {
+
+
+    .post-img-overlay {
+      display: flex;
+      justify-content: center;
+      padding-left: 0;
+
+
+      > div {
+        @include make-container-max-widths();
+        padding: 0;
+
+      }
+
+      .container {
+        margin: 0 auto;
+      }
+    }
+  }
 
 }
 
@@ -143,8 +146,8 @@
     }
   }
 
-  h2,h3,h4,h5,h6,
-  .h2,.h3,.h4,.h5,.h6 {
+  h2, h3, h4, h5, h6,
+  .h2, .h3, .h4, .h5, .h6 {
     margin-top: $spacer4;
   }
 
@@ -185,8 +188,9 @@
 
     &:not(.hasSidebar) {
       @include make-container-max-widths();
+      padding: $spacer3;
+      margin: 0 auto;
     }
-
 
 
   }
@@ -195,7 +199,6 @@
     @include media-breakpoint-down(md) {
       background-color: $layout-darkblue-darker-2;
     }
-
 
 
     @include media-breakpoint-up(xl) {
@@ -227,7 +230,7 @@
       &:before {
         opacity: 1;
         pointer-events: initial;
-        background-color: rgba($layout-darkblue,.97);
+        background-color: rgba($layout-darkblue, .97);
 
       }
     }
@@ -286,7 +289,6 @@
       display: none;
     }
   }
-
 
 
   .tags {

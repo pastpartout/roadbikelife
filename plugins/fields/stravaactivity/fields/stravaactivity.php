@@ -28,40 +28,40 @@ class JFormFieldStravaactivity extends JFormFieldList
         $limit = $this->getAttribute('api_list_limit', '10');
         $options = [];
 
-//        $this->strava_model->setStravaApi();
-//        $this->strava_model->athenticate();
-//
-//        $activitities = $this->strava_model->stravaApi->get('athlete/activities', ['per_page' => $limit, [], 'before' => strtotime('now')]);;
-//
-//        foreach ($activitities as $activitity) {
-//            $options[] = [
-//                'value' => $activitity->id,
-//                'text' => $activitity->name,
-//            ];
-//        }
-//
-//        $loadedActivitiesIds = \Joomla\Utilities\ArrayHelper::getColumn($activitities, 'id');
-//
-//        if ($this->multiple) {
-//
-//            foreach ($this->value as $value) {
-//                if (!in_array($value, $loadedActivitiesIds)) {
-//                    $activitity = $this->strava_model->stravaApi->get('activities/' . $value);
-//                    $option = [
-//                        'value' => $activitity->id,
-//                        'text' => $activitity->name,
-//                    ];
-//                    array_push($options,$option );
-//                }
-//            }
-//        } else if (!in_array($this->value, $loadedActivitiesIds)) {
-//            $activitity = $this->strava_model->stravaApi->get('activities/' . $this->value);
-//            $option = [
-//                'value' => $activitity->id,
-//                'text' => $activitity->name,
-//            ];
-//            array_push($options,$option);
-//        }
+        $this->strava_model->setStravaApi();
+        $this->strava_model->athenticate();
+
+        $activitities = $this->strava_model->stravaApi->get('athlete/activities', ['per_page' => $limit, [], 'before' => strtotime('now')]);;
+
+        foreach ($activitities as $activitity) {
+            $options[] = [
+                'value' => $activitity->id,
+                'text' => $activitity->name,
+            ];
+        }
+
+        $loadedActivitiesIds = \Joomla\Utilities\ArrayHelper::getColumn($activitities, 'id');
+
+        if ($this->multiple) {
+
+            foreach ($this->value as $value) {
+                if (!in_array($value, $loadedActivitiesIds)) {
+                    $activitity = $this->strava_model->stravaApi->get('activities/' . $value);
+                    $option = [
+                        'value' => $activitity->id,
+                        'text' => $activitity->name,
+                    ];
+                    array_push($options,$option );
+                }
+            }
+        } else if (!in_array($this->value, $loadedActivitiesIds)) {
+            $activitity = $this->strava_model->stravaApi->get('activities/' . $this->value);
+            $option = [
+                'value' => $activitity->id,
+                'text' => $activitity->name,
+            ];
+            array_push($options,$option);
+        }
 
         return $options;
 
