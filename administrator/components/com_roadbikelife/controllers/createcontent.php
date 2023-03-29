@@ -39,14 +39,14 @@ class RoadbikelifeControllerCreatecontent extends RoadbikelifeController
 
     public function save()
     {
-        $this->getModel()->save();
+        $contentItemSaved = $this->getModel()->save();
+        $url = JUri::base().'index.php?option=com_roadbikelife&view=createcontent&id='.$contentItemSaved;
         JFactory::getApplication()->redirect(JURI::base().'index.php?option=com_content');
 
     }
 
     public function apply() {
         $contentItemSaved = $this->getModel()->save();
-        $jinput = JFactory::getApplication()->input;
         $url = JUri::base().'index.php?option=com_roadbikelife&view=createcontent&id='.$contentItemSaved;
         JFactory::getApplication()->redirect($url);
 

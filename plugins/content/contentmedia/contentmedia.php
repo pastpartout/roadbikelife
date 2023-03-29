@@ -43,8 +43,9 @@ class plgcontentContentMedia extends JPlugin
         $app = JFactory::getApplication();
         $doc = JFactory::getDocument();
         JLoader::register('RoadbikelifeHelper', JPATH_ADMINISTRATOR . '/components/com_roadbikelife/helpers/roadbikelife.php');
-        $images = json_decode($article->images);
+        $images = json_decode($article->images) ??  new stdClass();
         $componentParams = \Joomla\CMS\Component\ComponentHelper::getParams('com_roadbikelife');
+
 
         // set default Fulltext Image fr blog
         if (!isset($images->image_fulltext) && $article->catid === 8) {

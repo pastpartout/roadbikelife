@@ -62,7 +62,6 @@ class RoadbikelifeModelCreatecontent extends JModelLegacy
         $this->saveGalleryAltTexts();
         $this->saveGalleryOrdering();
         $this->queueErrors();
-//        $this->redirectAfterSave($contentItemSaved);
         return $this->contentId;
     }
 
@@ -431,7 +430,7 @@ class RoadbikelifeModelCreatecontent extends JModelLegacy
 		        'com_content.article'  => [$item->id],
 		        'com_content.category' => '*',
 	        ],false);
-	        return;
+	        return $saved;
         } else {
             $error = $contentModel->getError();
             array_push($this->errors, $error);

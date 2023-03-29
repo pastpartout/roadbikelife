@@ -6,7 +6,7 @@ defined('JPATH_BASE') or die;
 require_once JPATH_BASE . '/components/com_roadbikelife/models/resizeimage.php';
 
 ?>
-<section class="hero-area-blog <?php if ($images->image_fulltext == ''): ?>default-image<?php endif ?>">
+<section class="hero-area-blog <?php if ($images->image_fulltext == ''): ?>default-image<?php endif ?>  <?php if ($hasSidebar): ?>hasSidebar<?php endif ?>">
     <a href="#article-text">
         <picture>
 
@@ -81,7 +81,8 @@ require_once JPATH_BASE . '/components/com_roadbikelife/models/resizeimage.php';
         </picture>
     </a>
     <?php if ($article->catid == 8): ?>
-        <div class="post-img-overlay">
+        <div class="post-img-overlay ">
+<!--            --><?php //if (!$hasSidebar): ?><!--<div class="container">--><?php //endif ?>
             <div class="row w-100 align-items-end">
                 <div class="col-md-6 col-lg-7">
                     <div class="page-header">
@@ -99,6 +100,8 @@ require_once JPATH_BASE . '/components/com_roadbikelife/models/resizeimage.php';
                     ?>
                 </div>
             </div>
+<!--            --><?php //if (!$hasSidebar): ?><!--</div>--><?php //endif ?>
+
         </div>
     <?php endif ?>
 </section>

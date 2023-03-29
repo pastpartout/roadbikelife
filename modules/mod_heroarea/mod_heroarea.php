@@ -29,7 +29,7 @@ $fieldComponent     = Factory::getApplication()->bootComponent('com_fields');
 $fieldModel = $fieldComponent->getMVCFactory()->createModel('Field','Administrator');
 $isSmartphone = ($app->client->mobile === true);
 $view = $app->input->getCmd('view', '');
-
+$hasSidebar = false;
 
 if ($view == 'article'){
     $id = $app->input->getCmd('id', 0);
@@ -39,6 +39,7 @@ if ($view == 'article'){
         $images = json_decode($article->images);
         $images->image_fulltext_alt = $fieldModel->getFieldValue(9, $article->id);
         $imagePosition = $fieldModel->getFieldValue(1, $article->id);
+        $hasSidebar = (int)$fieldModel->getFieldValue(5, $article->id) > 0;
     }
     require JModuleHelper::getLayoutPath('mod_heroarea', 'article');
 } else if($view != 'category') {

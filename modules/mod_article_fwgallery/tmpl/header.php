@@ -27,7 +27,7 @@ $doc->addScript('templates/custom/js/jquery.fancybox.min.js');
                                 <img
                                         loading="lazy"
                                         class="lazyLoader"
-                                        src="<?php echo JURI::base() . "index.php?option=com_fwgallery&view=item&layout=img&format=raw&w=150&h=150&id=" . urlencode($image->id); ?>"
+                                        src="<?php echo JURI::base() . "index.php?option=com_fwgallery&view=item&layout=img&format=raw&w=300&h=300&id=" . urlencode($image->id); ?>"
                                         alt="<?php echo htmlspecialchars($image->name, ENT_COMPAT, 'UTF-8'); ?>"
                                         itemprop="thumbnailUrl"/>
                             </a>
