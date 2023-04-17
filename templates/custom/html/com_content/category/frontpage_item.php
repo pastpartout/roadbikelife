@@ -10,7 +10,7 @@ $isSmartphone = ($app->client->mobile === true);
 extract($displayData);
 $images = json_decode($item->images);
 $params = $item->params;
-
+$index === 0 ? $isFirst = true : $isFirst = false;
 
 ?>
 <article
@@ -42,7 +42,11 @@ $params = $item->params;
         <?= RoadbikelifeModelResizeimage::resizeImage($images->image_fulltext, 2000, null) ?> 2000w"
                         >
                         <img
-                                loading="lazy"
+                                <?php if(!$isFirst):?>
+                                    loading="lazy"
+                                <?php else: ?>
+                                    loading="eager"
+                                <?php endif; ?>
                                 src="<?= RoadbikelifeModelResizeimage::resizeImage($images->image_fulltext, 800, null) ?>"
                                 alt="<?php echo htmlspecialchars($item->title, ENT_COMPAT, 'UTF-8'); ?>"
                                 class="<?= $item->css_class ?>"

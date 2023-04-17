@@ -17,7 +17,7 @@ require_once __DIR__ . '/prepare_template.php';
       data-baseurl="<?= JURI::base() ?>" data-gaid="<?= $this->params->get('google_tracking_code') ?>"
 >
 <head>
-    <meta name="viewport" content="width=device-width, user-scalable=yes"/>
+    <meta name="viewport" content="width=device-width, user-scalable=no"/>
     <meta name="city" content="Leipzig">
     <meta name="country" content="Germany">
     <meta name="page-topic" content="Sport">
@@ -25,8 +25,25 @@ require_once __DIR__ . '/prepare_template.php';
     <meta name="copyright" content="<?= $sitename ?>">
     <meta name="owner" content="<?= $sitename ?>">
     <meta name="designer" content="Stephan Riedel">
-	<?php require 'favicons.php' ?>
+    <?php require 'favicons.php' ?>
     <jdoc:include type="head"/>
+    <!-- Matomo -->
+<!--    <script>-->
+<!--        var _paq = window._paq = window._paq || [];-->
+<!--        /* tracker methods like "setCustomDimension" should be called before "trackPageView" */-->
+<!--        _paq.push(['trackPageView']);-->
+<!--        _paq.push(['enableLinkTracking']);-->
+<!--        (function () {-->
+<!--            var u = "//matomo.roadbikelife.de/";-->
+<!--            _paq.push(['setTrackerUrl', u + 'matomo.php']);-->
+<!--            _paq.push(['setSiteId', '2']);-->
+<!--            var d = document, g = d.createElement('script'), s = d.getElementsByTagName('script')[0];-->
+<!--            g.async = true;-->
+<!--            g.src = u + 'matomo.js';-->
+<!--            s.parentNode.insertBefore(g, s);-->
+<!--        })();-->
+<!--    </script>-->
+    <!-- End Matomo Code -->
 </head>
 <body class="site
      <?= $option
