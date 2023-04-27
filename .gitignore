@@ -79,6 +79,10 @@ modules/*
 !modules/mod_personal_strava_stats_year/
 !modules/mod_personal_strava_stats_year/**
 
+!modules/mod_article_stravamap/
+!modules/mod_article_stravamap/**
+modules/mod_article_stravamap/assets/js/node_modules
+
 !modules/mod_tags_rbl_similar/
 !modules/mod_tags_rbl_similar/**
 
