@@ -53,22 +53,6 @@ class RoadbikelifeControllerApiupdate extends RoadbikelifeController
 
     }
 
-//    public function facebook()
-//    {
-//        $this->checkAccess();
-//        $this->getModel('Apiupdatefacebook')->update();
-////        parent::display();
-//
-//    }
-//
-//    public function dropbox()
-//    {
-//        $this->checkAccess();
-//        $this->getModel('Apiupdatedropbox')->export();
-////        parent::display();
-//
-//    }
-
     public function strava() {
         $secretToMatch = $this->checkAccess();
         $params = JFactory::getApplication()->getTemplate(true)->params;
@@ -109,19 +93,6 @@ class RoadbikelifeControllerApiupdate extends RoadbikelifeController
 	    parent::display();
 
     }
-
-//    public function instagram()
-//    {
-//        $this->checkAccess();
-//        $this->getModel('ApiupdateInstagram')->update();
-//    }
-//
-//    public function deleteunusedgpxuploads()
-//    {
-//        $this->checkAccess();
-//        $this->getModel('ApiupdateDeleteUnusedGpxUploads')->run();
-//    }
-
 
 
 }

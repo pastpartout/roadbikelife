@@ -201,55 +201,6 @@ class RoadbikelifeHelper
         }
     }
 
-    public static function deleteCache($comViewsToDelete,$run = true)
-    {
-        $jotcache = new MainModelMain();
-        $jotrecache = new MainModelRecache();
-        $db = JFactory::getDbo();
-        $tableName = '#__jotcache';
-        $query = $db->getQuery(true);
-        $query->select('*');
-        $query->from($db->quoteName($tableName));
-        $db->setQuery($query);
-        $items = $db->loadObjectList();
-
-        foreach ($items as $key => $item) {
-            $com = $item->com;
-            $view = $item->view;
-            $comView = "$com.$view";
-
-            foreach ($comViewsToDelete as $comViewToDelete => $idsToDelete) {
-
-            if($comView == $comViewToDelete) {
-	            if(is_array($idsToDelete)) {
-	            	foreach ($idsToDelete as $idToDelete) {
-			            if($item->id === $idToDelete) {
-				            $fNamesToDelete[] = $item->fname;
-			            }
-		            }
-
-	            } else {
-		            $fNamesToDelete[] = $item->fname;
-	            }
-
-            }
-            }
-        }
-        $app = JFactory::getApplication();
-        $input = $app->input;
-        $input->set('scope', 'chck');
-        $input->set('jotcacheplugin', 'recache');
-
-        if ($fNamesToDelete && count($fNamesToDelete) > 0) {
-            $jotrecache->flagRecache($fNamesToDelete);
-        }
-
-        if($run === true) {
-	        $jotrecache->runRecache();
-	        $jotrecache->controlRecache(0);
-        }
-
-    }
 
 }
 

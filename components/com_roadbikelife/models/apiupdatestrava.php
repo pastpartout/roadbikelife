@@ -8,6 +8,10 @@
  * @license    GNU General Public License Version 2 oder später; siehe LICENSE.txt
  */
 
+use _JchOptimizeVendor\Spatie\Crawler\CrawlQueues\CrawlQueue;
+use JchOptimize\ContainerFactory;
+use JchOptimize\Core\PageCache\CaptureCache;
+use JchOptimize\Model\ReCache;
 use Joomla\CMS\Factory;
 
 defined('_JEXEC') or die;
@@ -104,7 +108,7 @@ class RoadbikelifeModelApiupdatestrava extends RoadbikelifeModelRoadbikelife
                 $fields = [
                     $db->quoteName('token') . ' = ' . $db->quote($newToken->access_token),
                     $db->quoteName('refresh_token') . ' = ' . $db->quote($newToken->refresh_token),
-                    $db->quoteName('created') . ' = '.$db->quote(Factory::getDate()->toSql())
+                    $db->quoteName('created') . ' = ' . $db->quote(Factory::getDate()->toSql())
                 ];
                 $tableName = '#__strava_member_tokens';
                 $query->update($db->quoteName($tableName))->set($fields)->where($conditions);
@@ -303,8 +307,6 @@ class RoadbikelifeModelApiupdatestrava extends RoadbikelifeModelRoadbikelife
     }
 
 
-
-
     public function update()
     {
 
@@ -318,7 +320,7 @@ class RoadbikelifeModelApiupdatestrava extends RoadbikelifeModelRoadbikelife
             if (isset($this->stravaActivities) && count($this->stravaActivities) > 0) {
                 $this->updateStravaActivites();
                 $this->updateStravaActivitesWheather();
-                $this->controlCache();
+                $this->reCache();
             }
 
             return $this->stravaActivities;
@@ -329,26 +331,51 @@ class RoadbikelifeModelApiupdatestrava extends RoadbikelifeModelRoadbikelife
 
     }
 
-    private function controlCache()
+    private function reCache()
     {
-        if (count($this->stravaActivities) > 0) {
-            $contentIds = [];
-            foreach ($this->stravaActivities as $stravaActivity) {
-                $contentIds[] = $stravaActivity->item_id;
-            }
-            $contentIds = array_unique($contentIds);
+        /** @var ReCache $reCacheModel */
+        /** @var \JchOptimize\Model\PageCache $cacheModel */
+        $input = Factory::getApplication()->getInput();
 
-            $user = JFactory::getUser();
-            $isroot = $user->authorise('core.login.admin');
-            if (!$isroot) {
-                RoadbikelifeHelper::deleteCache([
-                    'com_content.article' => $contentIds,
-                    'com_content.category' => '*',
-                ], true);
-            }
+        if (count($this->stravaActivities) > 0 && $input->get('recached', false) === false) {
+            $redirectUrl = JUri::current() . $_SERVER['REQUEST_URI'];
+            $input->set('task', 'deleteAll');
+            $container = ContainerFactory::getContainer(\_JchOptimizeVendor\Laminas\Cache\Storage\Adapter\Filesystem::class);
+            $cacheModel = $container->get(\JchOptimize\Model\PageCache::class);
+            $cacheModel->deleteAll();
+
+            $reCacheModel = $container->get(ReCache::class);
+            $reCacheModel->reCache($redirectUrl);
+            $input->set('recached', true);
+
+
         }
 
     }
+
+//    private function deleteCache()
+//    {
+//        /** @var ReCache $reCacheModel */
+//        /** @var \JchOptimize\Model\PageCache $cacheModel */
+//        $input = Factory::getApplication()->getInput();
+//
+////        if (count($this->stravaActivities) > 0) {
+//        if ($input->get('recached', false) === false) {
+//
+//            $redirectUrl = JUri::current() . $_SERVER['REQUEST_URI'];
+//            $input->set('task', 'deleteAll');
+//            $container = ContainerFactory::getContainer(\_JchOptimizeVendor\Laminas\Cache\Storage\Adapter\Filesystem::class);
+//            $cacheModel = $container->get(\JchOptimize\Model\PageCache::class);
+//            $cacheModel->deleteAll();
+//
+//            $reCacheModel = $container->get(ReCache::class);
+//            $reCacheModel->reCache($redirectUrl);
+//            $input->set('recached', true);
+//        }
+//
+////        }
+//
+//    }
 
     private function getMarkerData($stravaActivityStream, $stravaActivity)
     {
@@ -412,7 +439,7 @@ class RoadbikelifeModelApiupdatestrava extends RoadbikelifeModelRoadbikelife
 
         foreach ($this->stravaActivities as &$stravaActivity) {
 
-            $stravaActivityId =$stravaActivity->id;
+            $stravaActivityId = $stravaActivity->id;
             $stravaActivityStreams = $api->get("activities/$stravaActivityId/streams", ['keys' => implode(',', $this->streamFields), 'resolution' => 'medium']);
             $photos = $api->get("activities/$stravaActivityId/photos", ['size' => '250']);
             $photosXl = $api->get("activities/$stravaActivityId/photos", ['size' => '1000']);
@@ -444,7 +471,7 @@ class RoadbikelifeModelApiupdatestrava extends RoadbikelifeModelRoadbikelife
                 $stravaActivity->streams = new stdClass();
                 foreach ($stravaActivityStreams as $type => $stravaActivityStream) {
                     $fields->{$type . '_json'} = json_encode($stravaActivityStream);
-                    $stravaActivity->streams->{$type} =  json_encode($stravaActivityStream);
+                    $stravaActivity->streams->{$type} = json_encode($stravaActivityStream);
                 }
                 $fields->marker_json = json_encode($this->getMarkerData($stravaActivityStreams, $stravaActivity));
                 $fields->original_size = $originalSize;
@@ -459,7 +486,7 @@ class RoadbikelifeModelApiupdatestrava extends RoadbikelifeModelRoadbikelife
 
                 // append field to acitvity for output
                 $stravaActivity->extra_fields = new stdClass();
-                foreach ($fields as $fieldName => $value ) {
+                foreach ($fields as $fieldName => $value) {
                     $stravaActivity->extra_fields->{$fieldName} = $value;
                 }
             }
