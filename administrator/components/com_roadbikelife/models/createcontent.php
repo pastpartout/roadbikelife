@@ -426,11 +426,11 @@ class RoadbikelifeModelCreatecontent extends JModelLegacy
         $saved = $contentModel->save($fieldsDataFormed);
 
         if ($saved === true) {
-	        RoadbikelifeHelper::deleteCache([
-		        'com_content.article'  => [$item->id],
-		        'com_content.category' => '*',
-	        ],false);
-	        return $saved;
+//	        RoadbikelifeHelper::deleteCache([
+//		        'com_content.article'  => [$item->id],
+//		        'com_content.category' => '*',
+//	        ],false);
+//	        return $saved;
         } else {
             $error = $contentModel->getError();
             array_push($this->errors, $error);
@@ -550,11 +550,9 @@ class RoadbikelifeModelCreatecontent extends JModelLegacy
     {
         $jinput = JFactory::getApplication()->input;
         $form = JForm::getInstance('com_content.article', JPATH_COMPONENT_ADMINISTRATOR . '/models/forms/createcontent.xml');
-//        $form = $this->loadForm('com_content.article', 'article', array('control' => 'jform', 'load_data' => $item));
         $data = $item;
-//	    $event     = new Joomla\Application\Event\ApplicationEvent('onContentPrepareForm', Factory::getApplication());
 	    $dispatcher = Joomla\CMS\Factory::getApplication()->getDispatcher();
-	    $event = new Event('onContentPrepareForm', [$form, $data]);
+	    $event = new \Joomla\CMS\Event\Model\PrepareFormEvent('onContentPrepareForm', [$form, $data]);
 	    $dispatcher->dispatch('onContentPrepareForm',$event);
 //	    Factory::getApplication()->triggerEvent('onContentPrepareForm', array($form, $data));
 

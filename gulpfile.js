@@ -54,9 +54,9 @@ config.default = config;
 let initBrowserSync = function (done) {
     browserSync.init(config.default.browserSyncWatchedFiles, {
         proxy: config.default.proxyUrl,
-        host: '192.168.178.32',
+        // host: '192.168.178.32',
         notify: false,
-        online: false,
+        online: true,
         ghostMode: {
             clicks: false,
             forms: false,
