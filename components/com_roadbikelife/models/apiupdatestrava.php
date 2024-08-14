@@ -320,7 +320,7 @@ class RoadbikelifeModelApiupdatestrava extends RoadbikelifeModelRoadbikelife
             if (isset($this->stravaActivities) && count($this->stravaActivities) > 0) {
                 $this->updateStravaActivites();
                 $this->updateStravaActivitesWheather();
-                $this->reCache();
+//                $this->reCache();
             }
 
             return $this->stravaActivities;
