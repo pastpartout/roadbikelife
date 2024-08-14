@@ -40,7 +40,7 @@ class JFormFieldStravaactivity extends JFormFieldList
             ];
         }
 
-        $loadedActivitiesIds = \Joomla\Utilities\ArrayHelper::getColumn($activitities, 'id');
+        $loadedActivitiesIds = \Joomla\Utilities\ArrayHelper::getColumn($activitities ?? [], 'id');
 
         if ($this->multiple) {
 
