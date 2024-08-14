@@ -107,9 +107,8 @@ class RoadbikelifeModelApiupdateopenwheather extends RoadbikelifeModelRoadbikeli
 
     public function update()
     {
-        $stravaAcitivties = $this->getStravaActivites();
 
-        foreach ($stravaAcitivties as $activity) {
+        foreach ($this->stravaActivities as $activity) {
 
             $wheatherData = $this->getWheatherData($activity);
             if(isset($wheatherData['filtered'][0]['icon'])) {

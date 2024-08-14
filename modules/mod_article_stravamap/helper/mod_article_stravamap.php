@@ -325,7 +325,7 @@ JModelLegacy::addIncludePath(JPATH_ADMINISTRATOR . '/components/com_fields/model
             ]);
 
 
-            if($id >= 48) {
+            if($stravaActivityId > 8736275408) {
                 $wheatherTableName = '#__strava_activity_open_wheather';
             } else {
                 $wheatherTableName = '#__strava_activity_wheather';

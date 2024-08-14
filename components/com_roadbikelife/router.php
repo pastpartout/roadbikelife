@@ -19,122 +19,107 @@ JLoader::registerPrefix('Roadbikelife', JPATH_SITE . '/components/com_roadbikeli
  */
 class RoadbikelifeRouter extends \Joomla\CMS\Component\Router\RouterBase
 {
-    /**
-     * Build method for URLs
-     * This method is meant to transform the query parameters into a more human
-     * readable form. It is only executed when SEF mode is switched on.
-     *
-     * @param   array  &$query  An array of URL arguments
-     *
-     * @return  array  The URL arguments to use to assemble the subsequent URL.
-     *
-     * @since   3.3
-     */
-    public function build(&$query)
-    {
-        $segments = array();
-        $view     = null;
+  /**
+   * Build method for URLs
+   * This method is meant to transform the query parameters into a more human
+   * readable form. It is only executed when SEF mode is switched on.
+   *
+   * @param array  &$query An array of URL arguments
+   *
+   * @return  array  The URL arguments to use to assemble the subsequent URL.
+   *
+   * @since   3.3
+   */
+  public function build(&$query)
+  {
+    $segments = array();
+    $view = null;
 
 
+    if (isset($query['view'])) {
+      $segments[] = $query['view'];
+      $view = $query['view'];
 
-        if (isset($query['view']))
-        {
-            $segments[] = $query['view'];
-            $view = $query['view'];
-
-            unset($query['view']);
-        }
-
-        if (isset($query['task']))
-        {
-            $taskParts  = explode('.', $query['task']);
-            $segments[] = implode('/', $taskParts);
-            $view       = $taskParts[0];
-            unset($query['task']);
-        }
-
-        if (isset($query['id']))
-        {
-            if ($view !== null)
-            {
-                $segments[] = $query['id'];
-            }
-            else
-            {
-                $segments[] = $query['id'];
-            }
-
-            unset($query['id']);
-        }
-
-        return $segments;
+      unset($query['view']);
     }
 
-    /**
-     * Parse method for URLs
-     * This method is meant to transform the human readable URL back into
-     * query parameters. It is only executed when SEF mode is switched on.
-     *
-     * @param   array  &$segments  The segments of the URL to parse.
-     *
-     * @return  array  The URL attributes to be used by the application.
-     *
-     * @since   3.3
-     */
-    public function parse(&$segments)
-    {
-        $vars = array();
+    if (isset($query['task'])) {
+      $taskParts = explode('.', $query['task']);
+      $segments[] = implode('/', $taskParts);
+      $view = $taskParts[0];
+      unset($query['task']);
+    }
 
-        // View is always the first element of the array
-	    $vars['view'] = array_shift($segments);
+    if (isset($query['id'])) {
+      if ($view !== null) {
+        $segments[] = $query['id'];
+      } else {
+        $segments[] = $query['id'];
+      }
 
-        if($vars['view'] == 'apiupdate') {
-            $vars['task'] = $vars['view'].'.'.array_shift($segments);
-            $vars['secret'] = array_shift($segments);
-			if(isset($segments)) {
-				$vars['content_id'] = array_shift($segments);
-			}
+      unset($query['id']);
+    }
 
-        } elseif($vars['view'] == 'like') {
-	        $vars['task'] = $vars['view'].'.'.$segments[0];
-	        $vars['type'] = array_shift($segments);
-	        $vars['id'] = array_shift($segments);
+    return $segments;
+  }
 
-        } elseif($vars['view'] == 'mapdata') {
-//	        $vars['tmpl'] = 'ajax';
-	        $vars['format'] = 'json';
-	        $vars['strava_activity_id'] = array_shift($segments);
-        } elseif($vars['view'] == 'gpxdownload') {
-	        $vars['format'] = 'raw';
-	        $vars['strava_activity_id'] =  array_shift($segments);
-        } elseif($vars['view'] == 'ridewheather') {
-            $vars['task'] = $vars['view'].'.'. array_shift($segments);
-            if(isset( $segments)) {
-                $vars['token'] = array_shift($segments);
-            }
+  /**
+   * Parse method for URLs
+   * This method is meant to transform the human readable URL back into
+   * query parameters. It is only executed when SEF mode is switched on.
+   *
+   * @param array  &$segments The segments of the URL to parse.
+   *
+   * @return  array  The URL attributes to be used by the application.
+   *
+   * @since   3.3
+   */
+  public function parse(&$segments)
+  {
+    $vars = array();
+
+    // View is always the first element of the array
+    $vars['view'] = array_shift($segments);
+
+    if ($vars['view'] == 'apiupdate') {
+      $vars['task'] = $vars['view'] . '.' . array_shift($segments);
+      $vars['secret'] = array_shift($segments);
+      if (isset($segments)) {
+        $vars['content_id'] = array_shift($segments);
+      }
+    } elseif ($vars['view'] == 'like') {
+      $vars['task'] = $vars['view'] . '.' . $segments[0];
+      $vars['type'] = array_shift($segments);
+      $vars['id'] = array_shift($segments);
+    } elseif ($vars['view'] == 'mapdata') {
+      $vars['format'] = 'json';
+      $vars['strava_activity_id'] = array_shift($segments);
+    } elseif ($vars['view'] == 'gpxdownload') {
+      $vars['format'] = 'raw';
+      $vars['strava_activity_id'] = array_shift($segments);
+    } elseif ($vars['view'] == 'ridewheather') {
+      $vars['task'] = $vars['view'] . '.' . array_shift($segments);
+      if (isset($segments)) {
+        $vars['token'] = array_shift($segments);
+      }
+    } else {
+      while (!empty($segments)) {
+        $segment = array_pop($segments);
+
+        // If it's the ID, let's put on the request
+        if (is_numeric($segment)) {
+          $vars['id'] = $segment;
         } else {
-            while (!empty($segments))
-            {
-                $segment = array_pop($segments);
-
-                // If it's the ID, let's put on the request
-                if (is_numeric($segment))
-                {
-                    $vars['id'] = $segment;
-                }
-
-                else
-                {
-                    $vars['task'] = $vars['view'] . '.' . $segment;
-                }
-
-
-            }
+          $vars['task'] = $vars['view'] . '.' . $segment;
         }
 
-		$app = Joomla\CMS\Uri\Uri::getInstance();
-	    $app->setPath('');
 
-		return $vars;
+      }
     }
+
+    $app = Joomla\CMS\Uri\Uri::getInstance();
+    $app->setPath('');
+
+    return $vars;
+  }
 }
